@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 
+import 'view/config/config.dart';
+
 void main() {
-  runApp(DeezerApp());
+  runApp(DeezerApp(
+    appRoute: AppRoute(),
+    appTheme: AppTheme(),
+  ));
 }
 
 class DeezerApp extends StatelessWidget {
-  const DeezerApp({Key? key}) : super(key: key);
+  final AppRoute? appRoute;
+  final AppTheme? appTheme;
+
+  const DeezerApp({@required this.appRoute, @required this.appTheme});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      onGenerateRoute: appRoute!.onGenerateRoute,
+      theme: appTheme!.theme(),
+    );
   }
 }
