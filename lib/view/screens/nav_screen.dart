@@ -25,12 +25,9 @@ class NavScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: _theme.scaffoldBackgroundColor,
-          body: Builder(
-            builder: (context) {
-              final _screenChangeIndex =
-                  context.watch<ScreenChangeCubit>().state.index;
-              return _screens[_screenChangeIndex];
-            },
+          body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
+            builder: (context, screenChangeIndex) =>
+                _screens[screenChangeIndex.index],
           ),
           bottomNavigationBar: CustomNavigationBar(),
         ),
