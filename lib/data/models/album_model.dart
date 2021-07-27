@@ -9,7 +9,6 @@ class Album {
     @required this.coverMedium,
     @required this.coverBig,
     @required this.coverXl,
-    @required this.md5Image,
     @required this.tracklist,
     @required this.type,
   });
@@ -21,7 +20,6 @@ class Album {
   final String? coverMedium;
   final String? coverBig;
   final String? coverXl;
-  final String? md5Image;
   final String? tracklist;
   final String? type;
 
@@ -33,7 +31,6 @@ class Album {
         coverMedium: json["cover_medium"],
         coverBig: json["cover_big"],
         coverXl: json["cover_xl"],
-        md5Image: json["md5_image"],
         tracklist: json["tracklist"],
         type: json["type"],
       );
@@ -46,7 +43,6 @@ class Album {
         "cover_medium": coverMedium,
         "cover_big": coverBig,
         "cover_xl": coverXl,
-        "md5_image": md5Image,
         "tracklist": tracklist,
         "type": type,
       };
