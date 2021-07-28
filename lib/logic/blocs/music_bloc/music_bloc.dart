@@ -19,7 +19,9 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
     if (event is FeatchMusic) {
       try {
         yield MusicIsLoading();
-        MusicModel radio = await musicRepo!.get(endpoint: event._query);
+
+        MusicModel radio =
+            await musicRepo!.get(endpoint: event._query, getKey: 'music');
         yield MusicIsLoaded(radio);
       } catch (_) {
         print(_);

@@ -1,2 +1,4 @@
 export 'cubits/cubits.dart';
 export 'bloc_providers/bloc_providers.dart';
+export 'blocs/radio_bloc/radio_bloc.dart';
+export 'blocs/music_bloc/music_bloc.dart';

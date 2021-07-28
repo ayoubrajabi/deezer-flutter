@@ -1,3 +1,4 @@
+import 'package:deezer_flutter/data/repositores/music_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../logics.dart';
@@ -9,6 +10,16 @@ class BlocProviderList {
     ),
     BlocProvider<NavbarTooltipCubit>(
       create: (_) => NavbarTooltipCubit(),
+    ),
+    BlocProvider<RadioBloc>(
+      create: (_) => RadioBloc(
+        musicRepo: MusicRepo(),
+      ),
+    ),
+    BlocProvider<MusicBloc>(
+      create: (_) => MusicBloc(
+        musicRepo: MusicRepo(),
+      ),
     ),
   ];
 
