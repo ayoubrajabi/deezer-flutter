@@ -14,7 +14,7 @@ class ArtistIsLoaded extends ArtistState {
 
   ArtistIsLoaded(this._artist);
 
-  ArtistModel get getRadio => _artist;
+  ArtistModel get getArtist => _artist;
 
   @override
   List<Object> get props => [_artist];

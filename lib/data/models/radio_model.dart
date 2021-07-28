@@ -5,10 +5,10 @@ class RadioModel {
     @required this.data,
   });
 
-  final List<Datum>? data;
+  final List<Datum2>? data;
 
   factory RadioModel.fromJson(Map<String, dynamic> json) => RadioModel(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<Datum2>.from(json["data"].map((x) => Datum2.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -16,8 +16,8 @@ class RadioModel {
       };
 }
 
-class Datum {
-  Datum({
+class Datum2 {
+  Datum2({
     @required this.id,
     @required this.title,
     @required this.picture,
@@ -41,7 +41,7 @@ class Datum {
   final String? md5Image;
   final Type? type;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Datum2.fromJson(Map<String, dynamic> json) => Datum2(
         id: json["id"],
         title: json["title"],
         picture: json["picture"],
