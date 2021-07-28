@@ -5,11 +5,13 @@ import 'logic/logics.dart';
 import 'view/config/config.dart';
 
 void main() {
-  runApp(DeezerApp(
-    blocProviderList: BlocProviderList(),
-    appRoute: AppRoute(),
-    appTheme: AppTheme(),
-  ));
+  runApp(
+    DeezerApp(
+      blocProviderList: BlocProviderList(),
+      appRoute: AppRoute(),
+      appTheme: AppTheme(),
+    ),
+  );
 }
 
 class DeezerApp extends StatelessWidget {

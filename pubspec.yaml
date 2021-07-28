@@ -16,6 +16,7 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^7.0.1
   flutter_svg: ^0.22.0
+  transparent_image: ^2.0.0
 
 dev_dependencies:
   flutter_test:
