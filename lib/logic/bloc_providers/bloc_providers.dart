@@ -21,6 +21,11 @@ class BlocProviderList {
         musicRepo: MusicRepo(),
       ),
     ),
+    BlocProvider<ArtistsBloc>(
+      create: (_) => ArtistsBloc(
+        musicRepo: MusicRepo(),
+      ),
+    ),
   ];
 
   List<BlocProvider> get blocProviders => _blocProviders;

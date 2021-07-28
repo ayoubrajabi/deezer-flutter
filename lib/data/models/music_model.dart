@@ -38,7 +38,7 @@ class MusicData {
   final int? duration;
   final int? rank;
   final String? preview;
-  final Artist? artist;
+  final ArtistModel? artist;
   final Album? album;
   final String? type;
 
@@ -49,7 +49,7 @@ class MusicData {
         duration: json["duration"],
         rank: json["rank"],
         preview: json["preview"],
-        artist: Artist.fromJson(json["artist"]),
+        artist: ArtistModel.fromJson(json["artist"]),
         album: Album.fromJson(json["album"]),
         type: json["type"],
       );

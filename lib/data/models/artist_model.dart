@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 
-class Artist {
-  Artist({
+class ArtistModel {
+  ArtistModel({
     @required this.id,
     @required this.name,
     @required this.link,
@@ -25,7 +25,7 @@ class Artist {
   final String? tracklist;
   final String? type;
 
-  factory Artist.fromJson(Map<String, dynamic> json) => Artist(
+  factory ArtistModel.fromJson(Map<String, dynamic> json) => ArtistModel(
         id: json["id"],
         name: json["name"],
         link: json["link"],

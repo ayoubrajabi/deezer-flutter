@@ -11,22 +11,38 @@ class HomeScreen extends StatelessWidget {
     return ListView(
       // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Text(
-            'For You',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-            ),
-          ),
+        HomeScreenItemsTitle(
+          title: 'For You',
         ),
         SizedBox(
-          height: 400,
+          height: 350,
           width: MediaQuery.of(context).size.width,
           child: ForYouWidget(),
         ),
+        HomeScreenItemsTitle(
+          title: 'Top Artists',
+        ),
       ],
+    );
+  }
+}
+
+class HomeScreenItemsTitle extends StatelessWidget {
+  const HomeScreenItemsTitle({Key? key, @required this.title})
+      : super(key: key);
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Text(
+        title!,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+        ),
+      ),
     );
   }
 }
@@ -36,7 +52,7 @@ class ForYouWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<RadioBloc>().add(FeatchRadio('radio'));
+    context.read<RadioBloc>().add(FeatchRadio('editorial/0/charts'));
     final _theme = Theme.of(context);
     return SizedBox(
       child: BlocConsumer<RadioBloc, RadioState>(
@@ -61,8 +77,8 @@ class ForYouWidget extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => Container(
-                height: 250.0,
-                width: 300.0,
+                height: 280.0,
+                width: 250.0,
                 margin: const EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
                   color: _theme.cardColor,
