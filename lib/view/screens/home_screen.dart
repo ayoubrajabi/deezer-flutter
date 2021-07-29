@@ -7,26 +7,37 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      children: [
-        HomeScreenItemsTitle(
-          title: 'Top Artists',
-        ),
-        SizedBox(
-          height: 150.0,
-          width: MediaQuery.of(context).size.width,
-          child: TopArtistsWidget(),
-        ),
-        HomeScreenItemsTitle(
-          title: 'For You',
-        ),
-        SizedBox(
-          height: 450,
-          width: MediaQuery.of(context).size.width,
-          child: ForYouWidget(),
-        ),
-      ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HomeScreenItemsTitle(
+            title: 'Top Artists',
+          ),
+          SizedBox(
+            height: 130.0,
+            width: MediaQuery.of(context).size.width,
+            child: TopArtistsWidget(),
+          ),
+          HomeScreenItemsTitle(
+            title: 'For You',
+          ),
+          SizedBox(
+            height: 450,
+            width: MediaQuery.of(context).size.width,
+            child: ForYouWidget(),
+          ),
+          HomeScreenItemsTitle(
+            title: 'Hot Musics',
+          ),
+          SizedBox(
+            height: 450,
+            width: MediaQuery.of(context).size.width,
+            child: HotMusicsWidget(),
+          ),
+        ],
+      ),
     );
   }
 }

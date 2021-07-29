@@ -20,7 +20,9 @@ class _ForYouWidgetState extends State<ForYouWidget> {
     super.initState();
     final state = context.read<RadioBloc>().state;
     if (state is! RadioIsLoaded) {
-      context.read<RadioBloc>().add(FeatchRadio('editorial/0/charts'));
+      context
+          .read<RadioBloc>()
+          .add(FeatchRadio('editorial/0/charts', 'playlists'));
     }
   }
 
@@ -46,9 +48,9 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (context, index) => LoadingWidget(
+                      height: 450.0,
+                      width: 310.0,
                       borderRadius: BorderRadius.circular(12.0),
-                      height: 300,
-                      width: 330.0,
                       icon: Icons.settings_input_antenna,
                       shape: BoxShape.rectangle,
                     ));
@@ -57,7 +59,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemExtent: 330.0,
+              itemExtent: 310.0,
               itemBuilder: (context, index) => Container(
                 margin: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
@@ -83,7 +85,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,
                           image: radioState.getRadio.data![index].pictureBig!,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -107,13 +109,29 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                           filter: ImageFilter.blur(sigmaX: 40.0, sigmaY: 40.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(radioState.getRadio.data![index].title!),
-                              Text(
-                                  'tracks: ${radioState.getRadio.data![index].nbTracks}'),
-                              Text(
-                                  'tracks: ${radioState.getRadio.data![index].user!.name!}'),
-                            ],
+                            children: List<Padding>.generate(
+                              3,
+                              (itemsIndex) {
+                                final _itemsInfo = <String>[
+                                  radioState.getRadio.data![index].title!,
+                                  'tracks: ${radioState.getRadio.data![index].nbTracks}',
+                                  'tracks: ${radioState.getRadio.data![index].user!.name!}',
+                                ];
+                                return Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    _itemsInfo[itemsIndex],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        color: itemsIndex == 0
+                                            ? Colors.red.shade800
+                                            : Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),

@@ -13,7 +13,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: _theme.scaffoldBackgroundColor,
       title: SvgPicture.asset(
         IconsAsset.deezer,
-        width: 150.0,
+        width: 130.0,
       ),
       flexibleSpace: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -22,7 +22,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             BoxShadow(
               color: _theme.scaffoldBackgroundColor,
               blurRadius: 50.0,
-              offset: Offset(0, 20),
+              offset: Offset(0, 10),
               spreadRadius: 10.0,
             ),
           ],
@@ -38,5 +38,5 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 80.0);
+  Size get preferredSize => Size(double.infinity, 70.0);
 }

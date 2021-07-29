@@ -18,7 +18,9 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
     super.initState();
     final state = context.read<ArtistsBloc>().state;
     if (state is! ArtistIsLoaded) {
-      context.read<ArtistsBloc>().add(FeatchArtist('editorial/0/charts'));
+      context
+          .read<ArtistsBloc>()
+          .add(FeatchArtist('editorial/0/charts', 'artists'));
     }
   }
 
@@ -44,19 +46,18 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (context, index) => LoadingWidget(
-                      // height: 300,
-                      width: 130.0,
+                      height: 130.0,
+                      width: 110.0,
                       icon: Icons.person,
                       shape: BoxShape.circle,
                     ));
           } else if (artistState is ArtistIsLoaded) {
             return ListView.builder(
-              itemCount: 10,
+              itemCount: artistState.getArtist.total,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => Container(
-                height: 150.0,
-                width: 130.0,
+                width: 110.0,
                 margin: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   color: _theme.cardColor,

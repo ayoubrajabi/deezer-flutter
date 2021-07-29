@@ -24,7 +24,6 @@ class BottomNavItems extends StatelessWidget {
             color: navState.tooltip == title
                 ? _theme.bottomNavigationBarTheme.selectedItemColor
                 : _theme.bottomNavigationBarTheme.unselectedItemColor,
-            width: 30.0,
           ),
           const SizedBox(
             height: 5.0,

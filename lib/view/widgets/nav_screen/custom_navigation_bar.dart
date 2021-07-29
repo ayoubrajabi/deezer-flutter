@@ -19,18 +19,23 @@ class CustomNavigationBar extends StatelessWidget {
       builder: (context, screenChangeState) {
         return Container(
           decoration: BoxDecoration(
+            color: _theme.cardColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12.0),
+              topRight: Radius.circular(12.0),
+            ),
             boxShadow: [
               BoxShadow(
                 color: _theme.scaffoldBackgroundColor,
-                blurRadius: 30.0,
-                spreadRadius: 10.0,
-                offset: Offset(0, -10.0),
-              )
+                blurRadius: 50.0,
+                offset: Offset(0, -10),
+                spreadRadius: 20.0,
+              ),
             ],
           ),
           child: BottomNavigationBar(
             elevation: 0.0,
-            backgroundColor: _theme.scaffoldBackgroundColor,
+            backgroundColor: Colors.transparent,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             currentIndex: screenChangeState.index,

@@ -20,7 +20,8 @@ class RadioBloc extends Bloc<RadioEvent, RadioState> {
       try {
         yield RadioIsLoading();
 
-        RadioModel radio = await musicRepo!.get(endpoint: event._query);
+        RadioModel radio =
+            await musicRepo!.get(endpoint: event._query, value: event._value);
         yield RadioIsLoaded(radio);
       } catch (_) {
         print(_);

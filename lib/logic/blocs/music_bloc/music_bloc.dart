@@ -20,7 +20,8 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
       try {
         yield MusicIsLoading();
 
-        MusicModel radio = await musicRepo!.get(endpoint: event._query);
+        MusicModel radio =
+            await musicRepo!.get(endpoint: event._query, value: event._value);
         yield MusicIsLoaded(radio);
       } catch (_) {
         print(_);
