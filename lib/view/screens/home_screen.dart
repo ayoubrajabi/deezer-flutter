@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             title: 'Hot Musics',
           ),
           SizedBox(
-            height: 450,
+            height: 750.0,
             width: MediaQuery.of(context).size.width,
             child: HotMusicsWidget(),
           ),

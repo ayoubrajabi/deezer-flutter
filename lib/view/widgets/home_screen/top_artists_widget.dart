@@ -18,9 +18,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
     super.initState();
     final state = context.read<ArtistsBloc>().state;
     if (state is! ArtistIsLoaded) {
-      context
-          .read<ArtistsBloc>()
-          .add(FeatchArtist('editorial/0/charts', 'artists'));
+      context.read<ArtistsBloc>().add(FeatchArtist('editorial/0/charts'));
     }
   }
 

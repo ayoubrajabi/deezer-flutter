@@ -12,11 +12,11 @@ class ArtistModel {
     @required this.total,
   });
 
-  final List<Datum3>? data;
+  final List<Artist>? data;
   final int? total;
 
   factory ArtistModel.fromJson(Map<String, dynamic> json) => ArtistModel(
-        data: List<Datum3>.from(json["data"].map((x) => Datum3.fromJson(x))),
+        data: List<Artist>.from(json["data"].map((x) => Artist.fromJson(x))),
         total: json["total"],
       );
 
@@ -26,8 +26,8 @@ class ArtistModel {
       };
 }
 
-class Datum3 {
-  Datum3({
+class Artist {
+  Artist({
     @required this.id,
     @required this.name,
     @required this.link,
@@ -53,7 +53,7 @@ class Datum3 {
   final String? tracklist;
   final int? position;
 
-  factory Datum3.fromJson(Map<String, dynamic> json) => Datum3(
+  factory Artist.fromJson(Map<String, dynamic> json) => Artist(
         id: json["id"],
         name: json["name"],
         link: json["link"],

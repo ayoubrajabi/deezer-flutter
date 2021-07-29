@@ -20,9 +20,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
     super.initState();
     final state = context.read<RadioBloc>().state;
     if (state is! RadioIsLoaded) {
-      context
-          .read<RadioBloc>()
-          .add(FeatchRadio('editorial/0/charts', 'playlists'));
+      context.read<RadioBloc>().add(FeatchRadio('editorial/0/charts'));
     }
   }
 
@@ -65,12 +63,6 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                 decoration: BoxDecoration(
                   color: _theme.cardColor,
                   borderRadius: BorderRadius.circular(12.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 10.0,
-                    ),
-                  ],
                 ),
                 child: Column(
                   children: [
