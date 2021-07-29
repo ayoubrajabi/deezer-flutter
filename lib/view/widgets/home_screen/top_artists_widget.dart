@@ -5,17 +5,30 @@ import 'package:transparent_image/transparent_image.dart';
 
 import '../widgets.dart';
 
-class TopArtistsWidget extends StatelessWidget {
+class TopArtistsWidget extends StatefulWidget {
   const TopArtistsWidget({Key? key}) : super(key: key);
 
   @override
+  _TopArtistsWidgetState createState() => _TopArtistsWidgetState();
+}
+
+class _TopArtistsWidgetState extends State<TopArtistsWidget> {
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<ArtistsBloc>().state;
+    if (state is! ArtistIsLoaded) {
+      context.read<ArtistsBloc>().add(FeatchArtist('editorial/0/charts'));
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    context.read<ArtistsBloc>().add(FeatchArtist('editorial/0/charts'));
     final _theme = Theme.of(context);
     return SizedBox(
       child: BlocConsumer<ArtistsBloc, ArtistState>(
-        listener: (context, radioState) {
-          if (radioState is RadioError) {
+        listener: (context, artistState) {
+          if (artistState is ArtistError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: _theme.cardColor,
@@ -24,8 +37,9 @@ class TopArtistsWidget extends StatelessWidget {
             );
           }
         },
-        builder: (context, radioState) {
-          if (radioState is ArtistIsLoading) {
+        buildWhen: (preState, state) => preState != state,
+        builder: (context, artistState) {
+          if (artistState is ArtistIsLoading) {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
@@ -35,7 +49,7 @@ class TopArtistsWidget extends StatelessWidget {
                       icon: Icons.person,
                       shape: BoxShape.circle,
                     ));
-          } else if (radioState is ArtistIsLoaded) {
+          } else if (artistState is ArtistIsLoaded) {
             return ListView.builder(
               itemCount: 10,
               scrollDirection: Axis.horizontal,
@@ -58,7 +72,7 @@ class TopArtistsWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(200.0),
                   child: FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
-                    image: radioState.getArtist.data![index].pictureMedium!,
+                    image: artistState.getArtist.data![index].pictureMedium!,
                     fit: BoxFit.cover,
                   ),
                 ),

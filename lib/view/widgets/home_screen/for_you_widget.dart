@@ -7,12 +7,25 @@ import 'package:transparent_image/transparent_image.dart';
 
 import '../widgets.dart';
 
-class ForYouWidget extends StatelessWidget {
+class ForYouWidget extends StatefulWidget {
   const ForYouWidget({Key? key}) : super(key: key);
 
   @override
+  _ForYouWidgetState createState() => _ForYouWidgetState();
+}
+
+class _ForYouWidgetState extends State<ForYouWidget> {
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<RadioBloc>().state;
+    if (state is! RadioIsLoaded) {
+      context.read<RadioBloc>().add(FeatchRadio('editorial/0/charts'));
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    context.read<RadioBloc>().add(FeatchRadio('editorial/0/charts'));
     final _theme = Theme.of(context);
     return SizedBox(
       child: BlocConsumer<RadioBloc, RadioState>(
@@ -26,6 +39,7 @@ class ForYouWidget extends StatelessWidget {
             );
           }
         },
+        buildWhen: (preState, state) => preState != state,
         builder: (context, radioState) {
           if (radioState is RadioIsLoading) {
             return ListView.builder(
