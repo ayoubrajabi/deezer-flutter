@@ -3,16 +3,20 @@ import 'package:meta/meta.dart';
 class RadioModel {
   RadioModel({
     @required this.data,
+    @required this.total,
   });
 
   final List<Datum2>? data;
+  final int? total;
 
   factory RadioModel.fromJson(Map<String, dynamic> json) => RadioModel(
         data: List<Datum2>.from(json["data"].map((x) => Datum2.fromJson(x))),
+        total: json["total"],
       );
 
   Map<String, dynamic> toJson() => {
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "total": total,
       };
 }
 
@@ -20,68 +24,98 @@ class Datum2 {
   Datum2({
     @required this.id,
     @required this.title,
+    @required this.public,
+    @required this.nbTracks,
+    @required this.link,
     @required this.picture,
     @required this.pictureSmall,
     @required this.pictureMedium,
     @required this.pictureBig,
     @required this.pictureXl,
+    @required this.checksum,
     @required this.tracklist,
+    @required this.creationDate,
     @required this.md5Image,
-    @required this.type,
+    @required this.pictureType,
+    @required this.user,
   });
 
   final int? id;
   final String? title;
+  final bool? public;
+  final int? nbTracks;
+  final String? link;
   final String? picture;
   final String? pictureSmall;
   final String? pictureMedium;
   final String? pictureBig;
   final String? pictureXl;
+  final String? checksum;
   final String? tracklist;
+  final DateTime? creationDate;
   final String? md5Image;
-  final Type? type;
+  final String? pictureType;
+  final User? user;
 
   factory Datum2.fromJson(Map<String, dynamic> json) => Datum2(
         id: json["id"],
         title: json["title"],
+        public: json["public"],
+        nbTracks: json["nb_tracks"],
+        link: json["link"],
         picture: json["picture"],
         pictureSmall: json["picture_small"],
         pictureMedium: json["picture_medium"],
         pictureBig: json["picture_big"],
         pictureXl: json["picture_xl"],
+        checksum: json["checksum"],
         tracklist: json["tracklist"],
+        creationDate: DateTime.parse(json["creation_date"]),
         md5Image: json["md5_image"],
-        type: typeValues.map![json["type"]],
+        pictureType: json["picture_type"],
+        user: User.fromJson(json["user"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "title": title,
+        "public": public,
+        "nb_tracks": nbTracks,
+        "link": link,
         "picture": picture,
         "picture_small": pictureSmall,
         "picture_medium": pictureMedium,
         "picture_big": pictureBig,
         "picture_xl": pictureXl,
+        "checksum": checksum,
         "tracklist": tracklist,
+        "creation_date": creationDate!.toIso8601String(),
         "md5_image": md5Image,
-        "type": typeValues.reverse[type],
+        "picture_type": pictureType,
+        "user": user!.toJson(),
       };
 }
 
-enum Type { RADIO }
+class User {
+  User({
+    @required this.id,
+    @required this.name,
+    @required this.tracklist,
+  });
 
-final typeValues = EnumValues({"radio": Type.RADIO});
+  final int? id;
+  final String? name;
+  final String? tracklist;
 
-class EnumValues<T> {
-  Map<String, T>? map;
-  Map<T, String>? reverseMap;
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        id: json["id"],
+        name: json["name"],
+        tracklist: json["tracklist"],
+      );
 
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map!.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap!;
-  }
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "tracklist": tracklist,
+      };
 }

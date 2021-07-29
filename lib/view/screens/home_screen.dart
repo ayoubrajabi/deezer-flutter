@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      // crossAxisAlignment: CrossAxisAlignment.start,
+      physics: const BouncingScrollPhysics(),
       children: [
         HomeScreenItemsTitle(
           title: 'Top Artists',
@@ -23,7 +25,7 @@ class HomeScreen extends StatelessWidget {
           title: 'For You',
         ),
         SizedBox(
-          height: 350,
+          height: 450,
           width: MediaQuery.of(context).size.width,
           child: ForYouWidget(),
         ),
@@ -81,10 +83,9 @@ class ForYouWidget extends StatelessWidget {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
+              itemExtent: 330.0,
               itemBuilder: (context, index) => Container(
-                height: 280.0,
-                width: 250.0,
-                margin: const EdgeInsets.all(15.0),
+                margin: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   color: _theme.cardColor,
                   borderRadius: BorderRadius.circular(12.0),
@@ -95,13 +96,52 @@ class ForYouWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: radioState.getRadio.data![index].pictureBig!,
-                    fit: BoxFit.cover,
-                  ),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12.0),
+                        topRight: Radius.circular(12.0),
+                      ),
+                      child: SizedBox(
+                        height: 325.0,
+                        width: double.infinity,
+                        child: FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: radioState.getRadio.data![index].pictureBig!,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(12.0),
+                        bottomRight: Radius.circular(12.0),
+                      ),
+                      child: Container(
+                        height: 105.0,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              radioState.getRadio.data![index].pictureSmall!,
+                            ),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 30.0, sigmaY: 30.0),
+                          child: Column(
+                            children: [
+                              Text(radioState.getRadio.data![index].title!),
+                              Text(
+                                  'tracks: ${radioState.getRadio.data![index].nbTracks}'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );
@@ -160,7 +200,7 @@ class TopArtistsWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(200.0),
                   child: FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
-                    image: radioState.getArtist.data![index].pictureBig!,
+                    image: radioState.getArtist.data![index].pictureMedium!,
                     fit: BoxFit.cover,
                   ),
                 ),
