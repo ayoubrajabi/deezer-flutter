@@ -17,36 +17,48 @@ class CustomNavigationBar extends StatelessWidget {
 
     return BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
       builder: (context, screenChangeState) {
-        return BottomNavigationBar(
-          elevation: 0.0,
-          backgroundColor: _theme.scaffoldBackgroundColor,
-          type: BottomNavigationBarType.fixed,
-          showSelectedLabels: false,
-          currentIndex: screenChangeState.index,
-          selectedFontSize: 11.0,
-          unselectedFontSize: 11.0,
-          showUnselectedLabels: false,
-          items: _navBarItems
-              .map(
-                (title, icon) => MapEntry(
-                  title,
-                  BottomNavigationBarItem(
-                    icon: BottomNavItems(
-                      icon: icon,
-                      title: title,
-                    ),
-                    label: title,
-                  ),
-                ),
+        return Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: _theme.scaffoldBackgroundColor,
+                blurRadius: 30.0,
+                spreadRadius: 10.0,
+                offset: Offset(0, -10.0),
               )
-              .values
-              .toList(),
-          onTap: (index) {
-            context.read<ScreenChangeCubit>().screenChanegeIndex(index);
-            context
-                .read<NavbarTooltipCubit>()
-                .navBarTooltipChange(_navBarItems.keys.elementAt(index));
-          },
+            ],
+          ),
+          child: BottomNavigationBar(
+            elevation: 0.0,
+            backgroundColor: _theme.scaffoldBackgroundColor,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            currentIndex: screenChangeState.index,
+            selectedFontSize: 11.0,
+            unselectedFontSize: 11.0,
+            showUnselectedLabels: false,
+            items: _navBarItems
+                .map(
+                  (title, icon) => MapEntry(
+                    title,
+                    BottomNavigationBarItem(
+                      icon: BottomNavItems(
+                        icon: icon,
+                        title: title,
+                      ),
+                      label: title,
+                    ),
+                  ),
+                )
+                .values
+                .toList(),
+            onTap: (index) {
+              context.read<ScreenChangeCubit>().screenChanegeIndex(index);
+              context
+                  .read<NavbarTooltipCubit>()
+                  .navBarTooltipChange(_navBarItems.keys.elementAt(index));
+            },
+          ),
         );
       },
     );
