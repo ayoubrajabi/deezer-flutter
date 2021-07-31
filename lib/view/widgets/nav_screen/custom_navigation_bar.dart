@@ -38,7 +38,7 @@ class CustomNavigationBar extends StatelessWidget {
             backgroundColor: Colors.transparent,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
-            currentIndex: screenChangeState.index,
+            currentIndex: 0,
             selectedFontSize: 11.0,
             unselectedFontSize: 11.0,
             showUnselectedLabels: false,

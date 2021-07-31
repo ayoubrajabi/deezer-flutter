@@ -46,8 +46,8 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (context, index) => LoadingWidget(
-                      height: 450.0,
-                      width: 310.0,
+                      height: 290.0,
+                      width: 260.0,
                       borderRadius: BorderRadius.circular(12.0),
                       icon: Icons.settings_input_antenna,
                       shape: BoxShape.rectangle,
@@ -57,78 +57,83 @@ class _ForYouWidgetState extends State<ForYouWidget> {
               itemCount: 10,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemExtent: 310.0,
-              itemBuilder: (context, index) => Container(
-                margin: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  color: _theme.cardColor,
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12.0),
-                        topRight: Radius.circular(12.0),
-                      ),
-                      child: SizedBox(
-                        height: 325.0,
-                        width: double.infinity,
-                        child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: radioState.getRadio.data![index].pictureBig!,
-                          fit: BoxFit.cover,
+              itemExtent: 280.0,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () =>
+                    context.read<ScreenChangeCubit>().screenChanegeIndex(2),
+                child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: _theme.cardColor,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12.0),
+                          topRight: Radius.circular(12.0),
                         ),
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(12.0),
-                        bottomRight: Radius.circular(12.0),
-                      ),
-                      child: Container(
-                        height: 105.0,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              radioState.getRadio.data![index].pictureSmall!,
-                            ),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 40.0, sigmaY: 40.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: List<Padding>.generate(
-                              3,
-                              (itemsIndex) {
-                                final _itemsInfo = <String>[
-                                  radioState.getRadio.data![index].title!,
-                                  'tracks: ${radioState.getRadio.data![index].nbTracks}',
-                                  'tracks: ${radioState.getRadio.data![index].user!.name!}',
-                                ];
-                                return Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Text(
-                                    _itemsInfo[itemsIndex],
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: itemsIndex == 0
-                                            ? Colors.red.shade800
-                                            : Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                );
-                              },
-                            ),
+                        child: SizedBox(
+                          height: 290.0,
+                          width: double.infinity,
+                          child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: radioState.getRadio.data![index].pictureBig!,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(12.0),
+                          bottomRight: Radius.circular(12.0),
+                        ),
+                        child: Container(
+                          height: 105.0,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                radioState.getRadio.data![index].pictureSmall!,
+                              ),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          child: BackdropFilter(
+                            filter:
+                                ImageFilter.blur(sigmaX: 40.0, sigmaY: 40.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: List<Padding>.generate(
+                                3,
+                                (itemsIndex) {
+                                  final _itemsInfo = <String>[
+                                    radioState.getRadio.data![index].title!,
+                                    'tracks: ${radioState.getRadio.data![index].nbTracks}',
+                                    'tracks: ${radioState.getRadio.data![index].user!.name!}',
+                                  ];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text(
+                                      _itemsInfo[itemsIndex],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          color: itemsIndex == 0
+                                              ? Colors.red.shade800
+                                              : Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

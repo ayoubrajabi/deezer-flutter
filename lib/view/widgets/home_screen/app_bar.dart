@@ -1,5 +1,7 @@
 import 'package:deezer_flutter/constants/constants.dart';
+import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,9 +13,26 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: _theme.scaffoldBackgroundColor,
-      title: SvgPicture.asset(
-        IconsAsset.deezer,
-        width: 130.0,
+      title: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
+        builder: (context, state) => Row(
+          children: [
+            Visibility(
+              visible: state.index == 2,
+              child: BackButton(
+                onPressed: () =>
+                    context.read<ScreenChangeCubit>().screenChanegeIndex(0),
+              ),
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              width: state.index == 2 ? 160.0 : 130.0,
+              child: SvgPicture.asset(
+                IconsAsset.deezer,
+                width: 130.0,
+              ),
+            ),
+          ],
+        ),
       ),
       flexibleSpace: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -38,5 +57,5 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 70.0);
+  Size get preferredSize => Size(double.infinity, 60.0);
 }

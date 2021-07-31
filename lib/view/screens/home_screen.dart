@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(
             key: PageStorageKey('TopArtists'),
-            height: 130.0,
+            height: 110.0,
             width: MediaQuery.of(context).size.width,
             child: TopArtistsWidget(),
           ),
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(
             key: PageStorageKey('ForYou'),
-            height: 450,
+            height: 415,
             width: MediaQuery.of(context).size.width,
             child: ForYouWidget(),
           ),

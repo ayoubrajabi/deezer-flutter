@@ -44,8 +44,8 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (context, index) => LoadingWidget(
-                      height: 130.0,
-                      width: 110.0,
+                      height: 110.0,
+                      width: 90.0,
                       icon: Icons.person,
                       shape: BoxShape.circle,
                     ));
@@ -55,7 +55,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => Container(
-                width: 110.0,
+                width: 90.0,
                 margin: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   color: _theme.cardColor,

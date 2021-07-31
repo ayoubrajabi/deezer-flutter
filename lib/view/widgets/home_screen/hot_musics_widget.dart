@@ -29,13 +29,14 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
         builder: (context, state) {
           if (state is MusicIsLoading) {
             return ListView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
               itemCount: 10,
               itemBuilder: (context, index) => LoadingWidget(
-                height: 130.0,
-                width: 110.0,
-                icon: Icons.person,
-                shape: BoxShape.circle,
+                height: 60.0,
+                width: 300.0,
+                icon: Icons.music_note,
+                borderRadius: BorderRadius.circular(12.0),
+                shape: BoxShape.rectangle,
               ),
             );
           } else if (state is MusicIsLoaded) {
