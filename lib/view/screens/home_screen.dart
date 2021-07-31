@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
             title: 'Top Artists',
           ),
           SizedBox(
+            key: PageStorageKey('TopArtists'),
             height: 130.0,
             width: MediaQuery.of(context).size.width,
             child: TopArtistsWidget(),
@@ -24,6 +25,7 @@ class HomeScreen extends StatelessWidget {
             title: 'For You',
           ),
           SizedBox(
+            key: PageStorageKey('ForYou'),
             height: 450,
             width: MediaQuery.of(context).size.width,
             child: ForYouWidget(),
@@ -32,6 +34,7 @@ class HomeScreen extends StatelessWidget {
             title: 'Hot Musics',
           ),
           SizedBox(
+            key: PageStorageKey('HotMusic'),
             height: 750.0,
             width: MediaQuery.of(context).size.width,
             child: HotMusicsWidget(),
@@ -41,5 +44,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -11,7 +11,9 @@ class NavScreen extends StatelessWidget {
   static const String id = '/';
 
   final _screens = const <Widget>[
-    HomeScreen(),
+    HomeScreen(
+      key: PageStorageKey('HomeScreen'),
+    ),
     SearchScreen(),
   ];
 
