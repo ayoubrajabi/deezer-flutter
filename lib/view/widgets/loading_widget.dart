@@ -37,7 +37,7 @@ class LoadingWidget extends StatelessWidget {
           child: Icon(
         icon,
         color: Colors.grey,
-        size: 70.0,
+        size: 40.0,
       )),
     );
   }

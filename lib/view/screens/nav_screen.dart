@@ -15,7 +15,6 @@ class NavScreen extends StatelessWidget {
       key: PageStorageKey('HomeScreen'),
     ),
     SearchScreen(),
-    ViewMoreScreen(),
   ];
 
   @override
@@ -33,8 +32,16 @@ class NavScreen extends StatelessWidget {
               appBar: HomeScreenAppBar(),
               backgroundColor: _theme.scaffoldBackgroundColor,
               body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
-                builder: (context, screenChangeIndex) =>
-                    _screens[screenChangeIndex.index],
+                builder: (context, screenChangeIndex) {
+                  switch (screenChangeIndex.index) {
+                    case 0:
+                      return _screens[0];
+                    case 1:
+                      return _screens[1];
+                    default:
+                      return _screens[0];
+                  }
+                },
               ),
               bottomNavigationBar: CustomNavigationBar(),
             ),

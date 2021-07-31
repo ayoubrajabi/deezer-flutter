@@ -8,6 +8,9 @@ class BlocProviderList {
     BlocProvider<ScreenChangeCubit>(
       create: (_) => ScreenChangeCubit(),
     ),
+    BlocProvider<ForyouIndexCubit>(
+      create: (_) => ForyouIndexCubit(),
+    ),
     BlocProvider<NavbarTooltipCubit>(
       create: (_) => NavbarTooltipCubit(),
     ),

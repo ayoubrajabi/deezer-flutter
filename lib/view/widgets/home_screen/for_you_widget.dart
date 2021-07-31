@@ -59,8 +59,10 @@ class _ForYouWidgetState extends State<ForYouWidget> {
               physics: const BouncingScrollPhysics(),
               itemExtent: 280.0,
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () =>
-                    context.read<ScreenChangeCubit>().screenChanegeIndex(2),
+                onTap: () {
+                  context.read<ScreenChangeCubit>().screenChanegeIndex(2);
+                  context.read<ForyouIndexCubit>().forYouChanegeIndex(index);
+                },
                 child: Container(
                   margin: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
