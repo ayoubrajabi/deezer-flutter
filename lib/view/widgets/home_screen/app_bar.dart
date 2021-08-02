@@ -17,7 +17,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
         builder: (context, state) => Row(
           children: [
             Visibility(
-              visible: state.index == 2,
+              visible: state.index == 2 || state.index == 3,
               child: BackButton(
                 onPressed: () =>
                     context.read<ScreenChangeCubit>().screenChanegeIndex(0),

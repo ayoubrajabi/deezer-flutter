@@ -18,32 +18,32 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeScreenItemsTitle(
+            const HomeScreenItemsTitle(
               title: 'Top Artists',
             ),
             SizedBox(
-              key: PageStorageKey('TopArtists'),
+              key: const PageStorageKey('TopArtists'),
               height: 110.0,
               width: MediaQuery.of(context).size.width,
-              child: TopArtistsWidget(),
+              child: const TopArtistsWidget(),
             ),
-            HomeScreenItemsTitle(
+            const HomeScreenItemsTitle(
               title: 'For You',
             ),
             SizedBox(
-              key: PageStorageKey('ForYou'),
+              key: const PageStorageKey('ForYou'),
               height: 415,
               width: MediaQuery.of(context).size.width,
-              child: ForYouWidget(),
+              child: const ForYouWidget(),
             ),
-            HomeScreenItemsTitle(
+            const HomeScreenItemsTitle(
               title: 'Hot Musics',
             ),
             SizedBox(
-              key: PageStorageKey('HotMusic'),
+              key: const PageStorageKey('HotMusic'),
               height: 750.0,
               width: MediaQuery.of(context).size.width,
-              child: HotMusicsWidget(
+              child: const HotMusicsWidget(
                 query: 'editorial/0/charts',
                 value: 'tracks',
                 itemCount: 5,
@@ -67,10 +67,12 @@ class HomeScreen extends StatelessWidget {
           );
         },
         child: state.index == 2
-            ? ViewMoreScreen(
+            ? const ViewMoreScreen(
                 key: PageStorageKey('ViewMore'),
               )
-            : _homeWidget(),
+            : state.index == 3
+                ? ArtistInfoScreen()
+                : _homeWidget(),
       ),
     );
   }

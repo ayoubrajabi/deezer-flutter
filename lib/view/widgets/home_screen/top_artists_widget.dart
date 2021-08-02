@@ -56,25 +56,31 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
               itemCount: artistState.getArtist.total,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => Container(
-                width: 90.0,
-                margin: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  color: _theme.cardColor,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 10.0,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  context.read<ScreenChangeCubit>().screenChanegeIndex(3);
+                  context.read<ForyouIndexCubit>().forYouChanegeIndex(index);
+                },
+                child: Container(
+                  width: 90.0,
+                  margin: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: _theme.cardColor,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 10.0,
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(200.0),
+                    child: FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image: artistState.getArtist.data![index].pictureMedium!,
+                      fit: BoxFit.cover,
                     ),
-                  ],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(200.0),
-                  child: FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: artistState.getArtist.data![index].pictureMedium!,
-                    fit: BoxFit.cover,
                   ),
                 ),
               ),

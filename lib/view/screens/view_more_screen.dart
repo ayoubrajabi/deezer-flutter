@@ -8,7 +8,6 @@ class ViewMoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final _theme = Theme.of(context);
     return Builder(
       builder: (context) {
         final _radioState = context.watch<RadioBloc>().state;
