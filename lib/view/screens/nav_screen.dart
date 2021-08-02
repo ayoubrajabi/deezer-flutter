@@ -3,7 +3,6 @@ import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:miniplayer/miniplayer.dart';
 
 import './screens.dart';
 

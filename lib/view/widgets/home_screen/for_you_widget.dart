@@ -20,7 +20,9 @@ class _ForYouWidgetState extends State<ForYouWidget> {
     super.initState();
     final state = context.read<RadioBloc>().state;
     if (state is! RadioIsLoaded) {
-      context.read<RadioBloc>().add(FeatchRadio('editorial/0/charts'));
+      context
+          .read<RadioBloc>()
+          .add(FeatchRadio('editorial/0/charts', 'playlists'));
     }
   }
 

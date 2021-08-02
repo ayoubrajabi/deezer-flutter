@@ -36,7 +36,7 @@ class Artist {
     @required this.pictureMedium,
     @required this.pictureBig,
     @required this.pictureXl,
-    @required this.radio,
+    // @required this.radio,
     @required this.tracklist,
     @required this.position,
   });
@@ -49,7 +49,7 @@ class Artist {
   final String? pictureMedium;
   final String? pictureBig;
   final String? pictureXl;
-  final bool? radio;
+  // final bool? radio;
   final String? tracklist;
   final int? position;
 
@@ -62,7 +62,7 @@ class Artist {
         pictureMedium: json["picture_medium"],
         pictureBig: json["picture_big"],
         pictureXl: json["picture_xl"],
-        radio: json["radio"],
+        // radio: json["radio"],
         tracklist: json["tracklist"],
         position: json["position"],
       );
@@ -76,7 +76,7 @@ class Artist {
         "picture_medium": pictureMedium,
         "picture_big": pictureBig,
         "picture_xl": pictureXl,
-        "radio": radio,
+        // "radio": radio,
         "tracklist": tracklist,
         "position": position,
       };

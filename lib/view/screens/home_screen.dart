@@ -43,7 +43,10 @@ class HomeScreen extends StatelessWidget {
               key: PageStorageKey('HotMusic'),
               height: 750.0,
               width: MediaQuery.of(context).size.width,
-              child: HotMusicsWidget(),
+              child: HotMusicsWidget(
+                query: 'editorial/0/charts',
+                value: 'tracks',
+              ),
             ),
           ],
         ),

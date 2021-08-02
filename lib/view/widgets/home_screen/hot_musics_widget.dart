@@ -5,7 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets.dart';
 
 class HotMusicsWidget extends StatefulWidget {
-  const HotMusicsWidget({Key? key}) : super(key: key);
+  const HotMusicsWidget({
+    Key? key,
+    @required this.query,
+    @required this.value,
+  }) : super(key: key);
+  final String? query;
+  final String? value;
 
   @override
   _HotMusicsWidgetState createState() => _HotMusicsWidgetState();
@@ -15,17 +21,17 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
   @override
   void initState() {
     super.initState();
-    final state = context.read<MusicBloc>().state;
-    if (state is! MusicIsLoaded) {
-      context.read<MusicBloc>().add(FeatchMusic('editorial/0/charts'));
-    }
+    // final state = context.read<MusicBloc>().state;
+    // if (state is! MusicIsLoaded) {
+    context.read<MusicBloc>().add(FeatchMusic(widget.query!, widget.value!));
+    // }
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: BlocBuilder<MusicBloc, MusicState>(
-        buildWhen: (preState, state) => preState != state,
+        // buildWhen: (preState, state) => preState != state,
         builder: (context, state) {
           if (state is MusicIsLoading) {
             return ListView.builder(
