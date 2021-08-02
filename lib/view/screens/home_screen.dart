@@ -46,6 +46,7 @@ class HomeScreen extends StatelessWidget {
               child: HotMusicsWidget(
                 query: 'editorial/0/charts',
                 value: 'tracks',
+                itemCount: 5,
               ),
             ),
           ],

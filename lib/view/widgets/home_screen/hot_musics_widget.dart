@@ -9,9 +9,11 @@ class HotMusicsWidget extends StatefulWidget {
     Key? key,
     @required this.query,
     @required this.value,
+    @required this.itemCount,
   }) : super(key: key);
   final String? query;
   final String? value;
+  final int? itemCount;
 
   @override
   _HotMusicsWidgetState createState() => _HotMusicsWidgetState();
@@ -21,10 +23,7 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
   @override
   void initState() {
     super.initState();
-    // final state = context.read<MusicBloc>().state;
-    // if (state is! MusicIsLoaded) {
     context.read<MusicBloc>().add(FeatchMusic(widget.query!, widget.value!));
-    // }
   }
 
   @override
@@ -47,7 +46,7 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
             );
           } else if (state is MusicIsLoaded) {
             return ListView.builder(
-              itemCount: state.getMusic.total,
+              itemCount: widget.itemCount,
               scrollDirection: Axis.vertical,
               padding: const EdgeInsets.all(10.0),
               physics: const NeverScrollableScrollPhysics(),
