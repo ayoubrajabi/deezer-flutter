@@ -26,7 +26,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               width: state.index == 2 || state.index == 3
-                  ? MediaQuery.of(context).size.width * 0.7
+                  ? MediaQuery.of(context).size.width - 130.0
                   : 130.0,
               child: SvgPicture.asset(
                 IconsAsset.deezer,
