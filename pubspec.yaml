@@ -17,6 +17,7 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^7.0.1
   flutter_svg: ^0.22.0
+  lint: ^1.5.3
   miniplayer: ^1.0.0+2
   transparent_image: ^2.0.0
 

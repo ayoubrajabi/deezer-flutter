@@ -33,7 +33,7 @@ class BottomNavItems extends StatelessWidget {
             child: Container(
               height: 4.0,
               width: 4.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
                 boxShadow: [

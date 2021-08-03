@@ -26,7 +26,7 @@ class LoadingWidget extends StatelessWidget {
         color: _theme.cardColor,
         shape: shape!,
         borderRadius: borderRadius,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 10.0,

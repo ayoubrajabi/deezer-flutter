@@ -44,7 +44,6 @@ class ViewMoreHeader extends StatelessWidget {
                         color: _theme.scaffoldBackgroundColor,
                         blurRadius: 60.0,
                         spreadRadius: 100.0,
-                        offset: Offset(0, 0),
                       ),
                     ],
                   ),
@@ -77,7 +76,7 @@ class ViewMoreHeader extends StatelessWidget {
                     _radioData.title!,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
@@ -87,7 +86,7 @@ class ViewMoreHeader extends StatelessWidget {
                     'by ${_radioData.user!.name!}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 13.0,
                       fontWeight: FontWeight.bold,
@@ -97,7 +96,7 @@ class ViewMoreHeader extends StatelessWidget {
                     '${_radioData.nbTracks!} TRACKS',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 10.0,
                       fontWeight: FontWeight.bold,

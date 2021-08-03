@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                 key: PageStorageKey('ViewMore'),
               )
             : state.index == 3
-                ? ArtistInfoScreen()
+                ? const ArtistInfoScreen()
                 : _homeWidget(),
       ),
     );

@@ -14,14 +14,14 @@ class ViewMoreScreen extends StatelessWidget {
         final _radioIndex = context.watch<ForyouIndexCubit>().state.index;
 
         if (_radioState is RadioIsLoading) {
-          return Container(
+          return const SizedBox(
             child: Center(
               child: CircularProgressIndicator(),
             ),
           );
         } else if (_radioState is RadioIsLoaded) {
           final _radioStateData = _radioState.getRadio.data![_radioIndex];
-          final String? _query = _radioStateData.tracklist!
+          final String _query = _radioStateData.tracklist!
               .replaceAll('https://api.deezer.com/', '');
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),

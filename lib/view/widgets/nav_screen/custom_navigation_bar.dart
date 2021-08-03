@@ -20,7 +20,7 @@ class CustomNavigationBar extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color: _theme.cardColor,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(12.0),
               topRight: Radius.circular(12.0),
             ),
@@ -28,7 +28,7 @@ class CustomNavigationBar extends StatelessWidget {
               BoxShadow(
                 color: _theme.scaffoldBackgroundColor,
                 blurRadius: 50.0,
-                offset: Offset(0, -10),
+                offset: const Offset(0, -10),
                 spreadRadius: 20.0,
               ),
             ],
@@ -38,7 +38,6 @@ class CustomNavigationBar extends StatelessWidget {
             backgroundColor: Colors.transparent,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
-            currentIndex: 0,
             selectedFontSize: 11.0,
             unselectedFontSize: 11.0,
             showUnselectedLabels: false,

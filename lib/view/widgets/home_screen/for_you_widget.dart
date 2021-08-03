@@ -36,7 +36,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: _theme.cardColor,
-                content: Text('Connection field!'),
+                content: const Text('Connection field!'),
               ),
             );
           }
@@ -74,7 +74,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                   child: Column(
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12.0),
                           topRight: Radius.circular(12.0),
                         ),
@@ -89,7 +89,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                         ),
                       ),
                       ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(12.0),
                           bottomRight: Radius.circular(12.0),
                         ),

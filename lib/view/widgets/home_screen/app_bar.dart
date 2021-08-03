@@ -43,14 +43,13 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             BoxShadow(
               color: _theme.scaffoldBackgroundColor,
               blurRadius: 50.0,
-              offset: Offset(0, 10),
+              offset: const Offset(0, 10),
               spreadRadius: 10.0,
             ),
           ],
-          border: Border(
+          border: const Border(
             bottom: BorderSide(
               color: Colors.white10,
-              width: 1.0,
             ),
           ),
         ),

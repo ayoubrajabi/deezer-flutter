@@ -50,7 +50,7 @@ class ArtistInfoScreen extends StatelessWidget {
                     child: Center(
                       child: Text(
                         _artistState.getArtist.data![_index].name!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 26.0,
                           fontWeight: FontWeight.bold,
@@ -69,14 +69,14 @@ class ArtistInfoScreen extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: [
                             _theme.accentColor,
-                            Color(0xff733E46),
+                            const Color(0xff733E46),
                           ],
                         ),
                       ),
                       child: MaterialButton(
                         onPressed: () {},
-                        shape: StadiumBorder(),
-                        child: Text(
+                        shape: const StadiumBorder(),
+                        child: const Text(
                           'play',
                           style: TextStyle(
                             color: Colors.white,

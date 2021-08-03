@@ -34,7 +34,6 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
         builder: (context, state) {
           if (state is MusicIsLoading) {
             return ListView.builder(
-              scrollDirection: Axis.vertical,
               itemCount: 10,
               itemBuilder: (context, index) => LoadingWidget(
                 height: 60.0,
@@ -47,7 +46,6 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
           } else if (state is MusicIsLoaded) {
             return ListView.builder(
               itemCount: widget.itemCount,
-              scrollDirection: Axis.vertical,
               padding: const EdgeInsets.all(10.0),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => HotMusicItems(

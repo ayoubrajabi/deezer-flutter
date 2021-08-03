@@ -34,7 +34,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: _theme.cardColor,
-                content: Text('Connection field!'),
+                content: const Text('Connection field!'),
               ),
             );
           }
@@ -45,7 +45,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
-                itemBuilder: (context, index) => LoadingWidget(
+                itemBuilder: (context, index) => const LoadingWidget(
                       height: 110.0,
                       width: 90.0,
                       icon: Icons.person,
@@ -67,7 +67,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                   decoration: BoxDecoration(
                     color: _theme.cardColor,
                     shape: BoxShape.circle,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black12,
                         blurRadius: 10.0,

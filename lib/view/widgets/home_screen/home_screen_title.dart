@@ -11,7 +11,7 @@ class HomeScreenItemsTitle extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       child: Text(
         title!,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 20.0,
         ),

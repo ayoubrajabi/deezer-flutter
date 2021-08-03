@@ -66,7 +66,7 @@ class HotMusicItems extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.more_vert,
                 color: Colors.grey,
               ),
