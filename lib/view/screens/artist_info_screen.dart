@@ -7,7 +7,6 @@ class ArtistInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
     return Builder(
       builder: (context) {
         final _artistState = context.read<ArtistsBloc>().state;
@@ -17,75 +16,9 @@ class ArtistInfoScreen extends StatelessWidget {
           return ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              Stack(
-                children: [
-                  Image.network(
-                    _artistState.getArtist.data![_index].pictureBig!,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 400.0,
-                  ),
-                  Positioned(
-                    bottom: 0.0,
-                    right: 0.0,
-                    left: 0.0,
-                    child: Container(
-                      height: 500.0,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                            _theme.scaffoldBackgroundColor,
-                            Colors.transparent,
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 120.0,
-                    left: 120,
-                    child: Center(
-                      child: Text(
-                        _artistState.getArtist.data![_index].name!,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 40.0,
-                    left: 130,
-                    child: Container(
-                      height: 55.0,
-                      width: 170.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(45.0),
-                        gradient: LinearGradient(
-                          colors: [
-                            _theme.accentColor,
-                            const Color(0xff733E46),
-                          ],
-                        ),
-                      ),
-                      child: MaterialButton(
-                        onPressed: () {},
-                        shape: const StadiumBorder(),
-                        child: const Text(
-                          'play',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              ArtistHeaderWidget(
+                artistState: _artistState,
+                index: _index,
               ),
               const SizedBox(
                 height: 600.0,
@@ -95,6 +28,101 @@ class ArtistInfoScreen extends StatelessWidget {
         }
         return const SizedBox();
       },
+    );
+  }
+}
+
+class ArtistHeaderWidget extends StatelessWidget {
+  const ArtistHeaderWidget({
+    Key? key,
+    @required this.index,
+    @required this.artistState,
+  }) : super(key: key);
+
+  final int? index;
+  final ArtistIsLoaded? artistState;
+
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    return Stack(
+      children: [
+        Image.network(
+          artistState!.getArtist.data![index!].pictureBig!,
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 400.0,
+        ),
+        Positioned(
+          bottom: 0.0,
+          right: 0.0,
+          left: 0.0,
+          child: Container(
+            height: 500.0,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [
+                  _theme.scaffoldBackgroundColor,
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 350.0,
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                artistState!.getArtist.data![index!].name!,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 26.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                height: 55.0,
+                width: 170.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(45.0),
+                  gradient: LinearGradient(
+                    colors: [
+                      _theme.accentColor,
+                      const Color(0xff733E46),
+                    ],
+                  ),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0xff733E46),
+                      blurRadius: 5.0,
+                    )
+                  ],
+                ),
+                child: MaterialButton(
+                  onPressed: () {},
+                  shape: const StadiumBorder(),
+                  child: const Text(
+                    'play',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
