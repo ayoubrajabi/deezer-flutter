@@ -10,6 +10,8 @@ class ViewMoreButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double _width = MediaQuery.of(context).size.width;
+    final double _height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: 80.0,
       width: double.infinity,
@@ -23,11 +25,12 @@ class ViewMoreButtons extends StatelessWidget {
                 index == 0 ? Colors.white : Colors.grey.shade700,
               ),
               padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 22.0, horizontal: 60.0),
+                EdgeInsets.symmetric(
+                    vertical: _height * 0.023, horizontal: _width * 0.12),
               ),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(7.0),
                 ),
               ),
             ),

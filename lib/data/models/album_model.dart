@@ -10,7 +10,6 @@ class Album {
     @required this.coverBig,
     @required this.coverXl,
     @required this.tracklist,
-    @required this.type,
   });
 
   final int? id;
@@ -21,7 +20,6 @@ class Album {
   final String? coverBig;
   final String? coverXl;
   final String? tracklist;
-  final String? type;
 
   factory Album.fromJson(Map<String, dynamic> json) => Album(
         id: json["id"],
@@ -32,7 +30,6 @@ class Album {
         coverBig: json["cover_big"],
         coverXl: json["cover_xl"],
         tracklist: json["tracklist"],
-        type: json["type"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,6 +41,5 @@ class Album {
         "cover_big": coverBig,
         "cover_xl": coverXl,
         "tracklist": tracklist,
-        "type": type,
       };
 }

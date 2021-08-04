@@ -17,7 +17,7 @@ class ViewMoreHeader extends StatelessWidget {
 
     return ClipRRect(
       child: Container(
-        height: 350.0,
+        height: 300.0,
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -50,11 +50,11 @@ class ViewMoreHeader extends StatelessWidget {
                 ),
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    height: 180.0,
-                    width: 180.0,
+                    height: 150.0,
+                    width: 150.0,
                     margin: const EdgeInsets.only(top: 30.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7.0),

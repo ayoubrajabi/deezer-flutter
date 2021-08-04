@@ -1,4 +1,5 @@
 import 'package:deezer_flutter/logic/logics.dart';
+import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,12 +14,25 @@ class ArtistInfoScreen extends StatelessWidget {
         final _index = context.watch<ForyouIndexCubit>().state.index;
 
         if (_artistState is ArtistIsLoaded) {
+          final _artistStateData = _artistState.getArtist.data![_index];
+          final String _query = _artistStateData.tracklist!
+              .replaceAll('https://api.deezer.com/', '');
+
           return ListView(
             physics: const BouncingScrollPhysics(),
             children: [
               ArtistHeaderWidget(
                 artistState: _artistState,
                 index: _index,
+              ),
+              SizedBox(
+                height: 400,
+                width: double.infinity,
+                child: HotMusicsWidget(
+                  itemCount: 5,
+                  value: '',
+                  query: _query,
+                ),
               ),
               const SizedBox(
                 height: 600.0,
@@ -45,20 +59,22 @@ class ArtistHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+    final _height = MediaQuery.of(context).size.height;
+    final _width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Image.network(
           artistState!.getArtist.data![index!].pictureBig!,
           fit: BoxFit.cover,
           width: double.infinity,
-          height: 400.0,
+          height: _height * 0.5,
         ),
         Positioned(
           bottom: 0.0,
           right: 0.0,
           left: 0.0,
           child: Container(
-            height: 500.0,
+            height: _height * 0.5,
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -66,6 +82,8 @@ class ArtistHeaderWidget extends StatelessWidget {
                 end: Alignment.topCenter,
                 colors: [
                   _theme.scaffoldBackgroundColor,
+                  _theme.scaffoldBackgroundColor,
+                  _theme.scaffoldBackgroundColor.withAlpha(70),
                   Colors.transparent,
                 ],
               ),
@@ -73,10 +91,9 @@ class ArtistHeaderWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 350.0,
+          height: 250.0,
           width: double.infinity,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
@@ -91,8 +108,8 @@ class ArtistHeaderWidget extends StatelessWidget {
                 height: 30.0,
               ),
               Container(
-                height: 55.0,
-                width: 170.0,
+                height: _height * 0.085,
+                width: _width * 0.4,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(45.0),
                   gradient: LinearGradient(

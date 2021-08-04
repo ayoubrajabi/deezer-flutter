@@ -18,9 +18,13 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             Visibility(
               visible: state.index == 2 || state.index == 3,
-              child: BackButton(
+              child: IconButton(
                 onPressed: () =>
                     context.read<ScreenChangeCubit>().screenChanegeIndex(0),
+                icon: SvgPicture.asset(
+                  IconsAsset.arrow,
+                  color: Colors.white,
+                ),
               ),
             ),
             AnimatedContainer(
@@ -37,14 +41,14 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       flexibleSpace: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 0.0),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: _theme.scaffoldBackgroundColor,
               blurRadius: 50.0,
-              offset: const Offset(0, 10),
-              spreadRadius: 10.0,
+              offset: const Offset(0, -10),
+              spreadRadius: 20.0,
             ),
           ],
           border: const Border(

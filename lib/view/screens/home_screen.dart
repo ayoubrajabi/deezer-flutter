@@ -18,8 +18,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HomeScreenItemsTitle(
-              title: 'Top Artists',
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: const HomeScreenItemsTitle(
+                title: 'Top Artists',
+              ),
             ),
             SizedBox(
               key: const PageStorageKey('TopArtists'),

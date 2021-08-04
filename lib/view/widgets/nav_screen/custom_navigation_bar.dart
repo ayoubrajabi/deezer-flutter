@@ -20,10 +20,6 @@ class CustomNavigationBar extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color: _theme.cardColor,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(12.0),
-              topRight: Radius.circular(12.0),
-            ),
             boxShadow: [
               BoxShadow(
                 color: _theme.scaffoldBackgroundColor,

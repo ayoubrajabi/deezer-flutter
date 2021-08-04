@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Iconly/Light/Search</title>
-    <g id="Iconly/Light/Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="Search" transform="translate(2.000000, 2.000000)" stroke="#000000" stroke-width="1.5">
-            <circle id="Ellipse_739" cx="9.76659044" cy="9.76659044" r="8.9885584"></circle>
-            <line x1="16.0183067" y1="16.4851259" x2="19.5423342" y2="20.0000001" id="Line_181"></line>
-        </g>
-    </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="10.5992" cy="10.6532" rx="8.59922" ry="8.65324" fill="#130F26"/>
+<path opacity="0.4" d="M20.6745 21.9553C20.3405 21.9444 20.0228 21.807 19.7853 21.5705L17.7488 19.1901C17.3122 18.7909 17.2765 18.1123 17.6688 17.6689C17.8524 17.4831 18.102 17.3786 18.3624 17.3786C18.6228 17.3786 18.8725 17.4831 19.0561 17.6689L21.6172 19.7181C21.9861 20.0957 22.0999 20.6562 21.9078 21.1492C21.7157 21.6422 21.2535 21.9754 20.7279 22L20.6745 21.9553Z" fill="#130F26"/>
 </svg>

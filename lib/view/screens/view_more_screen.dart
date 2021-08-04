@@ -31,7 +31,10 @@ class ViewMoreScreen extends StatelessWidget {
                   radioIndex: _radioIndex,
                   radioState: _radioState,
                 ),
-                ViewMoreButtons(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: ViewMoreButtons(),
+                ),
                 SizedBox(
                   height: _radioState.getRadio.data!.length * 71.0,
                   width: double.infinity,

@@ -8,8 +8,7 @@ class MusicRepo {
 
   Future<T> get<T>(
       {@required String? endpoint, @required String? value}) async {
-    Uri uri = Uri.https(APIService.baseUrl, endpoint!);
-    // print(uri);
+    final Uri uri = Uri.https(APIService.baseUrl, endpoint!);
     final response =
         await dio.get(uri.toString(), queryParameters: APIService.headers);
 
