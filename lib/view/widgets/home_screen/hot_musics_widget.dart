@@ -49,8 +49,9 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
               padding: const EdgeInsets.all(10.0),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => HotMusicItems(
-                index: index,
-                state: state,
+                imgUrl: state.getMusic.data![index].album!.coverSmall,
+                artistName: state.getMusic.data![index].artist!.name,
+                musicTitle: state.getMusic.data![index].title,
               ),
             );
           }

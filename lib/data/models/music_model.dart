@@ -42,6 +42,7 @@ class Tracks {
   final int? rank;
   final String? preview;
   final int? position;
+
   final Artist? artist;
   final Album? album;
 
@@ -65,7 +66,7 @@ class Tracks {
         "rank": rank,
         "preview": preview,
         "position": position,
-        // "artist": artist!.toJson(),
+        "artist": artist!.toJson(),
         "album": album!.toJson(),
       };
 }

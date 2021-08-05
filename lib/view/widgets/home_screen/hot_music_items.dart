@@ -1,12 +1,16 @@
-import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class HotMusicItems extends StatelessWidget {
-  const HotMusicItems({Key? key, @required this.index, @required this.state})
-      : super(key: key);
-  final int? index;
-  final MusicIsLoaded? state;
+  const HotMusicItems({
+    Key? key,
+    @required this.imgUrl,
+    @required this.artistName,
+    @required this.musicTitle,
+  }) : super(key: key);
+  final String? imgUrl;
+  final String? musicTitle;
+  final String? artistName;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,7 @@ class HotMusicItems extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     child: FadeInImage.memoryNetwork(
                       placeholder: kTransparentImage,
-                      image:
-                          state!.getMusic.data![index!].artist!.pictureSmall!,
+                      image: imgUrl!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -47,9 +50,7 @@ class HotMusicItems extends StatelessWidget {
                     children: List<Text>.generate(
                       2,
                       (textIndex) => Text(
-                        textIndex == 0
-                            ? state!.getMusic.data![index!].title!
-                            : state!.getMusic.data![index!].artist!.name!,
+                        textIndex == 0 ? musicTitle! : artistName!,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(

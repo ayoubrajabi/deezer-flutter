@@ -3,9 +3,14 @@ import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ArtistInfoScreen extends StatelessWidget {
+class ArtistInfoScreen extends StatefulWidget {
   const ArtistInfoScreen({Key? key}) : super(key: key);
 
+  @override
+  _ArtistInfoScreenState createState() => _ArtistInfoScreenState();
+}
+
+class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Builder(
@@ -17,25 +22,38 @@ class ArtistInfoScreen extends StatelessWidget {
           final _artistStateData = _artistState.getArtist.data![_index];
           final String _query = _artistStateData.tracklist!
               .replaceAll('https://api.deezer.com/', '');
+          final String _trackListQuery = _query.replaceAll('?limit=50', '');
 
-          return ListView(
-            physics: const BouncingScrollPhysics(),
-            children: [
-              ArtistHeaderWidget(
-                artistState: _artistState,
-                index: _index,
-              ),
-              SizedBox(
-                height: 400,
-                width: double.infinity,
-                child: HotMusicsWidget(
-                  itemCount: 5,
-                  value: '',
-                  query: _query,
+          return CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                backgroundColor: Colors.transparent,
+                bottom: PreferredSize(
+                  preferredSize: Size(double.infinity, 244.0),
+                  child: ArtistHeaderWidget(
+                    index: _index,
+                    artistState: _artistState,
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 600.0,
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 400,
+                  width: double.infinity,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  child: HotMusicsWidget(
+                    itemCount: 5,
+                    query: _trackListQuery,
+                    value: '',
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 300.0,
+                  width: double.infinity,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
               ),
             ],
           );
@@ -67,14 +85,14 @@ class ArtistHeaderWidget extends StatelessWidget {
           artistState!.getArtist.data![index!].pictureBig!,
           fit: BoxFit.cover,
           width: double.infinity,
-          height: _height * 0.5,
+          height: 300,
         ),
         Positioned(
           bottom: 0.0,
           right: 0.0,
           left: 0.0,
           child: Container(
-            height: _height * 0.5,
+            height: _height * 0.3,
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -82,8 +100,6 @@ class ArtistHeaderWidget extends StatelessWidget {
                 end: Alignment.topCenter,
                 colors: [
                   _theme.scaffoldBackgroundColor,
-                  _theme.scaffoldBackgroundColor,
-                  _theme.scaffoldBackgroundColor.withAlpha(70),
                   Colors.transparent,
                 ],
               ),
@@ -91,7 +107,7 @@ class ArtistHeaderWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 250.0,
+          height: 300,
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,

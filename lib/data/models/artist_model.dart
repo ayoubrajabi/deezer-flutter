@@ -54,17 +54,16 @@ class Artist {
   final int? position;
 
   factory Artist.fromJson(Map<String, dynamic> json) => Artist(
-        id: json["id"],
-        name: json["name"],
-        link: json["link"],
-        picture: json["picture"],
-        pictureSmall: json["picture_small"],
-        pictureMedium: json["picture_medium"],
-        pictureBig: json["picture_big"],
-        pictureXl: json["picture_xl"],
-        // radio: json["radio"],
-        tracklist: json["tracklist"],
-        position: json["position"],
+        id: json["id"] ?? '',
+        name: json["name"] ?? '',
+        link: json["link"] ?? '',
+        picture: json["picture"] ?? '',
+        pictureSmall: json["picture_small"] ?? '',
+        pictureMedium: json["picture_medium"] ?? '',
+        pictureBig: json["picture_big"] ?? '',
+        pictureXl: json["picture_xl"] ?? '',
+        tracklist: json["tracklist"] ?? '',
+        position: json["position"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
