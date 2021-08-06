@@ -37,14 +37,42 @@ class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
                 ),
               ),
               SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 25.0, top: 20.0, bottom: 10.0),
+                  child: Text(
+                    'Top Tracks',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
                 child: Container(
-                  height: 400,
+                  height: _artistState.getArtist.total! * 40.0,
                   width: double.infinity,
                   color: Theme.of(context).scaffoldBackgroundColor,
                   child: HotMusicsWidget(
                     itemCount: 5,
                     query: _trackListQuery,
                     value: '',
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 25.0, top: 0.0, bottom: 10.0),
+                  child: Text(
+                    'Albums',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                    ),
                   ),
                 ),
               ),
@@ -82,7 +110,7 @@ class ArtistHeaderWidget extends StatelessWidget {
     return Stack(
       children: [
         Image.network(
-          artistState!.getArtist.data![index!].pictureBig!,
+          artistState!.getArtist.data![index!].pictureXl!,
           fit: BoxFit.cover,
           width: double.infinity,
           height: 300,

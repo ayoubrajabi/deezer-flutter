@@ -26,18 +26,12 @@ class LoadingWidget extends StatelessWidget {
         color: _theme.cardColor,
         shape: shape!,
         borderRadius: borderRadius,
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10.0,
-          ),
-        ],
       ),
       child: Center(
           child: Icon(
         icon,
         color: Colors.grey,
-        size: 40.0,
+        size: 30.0,
       )),
     );
   }
