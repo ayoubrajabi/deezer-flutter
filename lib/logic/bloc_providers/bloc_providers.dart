@@ -8,8 +8,8 @@ class BlocProviderList {
     BlocProvider<ScreenChangeCubit>(
       create: (_) => ScreenChangeCubit(),
     ),
-    BlocProvider<ForyouIndexCubit>(
-      create: (_) => ForyouIndexCubit(),
+    BlocProvider<ItemsIndexCubit>(
+      create: (_) => ItemsIndexCubit(),
     ),
     BlocProvider<NavbarTooltipCubit>(
       create: (_) => NavbarTooltipCubit(),
@@ -26,6 +26,11 @@ class BlocProviderList {
     ),
     BlocProvider<ArtistsBloc>(
       create: (_) => ArtistsBloc(
+        musicRepo: MusicRepo(),
+      ),
+    ),
+    BlocProvider<AlbumBloc>(
+      create: (_) => AlbumBloc(
         musicRepo: MusicRepo(),
       ),
     ),

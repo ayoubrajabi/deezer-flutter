@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
           );
         },
         child: state.index == 2
-            ? const ViewMoreScreen(
+            ? const ForYouMoreScreen(
                 key: PageStorageKey('ViewMore'),
               )
             : state.index == 3

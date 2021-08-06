@@ -59,7 +59,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
                   context.read<ScreenChangeCubit>().screenChanegeIndex(3);
-                  context.read<ForyouIndexCubit>().forYouChanegeIndex(index);
+                  context.read<ItemsIndexCubit>().itemsIndex(index);
                 },
                 child: Container(
                   width: 90.0,

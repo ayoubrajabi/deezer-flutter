@@ -3,15 +3,15 @@ import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ViewMoreScreen extends StatelessWidget {
-  const ViewMoreScreen({Key? key}) : super(key: key);
+class ForYouMoreScreen extends StatelessWidget {
+  const ForYouMoreScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
         final _radioState = context.watch<RadioBloc>().state;
-        final _radioIndex = context.watch<ForyouIndexCubit>().state.index;
+        final _index = context.watch<ItemsIndexCubit>().state.index;
 
         if (_radioState is RadioIsLoading) {
           return const SizedBox(
@@ -20,15 +20,16 @@ class ViewMoreScreen extends StatelessWidget {
             ),
           );
         } else if (_radioState is RadioIsLoaded) {
-          final _radioStateData = _radioState.getRadio.data![_radioIndex];
-          final String _query = _radioStateData.tracklist!
-              .replaceAll('https://api.deezer.com/', '');
+          final _radioTracklist = _radioState.getRadio.data![_index].tracklist;
+          final String _query =
+              _radioTracklist!.replaceAll('https://api.deezer.com/', '');
+
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 ViewMoreHeader(
-                  radioIndex: _radioIndex,
+                  radioIndex: _index,
                   radioState: _radioState,
                 ),
                 Padding(

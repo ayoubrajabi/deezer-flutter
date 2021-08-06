@@ -1,7 +1,7 @@
-part of 'foryou_index_cubit.dart';
+part of 'items_index_cubit.dart';
 
 // ignore: must_be_immutable
-abstract class ForyouIndexState extends Equatable {
+abstract class ItemsIndexState extends Equatable {
   int? _index;
 
   int get index => _index!;
@@ -10,10 +10,10 @@ abstract class ForyouIndexState extends Equatable {
 }
 
 // ignore: must_be_immutable
-class ForYouChangeIndex extends ForyouIndexState {
+class ItemsIndex extends ItemsIndexState {
   int? _index;
 
-  ForYouChangeIndex(this._index);
+  ItemsIndex(this._index);
 
   @override
   int get index => _index!;

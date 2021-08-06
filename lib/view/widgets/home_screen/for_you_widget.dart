@@ -69,7 +69,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                 return ForYouItems(
                   onTap: () {
                     context.read<ScreenChangeCubit>().screenChanegeIndex(2);
-                    context.read<ForyouIndexCubit>().forYouChanegeIndex(index);
+                    context.read<ItemsIndexCubit>().itemsIndex(index);
                   },
                   imgUrlXl: _radioStateData.pictureXl!,
                   imgUrlSmall: _radioStateData.pictureSmall!,
