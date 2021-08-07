@@ -41,7 +41,6 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       flexibleSpace: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 0.0),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -62,5 +61,5 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 60.0);
+  Size get preferredSize => const Size(double.infinity, 60.0);
 }

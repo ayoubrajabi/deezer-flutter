@@ -34,8 +34,8 @@ class ViewMoreHeader extends StatelessWidget {
           child: Container(
             height: 5.0,
             width: double.infinity,
-            decoration: BoxDecoration(
-              boxShadow: const [
+            decoration: const BoxDecoration(
+              boxShadow: [
                 BoxShadow(
                   color: Color(0xFF2C1B2A),
                   blurRadius: 60.0,

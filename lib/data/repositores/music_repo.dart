@@ -30,6 +30,9 @@ class MusicRepo {
     } else if (T == MusicModel && value == '') {
       print('2');
       return MusicModel.fromJson(response);
+    } else if (T == AlbumModel) {
+      print('album');
+      return AlbumModel.fromJson(response);
     } else {
       return null;
     }

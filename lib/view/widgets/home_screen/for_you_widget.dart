@@ -71,8 +71,8 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                     context.read<ScreenChangeCubit>().screenChanegeIndex(2);
                     context.read<ItemsIndexCubit>().itemsIndex(index);
                   },
-                  imgUrlXl: _radioStateData.pictureXl!,
-                  imgUrlSmall: _radioStateData.pictureSmall!,
+                  imgUrlXl: _radioStateData.pictureXl,
+                  imgUrlSmall: _radioStateData.pictureXl,
                   itemInfo: _itemsInfo,
                 );
               },

@@ -54,7 +54,7 @@ class ForYouItems extends StatelessWidget {
                 ).blurred(
                   blur: 40.0,
                   blurColor: Colors.transparent,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(12.0),
                     bottomRight: Radius.circular(12.0),
                   ),
@@ -64,7 +64,6 @@ class ForYouItems extends StatelessWidget {
                   children: List<Padding>.generate(
                     3,
                     (itemsIndex) {
-                      ;
                       return Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: Text(

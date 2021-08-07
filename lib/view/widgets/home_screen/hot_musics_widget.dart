@@ -11,6 +11,7 @@ class HotMusicsWidget extends StatefulWidget {
     @required this.value,
     @required this.itemCount,
   }) : super(key: key);
+
   final String? query;
   final String? value;
   final int? itemCount;
@@ -30,7 +31,6 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: BlocBuilder<MusicBloc, MusicState>(
-        // buildWhen: (preState, state) => preState != state,
         builder: (context, state) {
           if (state is MusicIsLoading) {
             return ListView.builder(
@@ -45,15 +45,18 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
             );
           } else if (state is MusicIsLoaded) {
             return ListView.builder(
-              itemCount: widget.itemCount,
-              padding: const EdgeInsets.all(10.0),
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => HotMusicItems(
-                imgUrl: state.getMusic.data![index].album!.coverSmall,
-                artistName: state.getMusic.data![index].artist!.name,
-                musicTitle: state.getMusic.data![index].title,
-              ),
-            );
+                itemCount: widget.itemCount,
+                padding: const EdgeInsets.all(10.0),
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final _musicData = state.getMusic.data![index];
+
+                  return HotMusicItems(
+                    imgUrl: _musicData.album!.coverMedium,
+                    artistName: _musicData.artist!.name,
+                    musicTitle: _musicData.title,
+                  );
+                });
           }
           return const SizedBox();
         },
