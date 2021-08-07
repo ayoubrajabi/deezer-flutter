@@ -1,7 +1,6 @@
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 import '../widgets.dart';
 
@@ -34,7 +33,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: _theme.cardColor,
-                content: const Text('Connection field!'),
+                content: const Text('Internet Not Available!'),
               ),
             );
           }
@@ -56,33 +55,12 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
               itemCount: artistState.getArtist.total,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => GestureDetector(
+              itemBuilder: (context, index) => TopArtistItem(
                 onTap: () {
                   context.read<ScreenChangeCubit>().screenChanegeIndex(3);
                   context.read<ItemsIndexCubit>().itemsIndex(index);
                 },
-                child: Container(
-                  width: 90.0,
-                  margin: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color: _theme.cardColor,
-                    shape: BoxShape.circle,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 10.0,
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(200.0),
-                    child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: artistState.getArtist.data![index].pictureMedium!,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                imgUrl: artistState.getArtist.data![index].pictureMedium!,
               ),
             );
           }
