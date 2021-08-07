@@ -28,15 +28,21 @@ class ArtistHeaderWidget extends StatelessWidget {
           bottom: 0.0,
           right: 0.0,
           left: 0.0,
+          top: 0.0,
           child: Container(
-            height: _height * 0.3,
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
                 colors: [
-                  _theme.scaffoldBackgroundColor,
+                  Color(0xFF191018),
+                  Color(0xFF191018),
+                  Color(0xFF191018).withOpacity(0.9),
+                  Color(0xFF191018).withOpacity(0.7),
+                  Color(0xFF191018).withOpacity(0.5),
+                  Color(0xFF191018).withOpacity(0.3),
+                  Colors.transparent,
                   Colors.transparent,
                 ],
               ),

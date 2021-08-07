@@ -71,10 +71,11 @@ class ForYouItems extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: itemsIndex == 0
-                                  ? Colors.red.shade800
-                                  : Colors.white,
-                              fontWeight: FontWeight.bold),
+                            color: itemsIndex == 0
+                                ? Colors.red.shade800
+                                : Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       );
                     },

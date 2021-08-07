@@ -12,7 +12,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     final _theme = Theme.of(context);
     return AppBar(
       elevation: 0.0,
-      backgroundColor: _theme.scaffoldBackgroundColor,
+      backgroundColor: Colors.transparent,
       title: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
         builder: (context, state) => Row(
           children: [

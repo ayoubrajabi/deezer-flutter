@@ -16,6 +16,13 @@ class NavScreen extends StatelessWidget {
     SearchScreen(),
   ];
 
+  Widget? _screenOfApp(int screenIndex) {
+    if (screenIndex == 0 || screenIndex == 1) {
+      return _screens[screenIndex];
+    }
+    return _screens[0];
+  }
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -25,25 +32,13 @@ class NavScreen extends StatelessWidget {
         statusBarIconBrightness: _theme.brightness,
       ),
       child: SafeArea(
-        child: Stack(
-          children: [
-            Scaffold(
-              appBar: const HomeScreenAppBar(),
-              body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
-                builder: (context, screenChangeIndex) {
-                  switch (screenChangeIndex.index) {
-                    case 0:
-                      return _screens[0];
-                    case 1:
-                      return _screens[1];
-                    default:
-                      return _screens[0];
-                  }
-                },
-              ),
-              bottomNavigationBar: CustomNavigationBar(),
-            ),
-          ],
+        child: Scaffold(
+          appBar: const HomeScreenAppBar(),
+          body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
+            builder: (context, screenChangeIndex) =>
+                _screenOfApp(screenChangeIndex.index)!,
+          ),
+          bottomNavigationBar: CustomNavigationBar(),
         ),
       ),
     );

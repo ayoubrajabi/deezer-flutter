@@ -5,3 +5,4 @@ export 'hot_musics_widget.dart';
 export 'hot_music_items.dart';
 export 'top_artists_widget.dart';
 export 'for_you_items_widget.dart';
+export 'home_screen_widget.dart';
