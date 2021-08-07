@@ -29,7 +29,6 @@ class NavScreen extends StatelessWidget {
           children: [
             Scaffold(
               appBar: const HomeScreenAppBar(),
-              backgroundColor: _theme.scaffoldBackgroundColor,
               body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
                 builder: (context, screenChangeIndex) {
                   switch (screenChangeIndex.index) {
