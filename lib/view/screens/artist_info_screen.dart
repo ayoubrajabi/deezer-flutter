@@ -2,15 +2,11 @@ import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:card_swiper/card_swiper.dart';
 
-class ArtistInfoScreen extends StatefulWidget {
+class ArtistInfoScreen extends StatelessWidget {
   const ArtistInfoScreen({Key? key}) : super(key: key);
 
-  @override
-  _ArtistInfoScreenState createState() => _ArtistInfoScreenState();
-}
-
-class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Builder(
@@ -57,7 +53,7 @@ class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
                 child: Container(
                   height: _musicState is MusicIsLoaded
                       ? _musicState.getMusic.data!.length * 80.0
-                      : 400,
+                      : 400.0,
                   width: double.infinity,
                   color: Theme.of(context).scaffoldBackgroundColor,
                   child: HotMusicsWidget(
@@ -70,8 +66,8 @@ class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
                 ),
               ),
               const SliverToBoxAdapter(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 25.0, bottom: 10.0),
+                child: Align(
+                  alignment: Alignment.center,
                   child: Text(
                     'Albums',
                     style: TextStyle(
@@ -93,12 +89,9 @@ class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
                           child: CircularProgressIndicator(),
                         );
                       } else if (albumState is AlbumIsLoaded) {
-                        return SizedBox(
-                          width: double.maxFinite,
-                          height: double.maxFinite,
-                          child: PageView.builder(
-                            itemCount: albumState.album.album!.length,
-                            itemBuilder: (context, index) => Center(
+                        return Swiper(
+                          itemBuilder: (BuildContext context, int index) {
+                            return Center(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Image.network(
@@ -108,7 +101,22 @@ class _ArtistInfoScreenState extends State<ArtistInfoScreen> {
                                   height: 250.0,
                                 ),
                               ),
-                            ),
+                            );
+                          },
+                          itemHeight: 250.0,
+                          itemWidth: 250.0,
+                          loop: false,
+                          fade: 0.0,
+                          physics: const BouncingScrollPhysics(),
+                          viewportFraction: 0.55,
+                          scale: 0.7,
+                          curve: Curves.fastOutSlowIn,
+                          itemCount: albumState.album.album!.length,
+                          pagination: FractionPaginationBuilder(
+                            activeColor: Colors.white,
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            activeFontSize: 14.0,
                           ),
                         );
                       }
