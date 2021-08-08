@@ -92,51 +92,7 @@ class ArtistInfoScreen extends StatelessWidget {
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 300.0,
-                    width: double.infinity,
-                    child: BlocBuilder<AlbumBloc, AlbumState>(
-                      builder: (context, albumState) {
-                        if (albumState is AlbumIsLoading) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        } else if (albumState is AlbumIsLoaded) {
-                          return Swiper(
-                            itemBuilder: (BuildContext context, int index) {
-                              return Center(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  child: Image.network(
-                                    albumState.album.album![index].coverBig!,
-                                    fit: BoxFit.cover,
-                                    width: 250.0,
-                                    height: 250.0,
-                                  ),
-                                ),
-                              );
-                            },
-                            itemHeight: 250.0,
-                            itemWidth: 250.0,
-                            loop: false,
-                            fade: 0.0,
-                            physics: const BouncingScrollPhysics(),
-                            viewportFraction: 0.55,
-                            scale: 0.7,
-                            curve: Curves.fastOutSlowIn,
-                            itemCount: albumState.album.album!.length,
-                            pagination: FractionPaginationBuilder(
-                              activeColor: Colors.white,
-                              color: Colors.white,
-                              fontSize: 14.0,
-                              activeFontSize: 14.0,
-                            ),
-                          );
-                        }
-                        return const SizedBox();
-                      },
-                    ),
-                  ),
+                  child: ArtistAlbumsWidget(),
                 ),
               ],
             ),

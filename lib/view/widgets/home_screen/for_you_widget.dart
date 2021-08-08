@@ -44,6 +44,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) => LoadingWidget(
                       height: 290.0,
                       width: 260.0,

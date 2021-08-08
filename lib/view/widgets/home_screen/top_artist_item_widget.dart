@@ -16,17 +16,17 @@ class TopArtistItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 90.0,
-        margin: const EdgeInsets.all(10.0),
+        width: 110.0,
+        margin: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
           color: _theme.cardColor,
           shape: BoxShape.circle,
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10.0,
-            ),
-          ],
+          // boxShadow: const [
+          //   BoxShadow(
+          //     color: Colors.black12,
+          //     blurRadius: 10.0,
+          //   ),
+          // ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(200.0),

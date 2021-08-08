@@ -35,6 +35,7 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
           if (state is MusicIsLoading) {
             return ListView.builder(
               itemCount: 10,
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => LoadingWidget(
                 height: 60.0,
                 width: 300.0,

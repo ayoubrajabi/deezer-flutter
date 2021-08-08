@@ -44,6 +44,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) => const LoadingWidget(
                       height: 110.0,
                       width: 90.0,

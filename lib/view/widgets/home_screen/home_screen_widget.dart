@@ -29,7 +29,7 @@ class HomScreenWidget extends StatelessWidget {
             ),
             SizedBox(
               key: const PageStorageKey('TopArtists'),
-              height: 110.0,
+              height: 120.0,
               width: MediaQuery.of(context).size.width,
               child: const TopArtistsWidget(),
             ),
