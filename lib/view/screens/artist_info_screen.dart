@@ -29,8 +29,8 @@ class ArtistInfoScreen extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
                 colors: [
                   _theme.scaffoldBackgroundColor,
                   Colors.black45,

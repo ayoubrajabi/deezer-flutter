@@ -22,7 +22,7 @@ class ArtistHeaderWidget extends StatelessWidget {
           artistState!.getArtist.data![index!].pictureXl!,
           fit: BoxFit.cover,
           width: double.infinity,
-          height: 300,
+          height: 300.0,
         ),
         Positioned(
           bottom: 0.0,
@@ -36,13 +36,11 @@ class ArtistHeaderWidget extends StatelessWidget {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
                 colors: [
-                  Color(0xFF191018),
-                  Color(0xFF191018),
-                  Color(0xFF191018).withOpacity(0.9),
-                  Color(0xFF191018).withOpacity(0.7),
-                  Color(0xFF191018).withOpacity(0.5),
-                  Color(0xFF191018).withOpacity(0.3),
-                  Colors.transparent,
+                  Color(0xFF1C111B),
+                  Color(0xFF1C111B),
+                  Color(0xFF1C111B).withAlpha(220),
+                  Color(0xFF1C111B).withAlpha(150),
+                  Color(0xFF1C111B).withAlpha(100),
                   Colors.transparent,
                 ],
               ),
@@ -64,7 +62,7 @@ class ArtistHeaderWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 30.0,
+                height: 15.0,
               ),
               Container(
                 height: _height * 0.085,
