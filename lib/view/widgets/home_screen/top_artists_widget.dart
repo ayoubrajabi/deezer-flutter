@@ -46,8 +46,8 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                 itemCount: 10,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) => const LoadingWidget(
-                      height: 110.0,
-                      width: 90.0,
+                      height: 140.0,
+                      width: 120.0,
                       icon: Icons.person,
                       shape: BoxShape.circle,
                     ));
@@ -62,6 +62,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                   context.read<ItemsIndexCubit>().itemsIndex(index);
                 },
                 imgUrl: artistState.getArtist.data![index].pictureMedium!,
+                artistName: artistState.getArtist.data![index].name!,
               ),
             );
           }

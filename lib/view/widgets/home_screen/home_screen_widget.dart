@@ -29,7 +29,7 @@ class HomScreenWidget extends StatelessWidget {
             ),
             SizedBox(
               key: const PageStorageKey('TopArtists'),
-              height: 120.0,
+              height: 180.0,
               width: MediaQuery.of(context).size.width,
               child: const TopArtistsWidget(),
             ),
@@ -43,7 +43,7 @@ class HomScreenWidget extends StatelessWidget {
               child: const ForYouWidget(),
             ),
             const HomeScreenItemsTitle(
-              title: 'Hot Musics',
+              title: 'Trending Musics',
             ),
             SizedBox(
               key: const PageStorageKey('HotMusic'),

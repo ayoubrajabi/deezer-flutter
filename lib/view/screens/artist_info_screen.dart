@@ -2,7 +2,6 @@ import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:card_swiper/card_swiper.dart';
 
 class ArtistInfoScreen extends StatelessWidget {
   const ArtistInfoScreen({Key? key}) : super(key: key);

@@ -8,7 +8,7 @@ class HomeScreenItemsTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.only(left: 15.0, top: 35.0, bottom: 10.0),
       child: Text(
         title!,
         style: const TextStyle(
