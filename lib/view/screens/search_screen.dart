@@ -27,6 +27,7 @@ class SearchScreen extends StatelessWidget {
         ),
       ),
       child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,
@@ -43,18 +44,19 @@ class SearchScreen extends StatelessWidget {
               ),
             ),
             bottom: PreferredSize(
-              preferredSize: const Size(double.infinity, 86.0),
+              preferredSize: const Size(double.infinity, 83.0),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 15.0, vertical: 15.0),
                 child: TextField(
-                  onSubmitted: (value) => context.read<SearchBloc>().add(
-                        FeatchSearch(
-                          'search',
-                          '',
-                          {'q': value},
-                        ),
-                      ),
+                  onSubmitted: (value) {
+                    if (value == '') {
+                      return context.read<SearchBloc>().add(DisposeSearch());
+                    }
+                    return context
+                        .read<SearchBloc>()
+                        .add(FeatchSearch('search', '', {'q': value}));
+                  },
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 14.0,
@@ -98,30 +100,52 @@ class SearchScreen extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TopArtistItem(
-                          onTap: () {},
-                          imgUrl: searchState
-                              .getRadio.data![0].artist!.pictureMedium,
-                          artistName:
-                              searchState.getRadio.data![0].artist!.name,
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: IconButton(
+                              onPressed: () => context
+                                  .read<SearchBloc>()
+                                  .add(DisposeSearch()),
+                              icon: Icon(
+                                Icons.close,
+                                color: Colors.white,
+                                size: 35.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: TopArtistItem(
+                            onTap: () {},
+                            imgUrl: searchState
+                                .getRadio.data![0].artist!.pictureMedium,
+                            artistName:
+                                searchState.getRadio.data![0].artist!.name,
+                          ),
                         ),
                         SizedBox(
                           height: 30.0,
                         ),
-                        SizedBox(
-                          height: 400.0,
-                          child: ListView.builder(
-                            itemCount: 3,
-                            itemBuilder: (context, index) {
-                              return HotMusicItems(
-                                artistName: searchState
-                                    .getRadio.data![index].artist!.name,
-                                imgUrl: searchState
-                                    .getRadio.data![index].album!.coverMedium,
-                                musicTitle:
-                                    searchState.getRadio.data![index].title,
-                              );
-                            },
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: SizedBox(
+                            height: 400.0,
+                            child: ListView.builder(
+                              itemCount: 5,
+                              itemBuilder: (context, index) {
+                                return HotMusicItems(
+                                  artistName: searchState
+                                      .getRadio.data![index].artist!.name,
+                                  imgUrl: searchState
+                                      .getRadio.data![index].album!.coverMedium,
+                                  musicTitle:
+                                      searchState.getRadio.data![index].title,
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ],

@@ -21,3 +21,5 @@ class FeatchSearch extends SearchEvent {
   @override
   List<Object> get props => [_query, _value, _endPoint];
 }
+
+class DisposeSearch extends SearchEvent {}
