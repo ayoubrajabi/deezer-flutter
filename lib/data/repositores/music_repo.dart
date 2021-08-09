@@ -25,14 +25,13 @@ class MusicRepo {
     } else if (T == ArtistModel) {
       return ArtistModel.fromJson(response[value]);
     } else if (T == MusicModel && value == 'tracks') {
-      print('1');
       return MusicModel.fromJson(response[value]);
     } else if (T == MusicModel && value == '') {
-      print('2');
       return MusicModel.fromJson(response);
     } else if (T == AlbumModel) {
-      print('album');
       return AlbumModel.fromJson(response);
+    } else if (T == SearchModel) {
+      return SearchModel.fromJson(response);
     } else {
       return null;
     }

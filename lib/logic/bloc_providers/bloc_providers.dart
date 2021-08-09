@@ -34,6 +34,11 @@ class BlocProviderList {
         musicRepo: MusicRepo(),
       ),
     ),
+    BlocProvider<SearchBloc>(
+      create: (_) => SearchBloc(
+        musicRepo: MusicRepo(),
+      ),
+    ),
   ];
 
   List<BlocProvider> get blocProviders => _blocProviders;

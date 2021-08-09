@@ -22,7 +22,7 @@ class CustomNavigationBar extends StatelessWidget {
             color: _theme.cardColor,
             boxShadow: [
               BoxShadow(
-                color: _theme.scaffoldBackgroundColor,
+                color: _theme.cardColor,
                 blurRadius: 50.0,
                 offset: const Offset(0, -10),
                 spreadRadius: 20.0,
