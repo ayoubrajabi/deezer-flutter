@@ -33,7 +33,6 @@ class NavScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: Scaffold(
-          appBar: const HomeScreenAppBar(),
           body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
             builder: (context, screenChangeIndex) =>
                 _screenOfApp(screenChangeIndex.index)!,

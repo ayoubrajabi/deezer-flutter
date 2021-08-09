@@ -9,25 +9,31 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+
     return Container(
-      width: double.maxFinite,
-      height: double.maxFinite,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
+          stops: const [0.2, 0.3, 0.6, 0.7, 1.0],
           colors: [
             _theme.scaffoldBackgroundColor,
+            _theme.scaffoldBackgroundColor.withAlpha(150),
+            Colors.black45,
+            Colors.black45,
             Colors.black45,
           ],
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 80.0,
+            pinned: true,
+            floating: true,
+            elevation: 0.0,
+            title: Text(
               'Search',
               style: TextStyle(
                 color: Colors.white,
@@ -35,47 +41,113 @@ class SearchScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                fillColor: Colors.white10,
-                hintText: 'Search Artists, Albums, Tracks ...',
-                hintStyle: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 14.0,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(
-                    color: Colors.white54,
-                    width: 0.0,
+            bottom: PreferredSize(
+              preferredSize: Size(double.infinity, 86.0),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 15.0, vertical: 15.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    fillColor: Colors.white10,
+                    hintText: 'Search Artists, Albums, Tracks ...',
+                    hintStyle: TextStyle(
+                      color: Colors.white54,
+                      fontSize: 14.0,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: BorderSide(
+                        color: Colors.white54,
+                        width: 0.0,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                    ),
+                    filled: true,
                   ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                ),
-                filled: true,
-              ),
-            ),
-            const SizedBox(
-              height: 200.0,
-            ),
-            Center(
-              child: Opacity(
-                opacity: 0.7,
-                child: SvgPicture.asset(
-                  IconsAsset.deezerIcon,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 1000.0,
+            ),
+          ),
+        ],
       ),
     );
+    // return Container(
+    //   width: double.maxFinite,
+    //   height: double.maxFinite,
+    //   decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //       begin: Alignment.topLeft,
+    //       end: Alignment.bottomRight,
+    //       colors: [
+    //         _theme.scaffoldBackgroundColor,
+    //         Colors.black45,
+    //       ],
+    //     ),
+    //   ),
+    //   child: Padding(
+    //     padding: const EdgeInsets.all(20.0),
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
+    //         Text(
+    //           'Search',
+    //           style: TextStyle(
+    //             color: Colors.white,
+    //             fontSize: 30.0,
+    //             fontWeight: FontWeight.bold,
+    //           ),
+    //         ),
+    //         const SizedBox(
+    //           height: 30.0,
+    //         ),
+    //         TextField(
+    //           decoration: InputDecoration(
+    //             fillColor: Colors.white10,
+    //             hintText: 'Search Artists, Albums, Tracks ...',
+    //             hintStyle: TextStyle(
+    //               color: Colors.white54,
+    //               fontSize: 14.0,
+    //             ),
+    //             focusedBorder: OutlineInputBorder(
+    //               borderRadius: BorderRadius.circular(12.0),
+    //               borderSide: BorderSide(
+    //                 color: Colors.white54,
+    //                 width: 0.0,
+    //               ),
+    //             ),
+    //             enabledBorder: OutlineInputBorder(
+    //               borderRadius: BorderRadius.circular(12.0),
+    //               borderSide: BorderSide(
+    //                 color: Colors.transparent,
+    //               ),
+    //             ),
+    //             filled: true,
+    //           ),
+    //         ),
+    //         const SizedBox(
+    //           height: 200.0,
+    //         ),
+    //         Center(
+    //           child: Opacity(
+    //             opacity: 0.7,
+    //             child: SvgPicture.asset(
+    //               IconsAsset.deezerIcon,
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
