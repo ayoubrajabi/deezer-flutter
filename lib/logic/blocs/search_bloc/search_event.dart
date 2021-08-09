@@ -8,14 +8,16 @@ abstract class SearchEvent extends Equatable {
 }
 
 class FeatchSearch extends SearchEvent {
-  final String _query;
+  final String _endPoint;
   final String _value;
+  final Map<String, dynamic> _query;
 
-  FeatchSearch(this._query, this._value);
+  FeatchSearch(this._endPoint, this._value, this._query);
 
-  String get getUrl => _query;
+  Map<String, dynamic> get getUrl => _query;
   String get getValue => _value;
+  String get getEndPoint => _endPoint;
 
   @override
-  List<Object> get props => [_query, _value];
+  List<Object> get props => [_query, _value, _endPoint];
 }

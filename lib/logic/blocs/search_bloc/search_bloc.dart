@@ -20,8 +20,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       try {
         yield SearchIsLoading();
 
-        SearchModel search =
-            await musicRepo!.get(endpoint: event._query, value: event._value);
+        SearchModel search = await musicRepo!.get(
+          endpoint: event._endPoint,
+          value: event._value,
+          query: event._query,
+        );
         yield SearchIsLoaded(search);
       } catch (_) {
         print(_);

@@ -4,15 +4,18 @@ import 'package:meta/meta.dart';
 import 'package:deezer_flutter/data/repositores/api_services.dart';
 
 class MusicRepo {
-  final Dio dio = Dio();
+  final Dio _dio = Dio();
+  final APIService _apiService = APIService();
 
   Future<T> get<T>({
     @required String? endpoint,
     @required String? value,
+    Map<String, dynamic>? query,
   }) async {
-    final Uri uri = Uri.https(APIService.baseUrl, endpoint!);
+    final Uri uri = Uri.https(_apiService.baseUrl, endpoint!, query ?? null);
+    print(uri.toString());
     final response =
-        await dio.get(uri.toString(), queryParameters: APIService.headers);
+        await _dio.get(uri.toString(), queryParameters: _apiService.headers);
 
     if (response.statusCode != 200) throw Exception('Failed to load json data');
 
@@ -31,6 +34,7 @@ class MusicRepo {
     } else if (T == AlbumModel) {
       return AlbumModel.fromJson(response);
     } else if (T == SearchModel) {
+      print(response);
       return SearchModel.fromJson(response);
     } else {
       return null;

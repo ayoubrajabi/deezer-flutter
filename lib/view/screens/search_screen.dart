@@ -1,5 +1,7 @@
+import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -31,7 +33,7 @@ class SearchScreen extends StatelessWidget {
             pinned: true,
             floating: true,
             elevation: 0.0,
-            title: Text(
+            title: const Text(
               'Search',
               style: TextStyle(
                 color: Colors.white,
@@ -40,28 +42,35 @@ class SearchScreen extends StatelessWidget {
               ),
             ),
             bottom: PreferredSize(
-              preferredSize: Size(double.infinity, 86.0),
+              preferredSize: const Size(double.infinity, 86.0),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 15.0, vertical: 15.0),
                 child: TextField(
+                  onSubmitted: (value) => context.read<SearchBloc>().add(
+                        FeatchSearch(
+                          'search',
+                          '',
+                          {'q': value},
+                        ),
+                      ),
                   decoration: InputDecoration(
                     fillColor: Colors.white10,
                     hintText: 'Search Artists, Albums, Tracks ...',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       color: Colors.white54,
                       fontSize: 14.0,
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.white54,
                         width: 0.0,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                       ),
                     ),
@@ -72,7 +81,7 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: SizedBox(
+            child: const SizedBox(
               height: 1000.0,
             ),
           ),
