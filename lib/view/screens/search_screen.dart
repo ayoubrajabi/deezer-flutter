@@ -29,66 +29,7 @@ class SearchScreen extends StatelessWidget {
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.transparent,
-            toolbarHeight: 80.0,
-            pinned: true,
-            floating: true,
-            elevation: 0.0,
-            title: const Text(
-              'Search',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            bottom: PreferredSize(
-              preferredSize: const Size(double.infinity, 83.0),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15.0,
-                  vertical: 15.0,
-                ),
-                child: TextField(
-                  onSubmitted: (value) {
-                    if (value == '') {
-                      return context.read<SearchBloc>().add(DisposeSearch());
-                    }
-                    return context
-                        .read<SearchBloc>()
-                        .add(FeatchSearch('search', '', {'q': value}));
-                  },
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.0,
-                  ),
-                  decoration: InputDecoration(
-                    fillColor: Colors.white10,
-                    hintText: 'Search Artists, Albums, Tracks ...',
-                    hintStyle: const TextStyle(
-                      color: Colors.white54,
-                      fontSize: 14.0,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      borderSide: const BorderSide(
-                        color: Colors.white54,
-                        width: 0.0,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    filled: true,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          HeaderSliverAppBar(),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 1000.0,
@@ -144,7 +85,7 @@ class SearchScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30.0,
                         ),
                         Padding(
