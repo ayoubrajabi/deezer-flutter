@@ -40,16 +40,6 @@ class SearchScreen extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     );
                   } else if (searchState is SearchIsLoaded) {
-                    final data = searchState.getRadio.data;
-                    final artistData =
-                        data!.map((e) => e.artist!).toSet().toList();
-                    final artistName =
-                        artistData.map((e) => e.name).toSet().toList();
-                    final artistImageUrl = artistData
-                        .map((e) => e.pictureMedium!)
-                        .toSet()
-                        .toList();
-
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -75,11 +65,12 @@ class SearchScreen extends StatelessWidget {
                             height: 200,
                             width: double.infinity,
                             child: ListView.builder(
-                              itemCount: artistImageUrl.length,
+                              itemCount:
+                                  ArtsitInfo.imageUrl(searchState).length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) => TopArtistItem(
-                                artistName: artistName[index],
-                                imgUrl: artistImageUrl[index],
+                                artistName: ArtsitInfo.name(searchState)[index],
+                                imgUrl: ArtsitInfo.imageUrl(searchState)[index],
                                 onTap: () {},
                               ),
                             ),
@@ -95,13 +86,13 @@ class SearchScreen extends StatelessWidget {
                             child: ListView.builder(
                               itemCount: 5,
                               itemBuilder: (context, index) {
+                                final searchStateData =
+                                    searchState.getRadio.data![index];
+
                                 return HotMusicItems(
-                                  artistName: searchState
-                                      .getRadio.data![index].artist!.name,
-                                  imgUrl: searchState
-                                      .getRadio.data![index].album!.coverMedium,
-                                  musicTitle:
-                                      searchState.getRadio.data![index].title,
+                                  artistName: searchStateData.artist!.name,
+                                  imgUrl: searchStateData.album!.coverMedium,
+                                  musicTitle: searchStateData.title,
                                 );
                               },
                             ),
@@ -119,5 +110,19 @@ class SearchScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class ArtsitInfo {
+  static List<String?> name(SearchIsLoaded searchState) {
+    final data = searchState.getRadio.data;
+    final artistData = data!.map((info) => info.artist!).toSet().toList();
+    return artistData.map((info) => info.name).toSet().toList();
+  }
+
+  static List<String?> imageUrl(SearchIsLoaded searchState) {
+    final data = searchState.getRadio.data;
+    final artistData = data!.map((info) => info.artist!).toSet().toList();
+    return artistData.map((info) => info.pictureMedium!).toSet().toList();
   }
 }
