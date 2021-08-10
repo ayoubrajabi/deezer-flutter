@@ -47,7 +47,9 @@ class SearchScreen extends StatelessWidget {
               preferredSize: const Size(double.infinity, 83.0),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0, vertical: 15.0),
+                  horizontal: 15.0,
+                  vertical: 15.0,
+                ),
                 child: TextField(
                   onSubmitted: (value) {
                     if (value == '') {
@@ -97,6 +99,16 @@ class SearchScreen extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     );
                   } else if (searchState is SearchIsLoaded) {
+                    final data = searchState.getRadio.data;
+                    final artistData =
+                        data!.map((e) => e.artist!).toSet().toList();
+                    final artistName =
+                        artistData.map((e) => e.name).toSet().toList();
+                    final artistImageUrl = artistData
+                        .map((e) => e.pictureMedium!)
+                        .toSet()
+                        .toList();
+
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -118,12 +130,18 @@ class SearchScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: TopArtistItem(
-                            onTap: () {},
-                            imgUrl: searchState
-                                .getRadio.data![0].artist!.pictureMedium,
-                            artistName:
-                                searchState.getRadio.data![0].artist!.name,
+                          child: SizedBox(
+                            height: 200,
+                            width: double.infinity,
+                            child: ListView.builder(
+                              itemCount: artistImageUrl.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) => TopArtistItem(
+                                artistName: artistName[index],
+                                imgUrl: artistImageUrl[index],
+                                onTap: () {},
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
