@@ -16,12 +16,12 @@ class BottomNavItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    return BlocBuilder<NavbarTooltipCubit, NavbarTooltipState>(
-      builder: (context, navState) => Column(
+    return BlocBuilder<NavbarTooltipCubit, String>(
+      builder: (context, tooltip) => Column(
         children: [
           SvgPicture.asset(
             icon!,
-            color: navState.tooltip == title
+            color: tooltip == title
                 ? _theme.bottomNavigationBarTheme.selectedItemColor
                 : _theme.bottomNavigationBarTheme.unselectedItemColor,
           ),
@@ -29,7 +29,7 @@ class BottomNavItems extends StatelessWidget {
             height: 5.0,
           ),
           Visibility(
-            visible: navState.tooltip == title,
+            visible: tooltip == title,
             child: Container(
               height: 4.0,
               width: 4.0,

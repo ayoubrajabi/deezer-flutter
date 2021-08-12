@@ -1,15 +1,18 @@
-import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 
 class ArtistHeaderWidget extends StatelessWidget {
   const ArtistHeaderWidget({
     Key? key,
     @required this.index,
-    @required this.artistState,
+    // @required this.artistState,
+    @required this.imageUrl,
+    @required this.artistName,
   }) : super(key: key);
 
   final int? index;
-  final ArtistIsLoaded? artistState;
+  final String? imageUrl;
+  final String? artistName;
+  // final ArtistIsLoaded? artistState;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class ArtistHeaderWidget extends StatelessWidget {
     return Stack(
       children: [
         Image.network(
-          artistState!.getArtist.data![index!].pictureXl!,
+          // artistState!.getArtist.data![index!].pictureXl!,
+          imageUrl!,
           fit: BoxFit.cover,
           width: double.infinity,
           height: 300.0,
@@ -54,7 +58,8 @@ class ArtistHeaderWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                artistState!.getArtist.data![index!].name!,
+                // artistState!.getArtist.data![index!].name!,
+                artistName!,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 26.0,

@@ -1,56 +1,50 @@
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForYouMoreScreen extends StatelessWidget {
-  const ForYouMoreScreen({Key? key}) : super(key: key);
+  const ForYouMoreScreen({
+    Key? key,
+    required this.index,
+    required this.radioState,
+    required this.hotMusicHeight,
+    required this.query,
+    required this.hotMusicItemCount,
+  }) : super(key: key);
+
+  final int? index;
+  final RadioIsLoaded? radioState;
+  final double? hotMusicHeight;
+  final String? query;
+  final int? hotMusicItemCount;
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        final _radioState = context.watch<RadioBloc>().state;
-        final _index = context.watch<ItemsIndexCubit>().state.index;
-
-        if (_radioState is RadioIsLoading) {
-          return const SizedBox(
-            child: Center(
-              child: CircularProgressIndicator(),
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            ViewMoreHeader(
+              radioIndex: index,
+              radioState: radioState,
             ),
-          );
-        } else if (_radioState is RadioIsLoaded) {
-          final _radioTracklist = _radioState.getRadio.data![_index].tracklist;
-          final String _query =
-              _radioTracklist!.replaceAll('https://api.deezer.com/', '');
-
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                ViewMoreHeader(
-                  radioIndex: _index,
-                  radioState: _radioState,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: ViewMoreButtons(),
-                ),
-                SizedBox(
-                  height: _radioState.getRadio.data!.length * 71.0,
-                  width: double.infinity,
-                  child: HotMusicsWidget(
-                    query: _query,
-                    value: '',
-                    itemCount: _radioState.getRadio.data!.length,
-                  ),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: ViewMoreButtons(),
             ),
-          );
-        }
-        return const SizedBox();
-      },
+            SizedBox(
+              height: hotMusicHeight,
+              width: double.infinity,
+              child: HotMusicsWidget(
+                query: query,
+                value: '',
+                itemCount: hotMusicItemCount,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

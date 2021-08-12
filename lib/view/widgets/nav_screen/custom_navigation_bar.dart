@@ -15,52 +15,48 @@ class CustomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
 
-    return BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
-      builder: (context, screenChangeState) {
-        return Container(
-          decoration: BoxDecoration(
+    return Container(
+      decoration: BoxDecoration(
+        color: _theme.cardColor,
+        boxShadow: [
+          BoxShadow(
             color: _theme.cardColor,
-            boxShadow: [
-              BoxShadow(
-                color: _theme.cardColor,
-                blurRadius: 50.0,
-                offset: const Offset(0, -10),
-                spreadRadius: 20.0,
-              ),
-            ],
+            blurRadius: 50.0,
+            offset: const Offset(0, -10),
+            spreadRadius: 20.0,
           ),
-          child: BottomNavigationBar(
-            elevation: 0.0,
-            backgroundColor: Colors.transparent,
-            type: BottomNavigationBarType.fixed,
-            showSelectedLabels: false,
-            selectedFontSize: 11.0,
-            unselectedFontSize: 11.0,
-            showUnselectedLabels: false,
-            items: _navBarItems
-                .map(
-                  (title, icon) => MapEntry(
-                    title,
-                    BottomNavigationBarItem(
-                      icon: BottomNavItems(
-                        icon: icon,
-                        title: title,
-                      ),
-                      label: title,
-                    ),
+        ],
+      ),
+      child: BottomNavigationBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        selectedFontSize: 11.0,
+        unselectedFontSize: 11.0,
+        showUnselectedLabels: false,
+        items: _navBarItems
+            .map(
+              (title, icon) => MapEntry(
+                title,
+                BottomNavigationBarItem(
+                  icon: BottomNavItems(
+                    icon: icon,
+                    title: title,
                   ),
-                )
-                .values
-                .toList(),
-            onTap: (index) {
-              context.read<ScreenChangeCubit>().screenChanegeIndex(index);
-              context
-                  .read<NavbarTooltipCubit>()
-                  .navBarTooltipChange(_navBarItems.keys.elementAt(index));
-            },
-          ),
-        );
-      },
+                  label: title,
+                ),
+              ),
+            )
+            .values
+            .toList(),
+        onTap: (index) {
+          context.read<ScreenChangeCubit>().screenChanegeIndex(index);
+          context
+              .read<NavbarTooltipCubit>()
+              .navBarTooltipChange(_navBarItems.keys.elementAt(index));
+        },
+      ),
     );
   }
 }

@@ -1,19 +1,22 @@
 import 'package:deezer_flutter/logic/logics.dart';
+import 'package:deezer_flutter/view/config/config.dart';
+import 'package:deezer_flutter/view/config/search_screen_navigator.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import './screens.dart';
-
 class NavScreen extends StatelessWidget {
+  const NavScreen({Key? key}) : super(key: key);
   static const String id = '/';
 
   final _screens = const <Widget>[
-    HomeScreen(
-      key: PageStorageKey('HomeScreen'),
+    HomeScreenNavigator(
+      key: PageStorageKey('HomeScreenNavigator'),
     ),
-    SearchScreen(),
+    SearchScreenNavigator(
+      key: PageStorageKey('SearchScreen'),
+    ),
   ];
 
   Widget? _screenOfApp(int screenIndex) {
@@ -33,9 +36,9 @@ class NavScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: Scaffold(
-          body: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
-            builder: (context, screenChangeIndex) =>
-                _screenOfApp(screenChangeIndex.index)!,
+          appBar: const HomeScreenAppBar(),
+          body: BlocBuilder<ScreenChangeCubit, int>(
+            builder: (context, index) => _screenOfApp(index)!,
           ),
           bottomNavigationBar: CustomNavigationBar(),
         ),

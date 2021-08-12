@@ -13,11 +13,11 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: Colors.transparent,
-      title: BlocBuilder<ScreenChangeCubit, ScreenChangeState>(
-        builder: (context, state) => Row(
+      title: BlocBuilder<ScreenChangeCubit, int>(
+        builder: (context, index) => Row(
           children: [
             Visibility(
-              visible: state.index == 2 || state.index == 3,
+              visible: index == 2 || index == 3,
               child: IconButton(
                 onPressed: () =>
                     context.read<ScreenChangeCubit>().screenChanegeIndex(0),
@@ -29,7 +29,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              width: state.index == 2 || state.index == 3
+              width: index == 2 || index == 3
                   ? MediaQuery.of(context).size.width - 130.0
                   : 130.0,
               child: SvgPicture.asset(

@@ -71,7 +71,14 @@ class SearchScreen extends StatelessWidget {
                               itemBuilder: (context, index) => TopArtistItem(
                                 artistName: ArtsitInfo.name(searchState)[index],
                                 imgUrl: ArtsitInfo.imageUrl(searchState)[index],
-                                onTap: () {},
+                                onTap: () {
+                                  context
+                                      .read<ScreenChangeCubit>()
+                                      .screenChanegeIndex(3);
+                                  context
+                                      .read<ItemsIndexCubit>()
+                                      .itemsIndex(index);
+                                },
                               ),
                             ),
                           ),
