@@ -14,11 +14,15 @@ class HomeScreenNavigator extends StatefulWidget {
 class _HomeScreenNavigatorState extends State<HomeScreenNavigator> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ScreenChangeCubit, int>(
-      builder: (context, index) {
+    return Builder(
+      builder: (context) {
+        final index = context.watch<ScreenChangeCubit>().state;
+        final tooltip = context.watch<NavbarTooltipCubit>().state;
+
         return Navigator(
           pages: [
             MyPage(child: HomeScreen()),
+            if (tooltip == 'Search') MyPage(child: SearchScreen()),
             if (index == 2)
               MyPage(
                 child: Builder(
@@ -52,7 +56,7 @@ class _HomeScreenNavigatorState extends State<HomeScreenNavigator> {
                   },
                 ),
               ),
-            if (index == 3)
+            if (index == 3 && tooltip == 'Home')
               MyPage(
                 child: Builder(
                   builder: (context) {
@@ -91,6 +95,44 @@ class _HomeScreenNavigatorState extends State<HomeScreenNavigator> {
                   },
                 ),
               ),
+            if (index == 3 && tooltip == 'Search')
+              MyPage(
+                child: Builder(
+                  builder: (context) {
+                    final _searchState = context.read<SearchBloc>().state;
+                    final _index = context.watch<ItemsIndexCubit>().state.index;
+                    final _musicState = context.watch<MusicBloc>().state;
+
+                    if (_searchState is SearchIsLoaded) {
+                      final data = _searchState.getRadio.data![_index];
+                      final tracks = ArtsitInfo.trackList(_searchState)[_index]!
+                          .replaceAll('https://api.deezer.com/', '');
+                      final trackList = tracks.replaceAll('?limit=50', '');
+
+                      final int? id = data.artist!.id;
+                      context.read<AlbumBloc>().add(FeatchAlbum(
+                          'artist/${ArtsitInfo.artistId(_searchState)[_index]}/albums',
+                          ''));
+
+                      return ArtistInfoScreen(
+                        index: _index,
+                        artistName: ArtsitInfo.name(_searchState)[_index],
+                        artistImageurl:
+                            ArtsitInfo.imageUrl(_searchState)[_index],
+                        hotMusicQuery: trackList,
+                        hotMusicHeight: _musicState is MusicIsLoaded
+                            ? _musicState.getMusic.data!.length * 80.0
+                            : 400.0,
+                        hotMusicItemCount: _musicState is MusicIsLoaded
+                            ? _musicState.getMusic.data!.length
+                            : 0,
+                      );
+                    }
+
+                    return const SizedBox();
+                  },
+                ),
+              ),
           ],
           onPopPage: (route, result) {
             return route.didPop(result);
@@ -98,5 +140,31 @@ class _HomeScreenNavigatorState extends State<HomeScreenNavigator> {
         );
       },
     );
+  }
+}
+
+class ArtsitInfo {
+  static List<String?> name(SearchIsLoaded searchState) {
+    final data = searchState.getRadio.data;
+    final artistData = data!.map((info) => info.artist!).toSet().toList();
+    return artistData.map((info) => info.name).toSet().toList();
+  }
+
+  static List<String?> imageUrl(SearchIsLoaded searchState) {
+    final data = searchState.getRadio.data;
+    final artistData = data!.map((info) => info.artist!).toSet().toList();
+    return artistData.map((info) => info.pictureMedium!).toSet().toList();
+  }
+
+  static List<String?> trackList(SearchIsLoaded searchState) {
+    final data = searchState.getRadio.data;
+    final artistData = data!.map((info) => info.artist!).toSet().toList();
+    return artistData.map((info) => info.tracklist!).toSet().toList();
+  }
+
+  static List<int?> artistId(SearchIsLoaded searchState) {
+    final data = searchState.getRadio.data;
+    final artistData = data!.map((info) => info.artist!).toSet().toList();
+    return artistData.map((info) => info.id!).toSet().toList();
   }
 }

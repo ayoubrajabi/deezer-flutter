@@ -31,8 +31,7 @@ class SearchScreen extends StatelessWidget {
         slivers: [
           HeaderSliverAppBar(),
           SliverToBoxAdapter(
-            child: SizedBox(
-              height: 1000.0,
+            child: Expanded(
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, searchState) {
                   if (searchState is SearchIsLoading) {
@@ -44,31 +43,29 @@ class SearchScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: IconButton(
-                              onPressed: () => context
-                                  .read<SearchBloc>()
-                                  .add(DisposeSearch()),
-                              icon: Icon(
-                                Icons.close,
-                                color: Colors.white,
-                                size: 35.0,
-                              ),
-                            ),
+                          padding:
+                              const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                          child: Text(
+                            'Artists',
+                            style: TextStyle(color: Colors.white70),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: SizedBox(
-                            height: 200,
-                            width: double.infinity,
-                            child: ListView.builder(
-                              itemCount:
-                                  ArtsitInfo.imageUrl(searchState).length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) => TopArtistItem(
+                        Divider(
+                          color: Colors.grey.withOpacity(0.3),
+                          indent: 20.0,
+                          endIndent: 20.0,
+                          height: 30.0,
+                        ),
+                        SizedBox(
+                          height: 168,
+                          width: double.infinity,
+                          child: ListView.builder(
+                            itemCount: ArtsitInfo.imageUrl(searchState).length,
+                            scrollDirection: Axis.horizontal,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) => Padding(
+                              padding: const EdgeInsets.only(left: 20.0),
+                              child: TopArtistItem(
                                 artistName: ArtsitInfo.name(searchState)[index],
                                 imgUrl: ArtsitInfo.imageUrl(searchState)[index],
                                 onTap: () {
@@ -87,11 +84,26 @@ class SearchScreen extends StatelessWidget {
                           height: 30.0,
                         ),
                         Padding(
+                          padding:
+                              const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                          child: Text(
+                            'Tracks',
+                            style: TextStyle(color: Colors.white70),
+                          ),
+                        ),
+                        Divider(
+                          color: Colors.grey.withOpacity(0.3),
+                          indent: 20.0,
+                          endIndent: 20.0,
+                          height: 30.0,
+                        ),
+                        Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: SizedBox(
-                            height: 400.0,
+                            height: searchState.getRadio.data!.length * 70.0,
                             child: ListView.builder(
-                              itemCount: 5,
+                              itemCount: searchState.getRadio.data!.length,
+                              physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 final searchStateData =
                                     searchState.getRadio.data![index];

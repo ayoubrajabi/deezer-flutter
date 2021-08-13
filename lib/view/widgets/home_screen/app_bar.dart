@@ -13,14 +13,25 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: Colors.transparent,
-      title: BlocBuilder<ScreenChangeCubit, int>(
-        builder: (context, index) => Row(
+      title: Builder(builder: (context) {
+        final _index = context.watch<ScreenChangeCubit>().state;
+        final _tooltip = context.watch<NavbarTooltipCubit>().state;
+
+        return Row(
           children: [
             Visibility(
-              visible: index == 2 || index == 3,
+              visible: _index == 2 || _index == 3,
               child: IconButton(
-                onPressed: () =>
-                    context.read<ScreenChangeCubit>().screenChanegeIndex(0),
+                onPressed: () {
+                  if (_tooltip == 'Home') {
+                    return context
+                        .read<ScreenChangeCubit>()
+                        .screenChanegeIndex(0);
+                  }
+                  return context
+                      .read<ScreenChangeCubit>()
+                      .screenChanegeIndex(1);
+                },
                 icon: SvgPicture.asset(
                   IconsAsset.arrow,
                   color: Colors.white,
@@ -29,7 +40,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              width: index == 2 || index == 3
+              width: _index == 2 || _index == 3
                   ? MediaQuery.of(context).size.width - 130.0
                   : 130.0,
               child: SvgPicture.asset(
@@ -38,8 +49,8 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ],
-        ),
-      ),
+        );
+      }),
       flexibleSpace: Container(
         decoration: BoxDecoration(
           boxShadow: [

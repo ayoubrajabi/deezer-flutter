@@ -7,7 +7,7 @@ class HeaderSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: Colors.transparent,
-      toolbarHeight: 80.0,
+      toolbarHeight: 60.0,
       pinned: true,
       floating: true,
       elevation: 0.0,
@@ -15,7 +15,7 @@ class HeaderSliverAppBar extends StatelessWidget {
         'Search',
         style: TextStyle(
           color: Colors.white,
-          fontSize: 30.0,
+          fontSize: 26.0,
           fontWeight: FontWeight.bold,
         ),
       ),

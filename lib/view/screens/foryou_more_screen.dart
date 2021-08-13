@@ -20,30 +20,28 @@ class ForYouMoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            ViewMoreHeader(
-              radioIndex: index,
-              radioState: radioState,
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        children: [
+          ViewMoreHeader(
+            radioIndex: index,
+            radioState: radioState,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: ViewMoreButtons(),
+          ),
+          SizedBox(
+            height: hotMusicHeight,
+            width: double.infinity,
+            child: HotMusicsWidget(
+              query: query,
+              value: '',
+              itemCount: hotMusicItemCount,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: ViewMoreButtons(),
-            ),
-            SizedBox(
-              height: hotMusicHeight,
-              width: double.infinity,
-              child: HotMusicsWidget(
-                query: query,
-                value: '',
-                itemCount: hotMusicItemCount,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
