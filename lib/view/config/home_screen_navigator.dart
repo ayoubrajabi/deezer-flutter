@@ -3,6 +3,7 @@ import 'package:deezer_flutter/view/screens/screens.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:deezer_flutter/utilities/utilities.dart';
 
 class HomeScreenNavigator extends StatefulWidget {
   const HomeScreenNavigator({Key? key}) : super(key: key);
@@ -104,15 +105,9 @@ class _HomeScreenNavigatorState extends State<HomeScreenNavigator> {
                     final _musicState = context.watch<MusicBloc>().state;
 
                     if (_searchState is SearchIsLoaded) {
-                      final data = _searchState.getRadio.data![_index];
                       final tracks = ArtsitInfo.trackList(_searchState)[_index]!
                           .replaceAll('https://api.deezer.com/', '');
                       final trackList = tracks.replaceAll('?limit=50', '');
-
-                      final int? id = data.artist!.id;
-                      context.read<AlbumBloc>().add(FeatchAlbum(
-                          'artist/${ArtsitInfo.artistId(_searchState)[_index]}/albums',
-                          ''));
 
                       return ArtistInfoScreen(
                         index: _index,
@@ -140,31 +135,5 @@ class _HomeScreenNavigatorState extends State<HomeScreenNavigator> {
         );
       },
     );
-  }
-}
-
-class ArtsitInfo {
-  static List<String?> name(SearchIsLoaded searchState) {
-    final data = searchState.getRadio.data;
-    final artistData = data!.map((info) => info.artist!).toSet().toList();
-    return artistData.map((info) => info.name).toSet().toList();
-  }
-
-  static List<String?> imageUrl(SearchIsLoaded searchState) {
-    final data = searchState.getRadio.data;
-    final artistData = data!.map((info) => info.artist!).toSet().toList();
-    return artistData.map((info) => info.pictureMedium!).toSet().toList();
-  }
-
-  static List<String?> trackList(SearchIsLoaded searchState) {
-    final data = searchState.getRadio.data;
-    final artistData = data!.map((info) => info.artist!).toSet().toList();
-    return artistData.map((info) => info.tracklist!).toSet().toList();
-  }
-
-  static List<int?> artistId(SearchIsLoaded searchState) {
-    final data = searchState.getRadio.data;
-    final artistData = data!.map((info) => info.artist!).toSet().toList();
-    return artistData.map((info) => info.id!).toSet().toList();
   }
 }

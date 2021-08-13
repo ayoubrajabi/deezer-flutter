@@ -1,4 +1,5 @@
 import 'package:deezer_flutter/logic/logics.dart';
+import 'package:deezer_flutter/utilities/utilities.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -129,19 +130,5 @@ class SearchScreen extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class ArtsitInfo {
-  static List<String?> name(SearchIsLoaded searchState) {
-    final data = searchState.getRadio.data;
-    final artistData = data!.map((info) => info.artist!).toSet().toList();
-    return artistData.map((info) => info.name).toSet().toList();
-  }
-
-  static List<String?> imageUrl(SearchIsLoaded searchState) {
-    final data = searchState.getRadio.data;
-    final artistData = data!.map((info) => info.artist!).toSet().toList();
-    return artistData.map((info) => info.pictureMedium!).toSet().toList();
   }
 }
