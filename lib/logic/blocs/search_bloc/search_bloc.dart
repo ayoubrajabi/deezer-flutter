@@ -10,7 +10,7 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   MusicRepo? musicRepo;
-  SearchBloc({this.musicRepo}) : super(SearchIsLoading());
+  SearchBloc({this.musicRepo}) : super(SearchNotLoaded());
 
   @override
   Stream<SearchState> mapEventToState(

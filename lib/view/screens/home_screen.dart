@@ -4,6 +4,7 @@ import '../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  static const String path = '/Home';
 
   @override
   Widget build(BuildContext context) {

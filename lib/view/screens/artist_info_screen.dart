@@ -2,6 +2,7 @@ import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ArtistInfoScreen extends StatelessWidget {
+  static const String id = 'artist';
   const ArtistInfoScreen({
     Key? key,
     required this.index,

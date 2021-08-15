@@ -1,6 +1,7 @@
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:beamer/beamer.dart';
 
 import '../widgets.dart';
 
@@ -58,6 +59,12 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => TopArtistItem(
                 onTap: () {
+                  context.currentBeamLocation.update(
+                    (state) => state.copyWith(
+                      pathBlueprintSegments: ['artistHome'],
+                      pathParameters: {'key': 'artistHome'},
+                    ),
+                  );
                   context.read<ScreenChangeCubit>().screenChanegeIndex(3);
                   context.read<ItemsIndexCubit>().itemsIndex(index);
                 },

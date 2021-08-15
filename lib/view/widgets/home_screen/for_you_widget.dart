@@ -1,6 +1,7 @@
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:beamer/beamer.dart';
 
 import '../widgets.dart';
 
@@ -69,6 +70,12 @@ class _ForYouWidgetState extends State<ForYouWidget> {
 
                 return ForYouItems(
                   onTap: () {
+                    context.currentBeamLocation.update(
+                      (state) => state.copyWith(
+                        pathBlueprintSegments: ['ForYou'],
+                        pathParameters: {'key': 'ForYou'},
+                      ),
+                    );
                     context.read<ScreenChangeCubit>().screenChanegeIndex(2);
                     context.read<ItemsIndexCubit>().itemsIndex(index);
                   },

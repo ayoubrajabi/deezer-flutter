@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   animations: ^2.0.1
+  beamer: ^0.14.1
   blur: ^3.0.0
   card_swiper: ^1.0.4
   cupertino_icons: ^1.0.2

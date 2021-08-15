@@ -1,14 +1,49 @@
+import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/constants/constants.dart';
 import 'package:deezer_flutter/logic/logics.dart';
+import 'package:deezer_flutter/main.dart';
+import 'package:deezer_flutter/view/config/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeScreenAppBar({Key? key}) : super(key: key);
+class HomeScreenAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const HomeScreenAppBar({
+    Key? key,
+    @required this.beamerKey,
+  }) : super(key: key);
+
+  final GlobalKey<BeamerState>? beamerKey;
+
+  @override
+  _HomeScreenAppBarState createState() => _HomeScreenAppBarState();
+
+  @override
+  Size get preferredSize => const Size(double.infinity, 60.0);
+}
+
+class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
+  late BeamerDelegate _beamerDelegate;
+  int _currentIndex = 0;
+
+  void _setStateListener() => setState(() {});
+
+  @override
+  void initState() {
+    super.initState();
+    _beamerDelegate = widget.beamerKey!.currentState!.routerDelegate;
+    _beamerDelegate.addListener(_setStateListener);
+  }
+
+  @override
+  void dispose() {
+    _beamerDelegate.removeListener(_setStateListener);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _currentIndex = _beamerDelegate.currentBeamLocation is HomeLocation ? 0 : 1;
     final _theme = Theme.of(context);
     return AppBar(
       elevation: 0.0,
@@ -24,13 +59,17 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: IconButton(
                 onPressed: () {
                   if (_tooltip == 'Home') {
-                    return context
-                        .read<ScreenChangeCubit>()
-                        .screenChanegeIndex(0);
+                    context.read<ScreenChangeCubit>().screenChanegeIndex(0);
+                    return _beamerDelegate.beamToNamed('Home');
                   }
-                  return context
-                      .read<ScreenChangeCubit>()
-                      .screenChanegeIndex(1);
+                  context.currentBeamLocation.update(
+                    (state) => state.copyWith(
+                      pathBlueprintSegments: [''],
+                      pathParameters: {'key': ''},
+                    ),
+                  );
+                  context.read<ScreenChangeCubit>().screenChanegeIndex(1);
+                  return _beamerDelegate.beamToNamed('Search');
                 },
                 icon: SvgPicture.asset(
                   IconsAsset.arrow,
@@ -70,7 +109,4 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size(double.infinity, 60.0);
 }

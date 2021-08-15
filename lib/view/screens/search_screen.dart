@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/utilities/utilities.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
@@ -7,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
-
+  static const String path = '/Search';
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -70,6 +71,12 @@ class SearchScreen extends StatelessWidget {
                                 artistName: ArtsitInfo.name(searchState)[index],
                                 imgUrl: ArtsitInfo.imageUrl(searchState)[index],
                                 onTap: () {
+                                  context.currentBeamLocation.update(
+                                    (state) => state.copyWith(
+                                      pathBlueprintSegments: ['artistSearch'],
+                                      pathParameters: {'key': 'artistSearch'},
+                                    ),
+                                  );
                                   context
                                       .read<ScreenChangeCubit>()
                                       .screenChanegeIndex(3);
