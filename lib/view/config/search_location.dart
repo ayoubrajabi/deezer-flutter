@@ -28,6 +28,11 @@ class SearchLocation extends BeamLocation<BeamState> {
                       .replaceAll('https://api.deezer.com/', '');
                   final trackList = tracks.replaceAll('?limit=50', '');
 
+                  final int? id = ArtsitInfo.id(_searchState)[_index];
+                  context
+                      .read<AlbumBloc>()
+                      .add(FeatchAlbum('artist/$id/albums', ''));
+
                   return ArtistInfoScreen(
                     index: _index,
                     artistName: ArtsitInfo.name(_searchState)[_index],

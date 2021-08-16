@@ -25,6 +25,10 @@ class ArtsitInfo {
         .toList();
   }
 
+  static List<int?> id(SearchIsLoaded searchState) {
+    return _artistDtat(searchState).map((info) => info.id!).toSet().toList();
+  }
+
   static List<int?> artistId(SearchIsLoaded searchState) {
     return _artistDtat(searchState).map((info) => info.id!).toSet().toList();
   }
