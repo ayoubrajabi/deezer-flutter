@@ -76,6 +76,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                         pathParameters: {'key': 'ForYou'},
                       ),
                     );
+                    // context.beamToNamed('/ForYou');
                     context.read<ScreenChangeCubit>().screenChanegeIndex(2);
                     context.read<ItemsIndexCubit>().itemsIndex(index);
                   },

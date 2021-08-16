@@ -1,8 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/constants/constants.dart';
 import 'package:deezer_flutter/logic/logics.dart';
-import 'package:deezer_flutter/main.dart';
-import 'package:deezer_flutter/view/config/config.dart';
+import 'package:deezer_flutter/view/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,26 +23,15 @@ class HomeScreenAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
   late BeamerDelegate _beamerDelegate;
-  int _currentIndex = 0;
-
-  void _setStateListener() => setState(() {});
 
   @override
   void initState() {
     super.initState();
     _beamerDelegate = widget.beamerKey!.currentState!.routerDelegate;
-    _beamerDelegate.addListener(_setStateListener);
-  }
-
-  @override
-  void dispose() {
-    _beamerDelegate.removeListener(_setStateListener);
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _currentIndex = _beamerDelegate.currentBeamLocation is HomeLocation ? 0 : 1;
     final _theme = Theme.of(context);
     return AppBar(
       elevation: 0.0,
@@ -60,7 +48,7 @@ class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
                 onPressed: () {
                   if (_tooltip == 'Home') {
                     context.read<ScreenChangeCubit>().screenChanegeIndex(0);
-                    return _beamerDelegate.beamToNamed('Home');
+                    return _beamerDelegate.beamToNamed(HomeScreen.path);
                   }
                   context.currentBeamLocation.update(
                     (state) => state.copyWith(
@@ -69,7 +57,7 @@ class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
                     ),
                   );
                   context.read<ScreenChangeCubit>().screenChanegeIndex(1);
-                  return _beamerDelegate.beamToNamed('Search');
+                  return _beamerDelegate.beamToNamed(SearchScreen.path);
                 },
                 icon: SvgPicture.asset(
                   IconsAsset.arrow,
@@ -85,6 +73,7 @@ class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
               child: SvgPicture.asset(
                 IconsAsset.deezer,
                 width: 130.0,
+                cacheColorFilter: true,
               ),
             ),
           ],
