@@ -14,6 +14,7 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
         if (state.uri.pathSegments.contains('artistHome'))
           BeamPage(
+            key: ValueKey('artistHome'),
             type: BeamPageType.sharedAxisTransion,
             child: Builder(
               builder: (context) {
@@ -53,6 +54,7 @@ class HomeLocation extends BeamLocation<BeamState> {
           )
         else if (state.pathParameters.containsValue('ForYou'))
           BeamPage(
+              key: ValueKey('ForYou'),
               type: BeamPageType.sharedAxisTransion,
               child: Builder(
                 builder: (context) {

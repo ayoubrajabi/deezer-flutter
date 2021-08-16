@@ -24,7 +24,6 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
             await musicRepo!.get(endpoint: event._query, value: event._value);
         yield AlbumIsLoaded(_album);
       } catch (_) {
-        print(_);
         yield AlbumError();
       }
     }

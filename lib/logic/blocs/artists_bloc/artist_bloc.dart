@@ -24,7 +24,6 @@ class ArtistsBloc extends Bloc<ArtistEvent, ArtistState> {
             await musicRepo!.get(endpoint: event._query, value: event._value);
         yield ArtistIsLoaded(artist);
       } catch (_) {
-        print(_);
         yield ArtistError();
       }
     }

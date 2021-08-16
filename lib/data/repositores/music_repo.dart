@@ -13,7 +13,6 @@ class MusicRepo {
     Map<String, dynamic>? query,
   }) async {
     final Uri uri = Uri.https(_apiService.baseUrl, endpoint!, query ?? null);
-    print(uri.toString());
     final response =
         await _dio.get(uri.toString(), queryParameters: _apiService.headers);
 
@@ -34,7 +33,6 @@ class MusicRepo {
     } else if (T == AlbumModel) {
       return AlbumModel.fromJson(response);
     } else if (T == SearchModel) {
-      print(response);
       return SearchModel.fromJson(response);
     } else {
       return null;

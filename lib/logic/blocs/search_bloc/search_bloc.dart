@@ -27,7 +27,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
         yield SearchIsLoaded(search);
       } catch (_) {
-        print(_);
         yield SearchError();
       }
     } else if (event is DisposeSearch) {

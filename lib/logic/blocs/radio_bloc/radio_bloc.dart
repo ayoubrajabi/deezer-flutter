@@ -24,7 +24,6 @@ class RadioBloc extends Bloc<RadioEvent, RadioState> {
             await musicRepo!.get(endpoint: event._query, value: event._value);
         yield RadioIsLoaded(radio);
       } catch (_) {
-        print(_);
         yield RadioError();
       }
     }

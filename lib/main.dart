@@ -45,6 +45,9 @@ class DeezerApp extends StatelessWidget {
         theme: appTheme!.theme(),
         routerDelegate: routerDelegate,
         routeInformationParser: BeamerParser(),
+        backButtonDispatcher: BeamerBackButtonDispatcher(
+          delegate: routerDelegate,
+        ),
       ),
     );
   }

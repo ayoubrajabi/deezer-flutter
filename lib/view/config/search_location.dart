@@ -15,6 +15,7 @@ class SearchLocation extends BeamLocation<BeamState> {
         ),
         if (state.pathParameters.containsValue('artistSearch'))
           BeamPage(
+            key: ValueKey('artistSearch'),
             type: BeamPageType.sharedAxisTransion,
             child: Builder(
               builder: (context) {

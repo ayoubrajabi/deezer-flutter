@@ -50,12 +50,7 @@ class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
                     context.read<ScreenChangeCubit>().screenChanegeIndex(0);
                     return _beamerDelegate.beamToNamed(HomeScreen.path);
                   }
-                  context.currentBeamLocation.update(
-                    (state) => state.copyWith(
-                      pathBlueprintSegments: [''],
-                      pathParameters: {'key': ''},
-                    ),
-                  );
+
                   context.read<ScreenChangeCubit>().screenChanegeIndex(1);
                   return _beamerDelegate.beamToNamed(SearchScreen.path);
                 },
