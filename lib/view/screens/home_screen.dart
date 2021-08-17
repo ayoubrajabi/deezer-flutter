@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(
+        padding: const EdgeInsets.only(bottom: 80.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,

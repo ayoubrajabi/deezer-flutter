@@ -14,6 +14,9 @@ class BlocProviderList {
     BlocProvider<NavbarTooltipCubit>(
       create: (_) => NavbarTooltipCubit(),
     ),
+    BlocProvider<MiniplayerIndexCubit>(
+      create: (_) => MiniplayerIndexCubit(),
+    ),
     BlocProvider<RadioBloc>(
       create: (_) => RadioBloc(
         musicRepo: MusicRepo(),

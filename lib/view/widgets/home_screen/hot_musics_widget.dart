@@ -56,6 +56,8 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
                     imgUrl: _musicData.album!.coverMedium,
                     artistName: _musicData.artist!.name,
                     musicTitle: _musicData.title,
+                    onTap: () =>
+                        context.read<MusicItemIndexCubit>().musicIndex(index),
                   );
                 });
           }
