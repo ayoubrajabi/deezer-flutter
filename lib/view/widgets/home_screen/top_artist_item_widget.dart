@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+import '../widgets.dart';
+
 class TopArtistItem extends StatelessWidget {
   const TopArtistItem({
     Key? key,
@@ -17,38 +19,40 @@ class TopArtistItem extends StatelessWidget {
     final _theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
-      child: Column(
-        children: [
-          Container(
-            width: 130.0,
-            margin: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              color: _theme.cardColor,
-              shape: BoxShape.circle,
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(200.0),
-              child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: imgUrl!,
-                fit: BoxFit.cover,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            ClipPath(
+              clipper: TopArtistClipper(),
+              child: Container(
+                width: 130.0,
+                color: _theme.cardColor,
+                child: ClipPath(
+                  clipper: TopArtistClipper(),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: imgUrl!,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Text(
-            artistName!,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 11.0,
-              fontWeight: FontWeight.bold,
+            const SizedBox(
+              height: 10.0,
             ),
-          ),
-        ],
+            Text(
+              artistName!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

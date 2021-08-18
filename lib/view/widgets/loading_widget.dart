@@ -8,31 +8,37 @@ class LoadingWidget extends StatelessWidget {
     this.shape,
     this.icon,
     this.borderRadius,
+    this.clipper,
+    this.color,
   }) : super(key: key);
+
   final double? height;
   final double? width;
   final IconData? icon;
   final BoxShape? shape;
   final BorderRadius? borderRadius;
+  final CustomPainter? clipper;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
     return Container(
       height: height,
       width: width,
       margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: _theme.cardColor,
-        shape: shape!,
+        color: color,
         borderRadius: borderRadius,
       ),
-      child: Center(
-          child: Icon(
-        icon,
-        color: Colors.grey,
-        size: 30.0,
-      )),
+      child: CustomPaint(
+        painter: clipper,
+        child: Center(
+            child: Icon(
+          icon,
+          color: Colors.grey,
+          size: 30.0,
+        )),
+      ),
     );
   }
 }

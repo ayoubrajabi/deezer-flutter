@@ -51,6 +51,8 @@ class _ForYouWidgetState extends State<ForYouWidget> {
                       width: 260.0,
                       borderRadius: BorderRadius.circular(12.0),
                       icon: Icons.settings_input_antenna,
+                      color: _theme.cardColor,
+                      clipper: null,
                       shape: BoxShape.rectangle,
                     ));
           } else if (radioState is RadioIsLoaded) {

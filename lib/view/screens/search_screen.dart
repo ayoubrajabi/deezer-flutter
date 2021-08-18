@@ -57,7 +57,7 @@ class SearchScreen extends StatelessWidget {
                         height: 30.0,
                       ),
                       SizedBox(
-                        height: 168,
+                        height: 180,
                         width: double.infinity,
                         child: ListView.builder(
                           itemCount: ArtsitInfo.imageUrl(searchState).length,

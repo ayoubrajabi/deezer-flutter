@@ -46,11 +46,18 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => const LoadingWidget(
-                      height: 140.0,
-                      width: 120.0,
-                      icon: Icons.person,
-                      shape: BoxShape.circle,
+                itemBuilder: (context, index) => Column(
+                      children: [
+                        LoadingWidget(
+                          height: 140.0,
+                          width: 140.0,
+                          icon: Icons.person,
+                          clipper: LoadingPainter(),
+                        ),
+                        const SizedBox(
+                          height: 2.0,
+                        ),
+                      ],
                     ));
           } else if (artistState is ArtistIsLoaded) {
             return ListView.builder(
