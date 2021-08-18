@@ -117,7 +117,16 @@ class SearchScreen extends StatelessWidget {
                                 artistName: searchStateData.artist!.name,
                                 imgUrl: searchStateData.album!.coverMedium,
                                 musicTitle: searchStateData.title,
-                                onTap: () {},
+                                onTap: () =>
+                                    context.read<MiniPlayerCubit>().musicInfo(
+                                          MiniPlayerState(
+                                            imageUrl: searchStateData
+                                                .album!.coverMedium,
+                                            name: searchStateData.artist!.name,
+                                            title: searchStateData.title,
+                                            isShow: true,
+                                          ),
+                                        ),
                               );
                             },
                           ),
