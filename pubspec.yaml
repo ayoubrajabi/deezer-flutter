@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  animated_widgets: ^1.1.0
   animations: ^2.0.1
   beamer: ^0.14.1
   blur: ^3.0.0
