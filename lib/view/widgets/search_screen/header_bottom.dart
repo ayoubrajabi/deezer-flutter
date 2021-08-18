@@ -76,7 +76,7 @@ class _HeaderBottomState extends State<HeaderBottom> {
                       context.read<SearchBloc>().add(DisposeSearch());
                       textEditingController!.clear();
                     },
-                    child: Text(
+                    child: const Text(
                       'clear search',
                       style: TextStyle(color: Colors.white70),
                     ),

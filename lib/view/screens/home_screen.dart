@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(
               key: const PageStorageKey('ForYou'),
-              height: 415,
+              height: 415.0,
               width: MediaQuery.of(context).size.width,
               child: const ForYouWidget(),
             ),

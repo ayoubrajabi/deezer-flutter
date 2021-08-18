@@ -9,13 +9,13 @@ class SearchLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) => [
         BeamPage(
-          key: ValueKey('Search'),
+          key: const ValueKey('Search'),
           type: BeamPageType.sharedAxisTransion,
-          child: SearchScreen(),
+          child: const SearchScreen(),
         ),
         if (state.pathParameters.containsValue('artistSearch'))
           BeamPage(
-            key: ValueKey('artistSearch'),
+            key: const ValueKey('artistSearch'),
             type: BeamPageType.sharedAxisTransion,
             child: Builder(
               builder: (context) {

@@ -26,7 +26,7 @@ class ArtistAlbumsWidget extends StatelessWidget {
             return Swiper(
               itemBuilder: (BuildContext context, int index) {
                 return AlbumItemWidget(
-                  imgUrl: albumState.album.album![index].coverBig!,
+                  imgUrl: albumState.album.album![index].coverBig,
                 );
               },
               itemHeight: 250.0,
@@ -38,7 +38,7 @@ class ArtistAlbumsWidget extends StatelessWidget {
               scale: 0.7,
               curve: Curves.fastOutSlowIn,
               itemCount: albumState.album.album!.length,
-              pagination: FractionPaginationBuilder(
+              pagination: const FractionPaginationBuilder(
                 activeColor: Colors.white,
                 color: Colors.white,
                 fontSize: 14.0,

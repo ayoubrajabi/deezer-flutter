@@ -42,7 +42,7 @@ class TopArtistItem extends StatelessWidget {
             artistName!,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 11.0,
               fontWeight: FontWeight.bold,

@@ -1,7 +1,5 @@
 import 'package:deezer_flutter/constants/constants.dart';
 import 'package:deezer_flutter/logic/logics.dart';
-import 'package:deezer_flutter/main.dart';
-import 'package:deezer_flutter/view/config/config.dart';
 import 'package:deezer_flutter/view/screens/home_screen.dart';
 import 'package:deezer_flutter/view/screens/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +9,7 @@ import 'package:beamer/beamer.dart';
 import '../widgets.dart';
 
 class CustomNavigationBar extends StatefulWidget {
-  CustomNavigationBar({required this.beamerKey});
+  const CustomNavigationBar({required this.beamerKey});
 
   final GlobalKey<BeamerState>? beamerKey;
 

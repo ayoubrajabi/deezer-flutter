@@ -4,7 +4,7 @@ import 'package:animations/animations.dart';
 class MyPage extends Page {
   final Widget? child;
 
-  MyPage({@required this.child, LocalKey? key}) : super(key: key);
+  const MyPage({@required this.child, LocalKey? key}) : super(key: key);
 
   @override
   Route createRoute(BuildContext context) {

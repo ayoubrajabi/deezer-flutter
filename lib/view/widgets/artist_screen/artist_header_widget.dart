@@ -22,7 +22,6 @@ class ArtistHeaderWidget extends StatelessWidget {
     return Stack(
       children: [
         Image.network(
-          // artistState!.getArtist.data![index!].pictureXl!,
           imageUrl!,
           fit: BoxFit.cover,
           width: double.infinity,
@@ -40,11 +39,11 @@ class ArtistHeaderWidget extends StatelessWidget {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
                 colors: [
-                  Color(0xFF1C111B),
-                  Color(0xFF1C111B),
-                  Color(0xFF1C111B).withAlpha(220),
-                  Color(0xFF1C111B).withAlpha(150),
-                  Color(0xFF1C111B).withAlpha(100),
+                  const Color(0xFF1C111B),
+                  const Color(0xFF1C111B),
+                  const Color(0xFF1C111B).withAlpha(220),
+                  const Color(0xFF1C111B).withAlpha(150),
+                  const Color(0xFF1C111B).withAlpha(100),
                   Colors.transparent,
                 ],
               ),
@@ -58,7 +57,6 @@ class ArtistHeaderWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                // artistState!.getArtist.data![index!].name!,
                 artistName!,
                 style: const TextStyle(
                   color: Colors.white,

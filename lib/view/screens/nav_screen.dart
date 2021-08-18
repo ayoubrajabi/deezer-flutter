@@ -1,4 +1,5 @@
 import 'package:beamer/beamer.dart';
+import 'package:deezer_flutter/logic/cubits/miniplayer_cubit/miniplayer_cubit.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/view/config/config.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
@@ -42,86 +43,85 @@ class NavScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ]..add(
-                Builder(
-                  builder: (context) {
-                    final _musicState = context.watch<MusicBloc>().state;
-                    final _musicIndex =
-                        context.watch<MusicItemIndexCubit>().state;
-
-                    if (_musicState is MusicIsLoaded) {
-                      final _musicData =
-                          _musicState.getMusic.data![_musicIndex];
-
-                      return Offstage(
-                        offstage: false,
-                        child: Miniplayer(
-                            minHeight: 75.0,
-                            maxHeight: 75.0,
-                            elevation: 30.0,
-                            builder: (hieght, precentage) {
-                              return Container(
-                                color: _theme.scaffoldBackgroundColor,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      child: Image.network(
-                                        _musicData.album!.coverMedium!,
-                                        height: 65.0,
-                                        width: 85.0,
-                                        fit: BoxFit.cover,
+              BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+                builder: (context, miniPlayerState) {
+                  return Offstage(
+                    offstage: !miniPlayerState.isShow!,
+                    child: Miniplayer(
+                        minHeight: 75.0,
+                        maxHeight: 75.0,
+                        elevation: 30.0,
+                        builder: (hieght, precentage) {
+                          return Container(
+                            color: _theme.scaffoldBackgroundColor,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: Image.network(
+                                    miniPlayerState.imageUrl!,
+                                    height: 65.0,
+                                    width: 85.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 150.0,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(miniPlayerState.title!),
+                                      Text(miniPlayerState.name!),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50.0,
+                                  width: 50.0,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                        _theme.accentColor,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 150.0,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(_musicData.title!),
-                                          Text(_musicData.artist!.name!),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 50.0,
-                                      width: 50.0,
-                                      child: ElevatedButton(
-                                        onPressed: () {},
-                                        child: Center(
-                                          child: Icon(Icons.pause),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(200.0),
                                         ),
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                            _theme.accentColor,
-                                          ),
-                                          shape: MaterialStateProperty.all(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(200.0),
+                                      ),
+                                    ),
+                                    child: const Center(
+                                      child: Icon(Icons.pause),
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () =>
+                                      context.read<MiniPlayerCubit>().musicInfo(
+                                            MiniPlayerState(
+                                              isShow: false,
+                                              imageUrl: '',
+                                              name: '',
+                                              title: '',
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                    )
-                                  ],
-                                ),
-                              );
-                            }),
-                      );
-                    }
-                    return const SizedBox();
-                  },
-                ),
+                                  icon: const Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        }),
+                  );
+                },
               ),
+            ],
           ),
           bottomNavigationBar: CustomNavigationBar(
             beamerKey: beamerKey,

@@ -68,8 +68,8 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                   context.read<ScreenChangeCubit>().screenChanegeIndex(3);
                   context.read<ItemsIndexCubit>().itemsIndex(index);
                 },
-                imgUrl: artistState.getArtist.data![index].pictureMedium!,
-                artistName: artistState.getArtist.data![index].name!,
+                imgUrl: artistState.getArtist.data![index].pictureMedium,
+                artistName: artistState.getArtist.data![index].name,
               ),
             );
           }

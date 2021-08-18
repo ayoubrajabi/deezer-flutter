@@ -36,16 +36,15 @@ class SearchScreen extends StatelessWidget {
             child: BlocBuilder<SearchBloc, SearchState>(
               builder: (context, searchState) {
                 if (searchState is SearchIsLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (searchState is SearchIsLoaded) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20.0, bottom: 10.0),
                         child: Text(
                           'Artists',
                           style: TextStyle(color: Colors.white70),
@@ -90,9 +89,8 @@ class SearchScreen extends StatelessWidget {
                       const SizedBox(
                         height: 30.0,
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20.0, bottom: 10.0),
                         child: Text(
                           'Tracks',
                           style: TextStyle(color: Colors.white70),
@@ -119,6 +117,7 @@ class SearchScreen extends StatelessWidget {
                                 artistName: searchStateData.artist!.name,
                                 imgUrl: searchStateData.album!.coverMedium,
                                 musicTitle: searchStateData.title,
+                                onTap: () {},
                               );
                             },
                           ),

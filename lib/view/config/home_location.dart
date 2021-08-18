@@ -8,13 +8,13 @@ class HomeLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) => [
         BeamPage(
-          key: ValueKey('Home'),
+          key: const ValueKey('Home'),
           type: BeamPageType.sharedAxisTransion,
-          child: HomeScreen(),
+          child: const HomeScreen(),
         ),
         if (state.uri.pathSegments.contains('artistHome'))
           BeamPage(
-            key: ValueKey('artistHome'),
+            key: const ValueKey('artistHome'),
             type: BeamPageType.sharedAxisTransion,
             child: Builder(
               builder: (context) {
@@ -24,10 +24,10 @@ class HomeLocation extends BeamLocation<BeamState> {
 
                 if (_artistState is ArtistIsLoaded) {
                   final _artistStateData = _artistState.getArtist.data![_index];
-                  final String? _query = _artistStateData.tracklist!
+                  final String _query = _artistStateData.tracklist!
                       .replaceAll('https://api.deezer.com/', '');
-                  final String? _trackListQuery =
-                      _query!.replaceAll('?limit=50', '');
+                  final String _trackListQuery =
+                      _query.replaceAll('?limit=50', '');
 
                   final int? id = _artistStateData.id;
                   context
@@ -54,7 +54,7 @@ class HomeLocation extends BeamLocation<BeamState> {
           )
         else if (state.pathParameters.containsValue('ForYou'))
           BeamPage(
-              key: ValueKey('ForYou'),
+              key: const ValueKey('ForYou'),
               type: BeamPageType.sharedAxisTransion,
               child: Builder(
                 builder: (context) {
@@ -70,7 +70,7 @@ class HomeLocation extends BeamLocation<BeamState> {
                   } else if (_radioState is RadioIsLoaded) {
                     final String? _radioTracklist =
                         _radioState.getRadio.data![_index].tracklist;
-                    final String? _query = _radioTracklist!
+                    final String _query = _radioTracklist!
                         .replaceAll('https://api.deezer.com/', '');
 
                     return ForYouMoreScreen(

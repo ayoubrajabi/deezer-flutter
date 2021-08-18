@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../logics.dart';
 
 class BlocProviderList {
-  List<BlocProvider> _blocProviders = [
+  final List<BlocProvider> _blocProviders = [
     BlocProvider<ScreenChangeCubit>(
       create: (_) => ScreenChangeCubit(),
     ),
@@ -14,8 +14,8 @@ class BlocProviderList {
     BlocProvider<NavbarTooltipCubit>(
       create: (_) => NavbarTooltipCubit(),
     ),
-    BlocProvider<MiniplayerIndexCubit>(
-      create: (_) => MiniplayerIndexCubit(),
+    BlocProvider<MiniPlayerCubit>(
+      create: (_) => MiniPlayerCubit(),
     ),
     BlocProvider<RadioBloc>(
       create: (_) => RadioBloc(

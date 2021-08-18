@@ -62,7 +62,7 @@ class ArtistInfoScreen extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: hotMusicHeight,
               width: double.infinity,
               child: HotMusicsWidget(
@@ -74,7 +74,6 @@ class ArtistInfoScreen extends StatelessWidget {
           ),
           const SliverToBoxAdapter(
             child: Align(
-              alignment: Alignment.center,
               child: Text(
                 'Albums',
                 style: TextStyle(
@@ -85,7 +84,7 @@ class ArtistInfoScreen extends StatelessWidget {
               ),
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: ArtistAlbumsWidget(),
           ),
         ],
