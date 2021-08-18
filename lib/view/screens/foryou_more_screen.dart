@@ -1,6 +1,7 @@
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForYouMoreScreen extends StatelessWidget {
   const ForYouMoreScreen({
@@ -41,6 +42,13 @@ class ForYouMoreScreen extends StatelessWidget {
               itemCount: hotMusicItemCount,
             ),
           ),
+          BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+            builder: (context, miniPlayerState) => Visibility(
+                visible: miniPlayerState.isShow!,
+                child: const SizedBox(
+                  height: 80.0,
+                )),
+          )
         ],
       ),
     );

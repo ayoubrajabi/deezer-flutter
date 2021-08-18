@@ -7,7 +7,7 @@ class HeaderBottom extends StatefulWidget implements PreferredSizeWidget {
   _HeaderBottomState createState() => _HeaderBottomState();
 
   @override
-  Size get preferredSize => const Size(double.infinity, 127.0);
+  Size get preferredSize => const Size(double.infinity, 150.0);
 }
 
 class _HeaderBottomState extends State<HeaderBottom> {

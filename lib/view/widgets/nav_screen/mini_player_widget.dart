@@ -70,20 +70,20 @@ class MiniPlayerWidget extends StatelessWidget {
                         SizedBox(
                           height: 50.0,
                           width: 50.0,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                _theme.accentColor,
-                              ),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(200.0),
+                          child: ClipOval(
+                            child: Material(
+                              color: _theme.accentColor, // Button color
+                              child: InkWell(
+                                splashColor: _theme
+                                    .scaffoldBackgroundColor, // Splash color
+                                onTap: () {},
+                                child: SizedBox(
+                                  child: Icon(
+                                    Icons.pause,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: const Center(
-                              child: Icon(Icons.pause),
                             ),
                           ),
                         ),
@@ -99,12 +99,10 @@ class MiniPlayerWidget extends StatelessWidget {
                                   ),
                           icon: RotatedBox(
                             quarterTurns: -1,
-                            child: Center(
-                              child: const Icon(
-                                Icons.chevron_left,
-                                color: Colors.white,
-                                size: 20.0,
-                              ),
+                            child: const Icon(
+                              Icons.chevron_left,
+                              color: Colors.white,
+                              size: 20.0,
                             ),
                           ),
                         )

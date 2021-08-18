@@ -140,6 +140,15 @@ class SearchScreen extends StatelessWidget {
               },
             ),
           ),
+          SliverToBoxAdapter(
+            child: BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+              builder: (context, miniPlayerState) => Visibility(
+                  visible: miniPlayerState.isShow!,
+                  child: const SizedBox(
+                    height: 80.0,
+                  )),
+            ),
+          ),
         ],
       ),
     );
