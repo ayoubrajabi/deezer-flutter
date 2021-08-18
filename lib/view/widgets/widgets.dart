@@ -6,3 +6,4 @@ export 'nav_screen/bottom_nav_items.dart';
 export 'nav_screen/custom_navigation_bar.dart';
 export 'search_screen/searchScreen.dart';
 export 'view_more/viewMore.dart';
+export 'nav_screen/navscreen.dart';
