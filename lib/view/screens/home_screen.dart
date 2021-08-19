@@ -1,7 +1,6 @@
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:miniplayer/miniplayer.dart';
 
 import '../widgets/widgets.dart';
 
@@ -61,10 +60,11 @@ class HomeScreen extends StatelessWidget {
             ),
             BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
               builder: (context, miniPlayerState) => Visibility(
-                  visible: miniPlayerState.isShow!,
-                  child: const SizedBox(
-                    height: 80.0,
-                  )),
+                visible: miniPlayerState.isShow!,
+                child: const SizedBox(
+                  height: 80.0,
+                ),
+              ),
             ),
           ],
         ),

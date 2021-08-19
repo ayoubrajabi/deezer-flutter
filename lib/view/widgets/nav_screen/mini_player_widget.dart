@@ -3,9 +3,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'package:animated_widgets/animated_widgets.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 
-class MiniPlayerWidget extends StatelessWidget {
+class MiniPlayerWidget extends StatefulWidget {
   const MiniPlayerWidget({Key? key}) : super(key: key);
+
+  @override
+  _MiniPlayerWidgetState createState() => _MiniPlayerWidgetState();
+}
+
+class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
+  bool? _isPlay = false;
+
+  AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+
+  void openPlayer() async {
+    final miniPlayerState = context.read<MiniPlayerCubit>().state;
+
+    await _assetsAudioPlayer.open(
+      Audio.network(
+        miniPlayerState.preview!,
+        metas: Metas(
+          artist: miniPlayerState.name,
+          image: MetasImage(
+            path: miniPlayerState.imageUrl!,
+            type: ImageType.network,
+          ),
+          title: miniPlayerState.title,
+        ),
+      ),
+      showNotification: true,
+    );
+  }
+
+  stopPlaying() async {
+    return await _assetsAudioPlayer.playOrPause();
+  }
+
+  @override
+  void dispose() {
+    _assetsAudioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +115,23 @@ class MiniPlayerWidget extends StatelessWidget {
                               child: InkWell(
                                 splashColor: _theme
                                     .scaffoldBackgroundColor, // Splash color
-                                onTap: () {},
+                                onTap: () {
+                                  if (_isPlay == false) {
+                                    setState(() {
+                                      _isPlay = true;
+
+                                      openPlayer();
+                                    });
+                                  } else {
+                                    setState(() {
+                                      _isPlay = false;
+                                    });
+                                    stopPlaying();
+                                  }
+                                },
                                 child: SizedBox(
                                   child: Icon(
-                                    Icons.pause,
+                                    _isPlay! ? Icons.pause : Icons.play_arrow,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -94,6 +146,7 @@ class MiniPlayerWidget extends StatelessWidget {
                                       isShow: false,
                                       imageUrl: '',
                                       name: '',
+                                      preview: '',
                                       title: '',
                                     ),
                                   ),

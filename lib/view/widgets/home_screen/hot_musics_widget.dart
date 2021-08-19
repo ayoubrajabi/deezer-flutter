@@ -63,6 +63,7 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
                             imageUrl: _musicData.album!.coverMedium,
                             name: _musicData.artist!.name,
                             title: _musicData.title,
+                            preview: _musicData.preview,
                             isShow: true,
                           ),
                         ),

@@ -124,6 +124,7 @@ class SearchScreen extends StatelessWidget {
                                                 .album!.coverMedium,
                                             name: searchStateData.artist!.name,
                                             title: searchStateData.title,
+                                            preview: searchStateData.preview,
                                             isShow: true,
                                           ),
                                         ),
