@@ -60,109 +60,107 @@ class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
             translationDisabled: Offset(0, 80),
             translationEnabled: const Offset(0, 0),
             child: Miniplayer(
-                minHeight: 75.0,
-                maxHeight: 75.0,
-                elevation: 30.0,
-                builder: (hieght, precentage) {
-                  return Container(
-                    color: _theme.scaffoldBackgroundColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.network(
-                            miniPlayerState.imageUrl!,
-                            height: 75.0,
-                            width: 100.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 150.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                miniPlayerState.title!,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
+              minHeight: 75.0,
+              maxHeight: 75.0,
+              elevation: 30.0,
+              builder: (hieght, precentage) {
+                return Container(
+                  color: _theme.scaffoldBackgroundColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.network(
+                        miniPlayerState.imageUrl!,
+                        height: 75.0,
+                        width: 100.0,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(
+                        width: 150.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              miniPlayerState.title!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
                               ),
-                              Text(
-                                miniPlayerState.name!,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
+                            ),
+                            Text(
+                              miniPlayerState.name!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
                               ),
-                              const SizedBox(
-                                height: 10.0,
-                              )
-                            ],
-                          ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            )
+                          ],
                         ),
-                        SizedBox(
-                          height: 50.0,
-                          width: 50.0,
-                          child: ClipOval(
-                            child: Material(
-                              color: _theme.accentColor, // Button color
-                              child: InkWell(
-                                splashColor: _theme
-                                    .scaffoldBackgroundColor, // Splash color
-                                onTap: () {
-                                  if (_isPlay == false) {
-                                    setState(() {
-                                      _isPlay = true;
+                      ),
+                      SizedBox(
+                        height: 50.0,
+                        width: 50.0,
+                        child: ClipOval(
+                          child: Material(
+                            color: _theme.accentColor, // Button color
+                            child: InkWell(
+                              splashColor: _theme
+                                  .scaffoldBackgroundColor, // Splash color
+                              onTap: () {
+                                if (_isPlay == false) {
+                                  setState(() {
+                                    _isPlay = true;
 
-                                      openPlayer();
-                                    });
-                                  } else {
-                                    setState(() {
-                                      _isPlay = false;
-                                    });
-                                    stopPlaying();
-                                  }
-                                },
-                                child: SizedBox(
-                                  child: Icon(
-                                    _isPlay! ? Icons.pause : Icons.play_arrow,
-                                    color: Colors.white,
-                                  ),
+                                    openPlayer();
+                                  });
+                                } else {
+                                  setState(() {
+                                    _isPlay = false;
+                                  });
+                                  stopPlaying();
+                                }
+                              },
+                              child: SizedBox(
+                                child: Icon(
+                                  _isPlay! ? Icons.pause : Icons.play_arrow,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        IconButton(
-                          onPressed: () =>
-                              context.read<MiniPlayerCubit>().musicInfo(
-                                    MiniPlayerState(
-                                      isShow: false,
-                                      imageUrl: '',
-                                      name: '',
-                                      preview: '',
-                                      title: '',
-                                    ),
+                      ),
+                      IconButton(
+                        onPressed: () =>
+                            context.read<MiniPlayerCubit>().musicInfo(
+                                  MiniPlayerState(
+                                    isShow: false,
+                                    imageUrl: '',
+                                    name: '',
+                                    preview: '',
+                                    title: '',
                                   ),
-                          icon: RotatedBox(
-                            quarterTurns: -1,
-                            child: const Icon(
-                              Icons.chevron_left,
-                              color: Colors.white,
-                              size: 20.0,
-                            ),
+                                ),
+                        icon: const RotatedBox(
+                          quarterTurns: -1,
+                          child: Icon(
+                            Icons.chevron_left,
+                            color: Colors.white,
+                            size: 20.0,
                           ),
-                        )
-                      ],
-                    ),
-                  );
-                }),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         );
       },

@@ -1,16 +1,53 @@
-# deezer_flutter
+# Welcome to Deezer Flutter!
 
-A new Flutter project.
+This is deezer app writing with dart and flutter with api of deezer.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+![enter image description here](https://s4.uupload.ir/files/deezer_flutter_sc48.png)
 
-A few resources to get you started if this is your first Flutter project:
+# App Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+ - Top artist, musics, playLists
+ - Search artist, musics
+ - Play preview of musics
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Project Structuer
+
+ 
+
+    └─lib
+      ├─constants/
+      ├─data/
+      │　├─models/
+      │　└─repositores/
+      ├─logic/
+      │　├─bloc_providers/
+      │　├─blocs/
+      │　├─cubits/
+      │　└─logics.dart
+      ├─utilities/
+      ├─view/
+      │　├─config/
+      │　├─screens/
+      │　└─widgets/
+      └─main.dart
+
+
+## **Run App** 
+
+Clone this repo with git
+
+    https://github.com/ayoubrajabi/deezer-flutter.git
+
+in command writh :
+
+    flutter run --release
+
+
+for more information about build the app for adndroid :
+
+[Build and release an Android app](https://flutter.dev/docs/deployment/android)
+
+## **License** 
+
+[Apache-2.0 License](https://github.com/ayoubrajabi/deezer-flutter/blob/main/LICENSE.md)
