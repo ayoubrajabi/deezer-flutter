@@ -10,46 +10,66 @@ class ViewMoreButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _width = MediaQuery.of(context).size.width;
-    final double _height = MediaQuery.of(context).size.height;
-    return SizedBox(
-      height: 80.0,
-      width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: List<ElevatedButton>.generate(
-          2,
-          (index) => ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                index == 0 ? Colors.white : Colors.grey.shade700,
-              ),
-              padding: MaterialStateProperty.all(
-                EdgeInsets.symmetric(
-                    vertical: _height * 0.023, horizontal: _width * 0.12),
-              ),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7.0),
-                ),
-              ),
+    final _theme = Theme.of(context);
+    final _height = MediaQuery.of(context).size.height;
+    final _width = MediaQuery.of(context).size.height;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: List<Container>.generate(
+        2,
+        (index) => Container(
+          height: _height * 0.075,
+          width: _width * 0.24,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(45.0),
+            gradient: LinearGradient(
+              colors: index == 0
+                  ? [
+                      _theme.accentColor,
+                      const Color(0xff733E46),
+                    ]
+                  : [
+                      const Color(0xFFbeb9be),
+                      const Color(0xFFbeb9be).withAlpha(100),
+                    ],
             ),
+            boxShadow: index == 0
+                ? const [
+                    BoxShadow(
+                      color: Color(0xff733E46),
+                      blurRadius: 5.0,
+                    )
+                  ]
+                : [
+                    const BoxShadow(
+                      color: Color(0xff733E46),
+                      blurRadius: 5.0,
+                    )
+                  ],
+          ),
+          child: MaterialButton(
             onPressed: () {},
+            shape: const StadiumBorder(),
             child: Row(
               children: [
+                const Spacer(
+                  flex: 3,
+                ),
                 Icon(
                   _buttonsItems.keys.elementAt(index),
-                  color: index == 0 ? Colors.black : Colors.white,
+                  color: Colors.white,
                 ),
-                const SizedBox(
-                  width: 20.0,
-                ),
+                const Spacer(),
                 Text(
                   _buttonsItems.values.elementAt(index),
-                  style: TextStyle(
-                    color: index == 0 ? Colors.black : Colors.white,
-                    fontWeight: FontWeight.bold,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.0,
                   ),
+                ),
+                const Spacer(
+                  flex: 3,
                 ),
               ],
             ),

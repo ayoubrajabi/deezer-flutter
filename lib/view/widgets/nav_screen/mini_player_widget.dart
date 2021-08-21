@@ -15,24 +15,24 @@ class MiniPlayerWidget extends StatefulWidget {
 class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
   bool? _isPlay = false;
 
-  AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer _audioPlayer = AudioPlayer();
 
-  void openPlayer() async {
+  Future<void> openPlayer() async {
     final miniPlayerState = context.read<MiniPlayerCubit>().state;
 
     await _audioPlayer.play(
       miniPlayerState.preview!,
     );
 
-    await _audioPlayer.onPlayerCompletion.listen((event) {
+    _audioPlayer.onPlayerCompletion.listen((event) {
       setState(() {
         _isPlay = false;
       });
     });
   }
 
-  stopPlaying() async {
-    return await _audioPlayer.stop();
+  Future<int> stopPlaying() async {
+    return _audioPlayer.stop();
   }
 
   @override
@@ -58,8 +58,7 @@ class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
           child: TranslationAnimatedWidget.tween(
             enabled: miniPlayerState.isShow!,
             duration: const Duration(milliseconds: 200),
-            translationDisabled: Offset(0, 80),
-            translationEnabled: const Offset(0, 0),
+            translationDisabled: const Offset(0, 80),
             child: Miniplayer(
               minHeight: 75.0,
               maxHeight: 75.0,
@@ -140,7 +139,7 @@ class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
                       IconButton(
                         onPressed: () =>
                             context.read<MiniPlayerCubit>().musicInfo(
-                                  MiniPlayerState(
+                                  const MiniPlayerState(
                                     isShow: false,
                                     imageUrl: '',
                                     name: '',

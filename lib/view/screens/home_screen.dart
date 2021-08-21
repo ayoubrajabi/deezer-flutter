@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
     final _theme = Theme.of(context);
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -31,28 +32,28 @@ class HomeScreen extends StatelessWidget {
               title: 'Top Artists',
             ),
             const SizedBox(
-              key: const PageStorageKey('TopArtists'),
-              height: 195.0,
+              key: PageStorageKey('TopArtists'),
+              height: 165.0,
               child: TopArtistsWidget(),
             ),
             const HomeScreenItemsTitle(
               title: 'For You',
             ),
             const SizedBox(
-              key: const PageStorageKey('ForYou'),
-              height: 415.0,
+              key: PageStorageKey('ForYou'),
+              height: 390.0,
               child: ForYouWidget(),
             ),
             const HomeScreenItemsTitle(
               title: 'Trending Musics',
             ),
             const SizedBox(
-              key: const PageStorageKey('HotMusic'),
-              height: 400.0,
+              key: PageStorageKey('HotMusic'),
+              height: 790.0,
               child: HotMusicsWidget(
                 query: 'editorial/0/charts',
                 value: 'tracks',
-                itemCount: 5,
+                itemCount: 10,
               ),
             ),
             BlocBuilder<MiniPlayerCubit, MiniPlayerState>(

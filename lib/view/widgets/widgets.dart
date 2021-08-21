@@ -1,4 +1,3 @@
-export 'animation_page.dart';
 export 'artist_screen/artistScreen.dart';
 export 'home_screen/homeScreen.dart';
 export 'hot_music/hotMusic.dart';

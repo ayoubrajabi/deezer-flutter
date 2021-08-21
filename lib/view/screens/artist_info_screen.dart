@@ -38,6 +38,7 @@ class ArtistInfoScreen extends StatelessWidget {
         ),
       ),
       child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class LoadingPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint();
+    final Paint paint = Paint();
     Path path = Path();
 
     // Path number 1
-    paint.color = Color(0xFF1C1420);
+    paint.color = const Color(0xFF1C1420);
     path = Path();
     path.lineTo(0, size.height / 2);
     path.cubicTo(

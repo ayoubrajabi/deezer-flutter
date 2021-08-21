@@ -66,7 +66,6 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
               width: 300.0,
               icon: Icons.music_note,
               color: Theme.of(context).cardColor,
-              clipper: null,
               borderRadius: BorderRadius.circular(12.0),
               shape: BoxShape.rectangle,
             ),

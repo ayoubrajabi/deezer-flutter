@@ -22,11 +22,12 @@ class TopArtistItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ClipPath(
               clipper: TopArtistClipper(),
               child: Container(
-                width: 140.0,
+                width: 120.0,
                 color: _theme.cardColor,
                 child: ClipPath(
                   clipper: TopArtistClipper(),
@@ -37,9 +38,6 @@ class TopArtistItem extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10.0,
             ),
             Text(
               artistName!,

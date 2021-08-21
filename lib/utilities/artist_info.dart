@@ -14,7 +14,7 @@ class SearchArtsitInfo {
 
   static List<String?> imageUrl(SearchIsLoaded searchState) {
     return _artistDtat(searchState)
-        .map((info) => info.pictureMedium!)
+        .map((info) => info.pictureBig!)
         .toSet()
         .toList();
   }

@@ -4,7 +4,6 @@ class ArtistHeaderWidget extends StatelessWidget {
   const ArtistHeaderWidget({
     Key? key,
     @required this.index,
-    // @required this.artistState,
     @required this.imageUrl,
     @required this.artistName,
   }) : super(key: key);
@@ -12,7 +11,6 @@ class ArtistHeaderWidget extends StatelessWidget {
   final int? index;
   final String? imageUrl;
   final String? artistName;
-  // final ArtistIsLoaded? artistState;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +25,7 @@ class ArtistHeaderWidget extends StatelessWidget {
           width: double.infinity,
           height: 300.0,
         ),
-        Positioned(
-          bottom: 0.0,
-          right: 0.0,
-          left: 0.0,
-          top: 0.0,
+        Positioned.fill(
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -68,8 +62,8 @@ class ArtistHeaderWidget extends StatelessWidget {
                 height: 15.0,
               ),
               Container(
-                height: _height * 0.085,
-                width: _width * 0.4,
+                height: _height * 0.08,
+                width: _width * 0.38,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(45.0),
                   gradient: LinearGradient(
@@ -92,6 +86,7 @@ class ArtistHeaderWidget extends StatelessWidget {
                     'play',
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 14.0,
                     ),
                   ),
                 ),

@@ -34,7 +34,7 @@ class HomeLocation extends BeamLocation<BeamState> {
                   return ArtistInfoScreen(
                     index: _index,
                     artistName: _artistData.name,
-                    artistImageurl: _artistData.pictureMedium,
+                    artistImageurl: _artistData.pictureBig,
                     hotMusicQuery:
                         ArtistInfo.trackListQuery(_artistState, _index),
                     hotMusicHeight: _musicState is MusicIsLoaded

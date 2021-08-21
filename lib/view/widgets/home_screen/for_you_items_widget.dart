@@ -1,6 +1,6 @@
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:blur/blur.dart';
 
 class ForYouItems extends StatelessWidget {
   const ForYouItems({
@@ -21,12 +21,8 @@ class ForYouItems extends StatelessWidget {
     final _theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          color: _theme.cardColor,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           children: [
             ClipRRect(
@@ -34,9 +30,13 @@ class ForYouItems extends StatelessWidget {
                 topLeft: Radius.circular(12.0),
                 topRight: Radius.circular(12.0),
               ),
-              child: SizedBox(
-                height: 290.0,
+              child: Container(
+                height: 270.0,
                 width: double.infinity,
+                decoration: BoxDecoration(
+                  color: _theme.cardColor,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
                 child: FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage,
                   image: imgUrlXl!,

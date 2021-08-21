@@ -46,7 +46,7 @@ class CustomModalSheet extends StatelessWidget {
                               const SizedBox(width: 30.0),
                               Text(
                                 title,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ],
                           ),

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class TopArtistClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Paint paint = Paint();
+    final Paint paint = Paint();
     Path path = Path();
 
     // Path number 1
 
-    paint.color = Color(0xffC4C4C4);
+    paint.color = const Color(0xffC4C4C4);
     path = Path();
     path.lineTo(0, size.height / 2);
     path.cubicTo(

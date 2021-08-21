@@ -1,10 +1,10 @@
+import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/constants/constants.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:deezer_flutter/view/screens/home_screen.dart';
 import 'package:deezer_flutter/view/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:beamer/beamer.dart';
 
 import '../widgets.dart';
 
@@ -78,6 +78,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           context
               .read<NavbarTooltipCubit>()
               .navBarTooltipChange(_navBarItems.keys.elementAt(index));
+          context.read<ScreenChangeCubit>().screenChanegeIndex(index);
         },
       ),
     );

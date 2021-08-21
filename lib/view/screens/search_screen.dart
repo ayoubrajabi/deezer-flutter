@@ -36,8 +36,14 @@ class SearchScreen extends StatelessWidget {
             child: BlocBuilder<SearchBloc, SearchState>(
               builder: (context, searchState) {
                 if (searchState is SearchIsLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    child: const Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 3.0,
+                        color: Color(0xFFA15A66),
+                      ),
+                    ),
                   );
                 } else if (searchState is SearchIsLoaded) {
                   return Column(
@@ -50,22 +56,21 @@ class SearchScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.white70),
                         ),
                       ),
-                      Divider(
-                        color: Colors.grey.withOpacity(0.3),
+                      const Divider(
+                        color: Color(0xFF423240),
                         indent: 20.0,
                         endIndent: 20.0,
                         height: 30.0,
                       ),
                       SizedBox(
-                        height: 180,
-                        width: double.infinity,
+                        height: 170,
                         child: ListView.builder(
                           itemCount:
                               SearchArtsitInfo.imageUrl(searchState).length,
                           scrollDirection: Axis.horizontal,
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) => Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                            padding: const EdgeInsets.only(left: 10.0),
                             child: TopArtistItem(
                               artistName:
                                   SearchArtsitInfo.name(searchState)[index],
@@ -99,8 +104,8 @@ class SearchScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.white70),
                         ),
                       ),
-                      Divider(
-                        color: Colors.grey.withOpacity(0.3),
+                      const Divider(
+                        color: Color(0xFF423240),
                         indent: 20.0,
                         endIndent: 20.0,
                         height: 30.0,
