@@ -120,6 +120,7 @@ class SearchScreen extends StatelessWidget {
                                 artistName: searchStateData.artist!.name,
                                 imgUrl: searchStateData.album!.coverMedium,
                                 musicTitle: searchStateData.title,
+                                url: searchStateData.link,
                                 onTap: () =>
                                     context.read<MiniPlayerCubit>().musicInfo(
                                           MiniPlayerState(
@@ -128,6 +129,7 @@ class SearchScreen extends StatelessWidget {
                                             name: searchStateData.artist!.name,
                                             title: searchStateData.title,
                                             preview: searchStateData.preview,
+                                            link: searchStateData.link,
                                             isShow: true,
                                           ),
                                         ),

@@ -1,8 +1,8 @@
-import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import '../widgets.dart';
 
 class HotMusicItems extends StatelessWidget {
   const HotMusicItems({
@@ -10,12 +10,14 @@ class HotMusicItems extends StatelessWidget {
     @required this.imgUrl,
     @required this.artistName,
     @required this.musicTitle,
+    @required this.url,
     @required this.onTap,
   }) : super(key: key);
   final void Function()? onTap;
   final String? imgUrl;
   final String? musicTitle;
   final String? artistName;
+  final String? url;
 
   @override
   Widget build(BuildContext context) {
@@ -70,71 +72,17 @@ class HotMusicItems extends StatelessWidget {
             IconButton(
               onPressed: () {
                 showModalBottomSheet(
-                    context: context,
-                    builder: (widget) {
-                      return CustomModalSheet();
-                    });
+                  context: context,
+                  builder: (widget) {
+                    return CustomModalSheet(
+                      url: url,
+                    );
+                  },
+                );
               },
               icon: const Icon(
                 Icons.more_vert,
                 color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomModalSheet extends StatelessWidget {
-  CustomModalSheet({Key? key}) : super(key: key);
-
-  final bottomSheetItems = <String, IconData>{
-    'Share': CupertinoIcons.share,
-    'Go To Artist': CupertinoIcons.person,
-    'Go To Album': CupertinoIcons.music_albums,
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    return BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
-      builder: (context, miniPlayerState) => AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        height: !miniPlayerState.isShow! ? 130.0 : 210.0,
-        color: _theme.scaffoldBackgroundColor,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 130.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: bottomSheetItems
-                    .map(
-                      (title, icon) => MapEntry(
-                        title,
-                        Row(
-                          children: [
-                            const SizedBox(width: 20.0),
-                            Icon(icon, color: _theme.accentColor),
-                            const SizedBox(width: 30.0),
-                            Text(
-                              title,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                    .values
-                    .toList(),
-              ),
-            ),
-            Visibility(
-              visible: miniPlayerState.isShow!,
-              child: const SizedBox(
-                height: 80.0,
               ),
             ),
           ],

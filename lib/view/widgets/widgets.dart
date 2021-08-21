@@ -1,11 +1,12 @@
 export 'animation_page.dart';
 export 'artist_screen/artistScreen.dart';
 export 'home_screen/homeScreen.dart';
+export 'hot_music/hotMusic.dart';
+export 'loading_pointer.dart';
 export 'loading_widget.dart';
 export 'nav_screen/bottom_nav_items.dart';
 export 'nav_screen/custom_navigation_bar.dart';
-export 'search_screen/searchScreen.dart';
-export 'view_more/viewMore.dart';
 export 'nav_screen/navscreen.dart';
+export 'search_screen/searchScreen.dart';
 export 'top_artist_clipper.dart';
-export 'loading_pointer.dart';
+export 'view_more/viewMore.dart';

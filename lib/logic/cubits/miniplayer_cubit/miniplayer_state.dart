@@ -5,6 +5,7 @@ class MiniPlayerState extends Equatable {
   final String? title;
   final String? imageUrl;
   final String? preview;
+  final String? link;
   final bool? isShow;
 
   const MiniPlayerState({
@@ -12,6 +13,7 @@ class MiniPlayerState extends Equatable {
     this.title,
     this.imageUrl,
     this.preview,
+    this.link,
     this.isShow,
   });
 
@@ -27,15 +29,12 @@ class MiniPlayerState extends Equatable {
       title: title ?? this.title,
       imageUrl: imageUrl ?? this.imageUrl,
       preview: preview ?? this.preview,
+      link: link ?? this.link,
       isShow: isShow ?? this.isShow,
     );
   }
 
   @override
-  String toString() {
-    return '''PostState { name: $name, title: $title, preview: $preview ,imageUrl: $imageUrl }''';
-  }
-
-  @override
-  List<Object> get props => [name!, title!, imageUrl!, preview!, isShow!];
+  List<Object> get props =>
+      [name!, title!, imageUrl!, preview!, link!, isShow!];
 }

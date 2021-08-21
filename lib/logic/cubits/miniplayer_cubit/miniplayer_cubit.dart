@@ -10,6 +10,7 @@ class MiniPlayerCubit extends Cubit<MiniPlayerState> {
           name: '',
           title: '',
           preview: '',
+          link: '',
           isShow: false,
         ));
 
@@ -18,6 +19,7 @@ class MiniPlayerCubit extends Cubit<MiniPlayerState> {
         name: musicInfo.name,
         title: musicInfo.title,
         preview: musicInfo.preview,
+        link: musicInfo.link,
         isShow: musicInfo.isShow,
       ));
 }

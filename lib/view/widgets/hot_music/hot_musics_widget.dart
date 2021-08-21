@@ -44,12 +44,14 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
                     imgUrl: _musicData.album!.coverMedium,
                     artistName: _musicData.artist!.name,
                     musicTitle: _musicData.title,
+                    url: _musicData.link,
                     onTap: () => context.read<MiniPlayerCubit>().musicInfo(
                           MiniPlayerState(
                             imageUrl: _musicData.album!.coverMedium,
                             name: _musicData.artist!.name,
                             title: _musicData.title,
                             preview: _musicData.preview,
+                            link: _musicData.link,
                             isShow: true,
                           ),
                         ),

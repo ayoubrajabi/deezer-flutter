@@ -145,6 +145,7 @@ class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
                                     imageUrl: '',
                                     name: '',
                                     preview: '',
+                                    link: '',
                                     title: '',
                                   ),
                                 ),
