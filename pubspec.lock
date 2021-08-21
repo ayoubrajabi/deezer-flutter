@@ -15,20 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  assets_audio_player:
-    dependency: "direct main"
-    description:
-      name: assets_audio_player
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.3+6"
-  assets_audio_player_web:
-    dependency: transitive
-    description:
-      name: assets_audio_player_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.3+6"
   async:
     dependency: transitive
     description:
@@ -36,6 +22,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.6.1"
+  audioplayers:
+    dependency: "direct main"
+    description:
+      name: audioplayers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.19.1"
   beamer:
     dependency: "direct main"
     description:
@@ -331,13 +324,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0"
-  rxdart:
-    dependency: transitive
-    description:
-      name: rxdart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.27.1"
   sky_engine:
     dependency: transitive
     description: flutter

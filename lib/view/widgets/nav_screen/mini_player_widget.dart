@@ -1,5 +1,5 @@
 import 'package:animated_widgets/animated_widgets.dart';
-import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,34 +15,29 @@ class MiniPlayerWidget extends StatefulWidget {
 class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
   bool? _isPlay = false;
 
-  AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+  AudioPlayer _audioPlayer = AudioPlayer();
 
   void openPlayer() async {
     final miniPlayerState = context.read<MiniPlayerCubit>().state;
 
-    await _assetsAudioPlayer.open(
-      Audio.network(
-        miniPlayerState.preview!,
-        metas: Metas(
-          artist: miniPlayerState.name,
-          image: MetasImage(
-            path: miniPlayerState.imageUrl!,
-            type: ImageType.network,
-          ),
-          title: miniPlayerState.title,
-        ),
-      ),
-      showNotification: true,
+    await _audioPlayer.play(
+      miniPlayerState.preview!,
     );
+
+    await _audioPlayer.onPlayerCompletion.listen((event) {
+      setState(() {
+        _isPlay = false;
+      });
+    });
   }
 
   stopPlaying() async {
-    return await _assetsAudioPlayer.playOrPause();
+    return await _audioPlayer.stop();
   }
 
   @override
   void dispose() {
-    _assetsAudioPlayer.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -50,7 +45,13 @@ class _MiniPlayerWidgetState extends State<MiniPlayerWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
 
-    return BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+    return BlocConsumer<MiniPlayerCubit, MiniPlayerState>(
+      listener: (context, miniPlayerState) {
+        openPlayer();
+        setState(() {
+          _isPlay = true;
+        });
+      },
       builder: (context, miniPlayerState) {
         return Offstage(
           offstage: !miniPlayerState.isShow!,
