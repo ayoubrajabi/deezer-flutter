@@ -11,48 +11,45 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [_theme.scaffoldBackgroundColor, Colors.black45],
+            colors: [
+              _theme.scaffoldBackgroundColor,
+              Colors.black45,
+            ],
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: const HomeScreenItemsTitle(
-                title: 'Top Artists',
-              ),
+            const HomeScreenItemsTitle(
+              title: 'Top Artists',
             ),
-            SizedBox(
+            const SizedBox(
               key: const PageStorageKey('TopArtists'),
-              height: 180.0,
-              width: MediaQuery.of(context).size.width,
-              child: const TopArtistsWidget(),
+              height: 195.0,
+              child: TopArtistsWidget(),
             ),
             const HomeScreenItemsTitle(
               title: 'For You',
             ),
-            SizedBox(
+            const SizedBox(
               key: const PageStorageKey('ForYou'),
               height: 415.0,
-              width: MediaQuery.of(context).size.width,
-              child: const ForYouWidget(),
+              child: ForYouWidget(),
             ),
             const HomeScreenItemsTitle(
               title: 'Trending Musics',
             ),
-            SizedBox(
+            const SizedBox(
               key: const PageStorageKey('HotMusic'),
-              height: 5 * 80.0,
-              width: MediaQuery.of(context).size.width,
-              child: const HotMusicsWidget(
+              height: 400.0,
+              child: HotMusicsWidget(
                 query: 'editorial/0/charts',
                 value: 'tracks',
                 itemCount: 5,

@@ -1,5 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/logic/logics.dart';
+import 'package:deezer_flutter/utilities/utilities.dart';
 import 'package:deezer_flutter/view/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,22 +24,19 @@ class HomeLocation extends BeamLocation<BeamState> {
                 final _musicState = context.watch<MusicBloc>().state;
 
                 if (_artistState is ArtistIsLoaded) {
-                  final _artistStateData = _artistState.getArtist.data![_index];
-                  final String _query = _artistStateData.tracklist!
-                      .replaceAll('https://api.deezer.com/', '');
-                  final String _trackListQuery =
-                      _query.replaceAll('?limit=50', '');
+                  final _artistData =
+                      ArtistInfo.artistDtat(_artistState, _index);
 
-                  final int? id = _artistStateData.id;
-                  context
-                      .read<AlbumBloc>()
-                      .add(FeatchAlbum('artist/$id/albums', ''));
+                  context.read<AlbumBloc>().add(FeatchAlbum(
+                      'artist/${ArtistInfo.id(_artistState, _index)}/albums',
+                      ''));
 
                   return ArtistInfoScreen(
                     index: _index,
-                    artistName: _artistStateData.name,
-                    artistImageurl: _artistStateData.pictureMedium,
-                    hotMusicQuery: _trackListQuery,
+                    artistName: _artistData.name,
+                    artistImageurl: _artistData.pictureMedium,
+                    hotMusicQuery:
+                        ArtistInfo.trackListQuery(_artistState, _index),
                     hotMusicHeight: _musicState is MusicIsLoaded
                         ? _musicState.getMusic.data!.length * 80.0
                         : 400.0,

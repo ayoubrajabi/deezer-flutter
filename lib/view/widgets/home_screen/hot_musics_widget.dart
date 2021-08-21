@@ -32,21 +32,7 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
     return SizedBox(
       child: BlocBuilder<MusicBloc, MusicState>(
         builder: (context, state) {
-          if (state is MusicIsLoading) {
-            return ListView.builder(
-              itemCount: 10,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => LoadingWidget(
-                height: 60.0,
-                width: 300.0,
-                icon: Icons.music_note,
-                color: Theme.of(context).cardColor,
-                clipper: null,
-                borderRadius: BorderRadius.circular(12.0),
-                shape: BoxShape.rectangle,
-              ),
-            );
-          } else if (state is MusicIsLoaded) {
+          if (state is MusicIsLoaded) {
             return ListView.builder(
                 itemCount: widget.itemCount,
                 padding: const EdgeInsets.all(10.0),
@@ -70,7 +56,19 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
                   );
                 });
           }
-          return const SizedBox();
+          return ListView.builder(
+            itemCount: 10,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => LoadingWidget(
+              height: 60.0,
+              width: 300.0,
+              icon: Icons.music_note,
+              color: Theme.of(context).cardColor,
+              clipper: null,
+              borderRadius: BorderRadius.circular(12.0),
+              shape: BoxShape.rectangle,
+            ),
+          );
         },
       ),
     );

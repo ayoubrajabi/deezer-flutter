@@ -1,7 +1,7 @@
+import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:beamer/beamer.dart';
 
 import '../widgets.dart';
 
@@ -41,21 +41,7 @@ class _ForYouWidgetState extends State<ForYouWidget> {
         },
         buildWhen: (preState, state) => preState != state,
         builder: (context, radioState) {
-          if (radioState is RadioIsLoading) {
-            return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => LoadingWidget(
-                      height: 290.0,
-                      width: 260.0,
-                      borderRadius: BorderRadius.circular(12.0),
-                      icon: Icons.settings_input_antenna,
-                      color: _theme.cardColor,
-                      clipper: null,
-                      shape: BoxShape.rectangle,
-                    ));
-          } else if (radioState is RadioIsLoaded) {
+          if (radioState is RadioIsLoaded) {
             return ListView.builder(
               itemCount: 10,
               scrollDirection: Axis.horizontal,
@@ -89,7 +75,20 @@ class _ForYouWidgetState extends State<ForYouWidget> {
               },
             );
           }
-          return const SizedBox();
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 10,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) => LoadingWidget(
+              height: 290.0,
+              width: 260.0,
+              borderRadius: BorderRadius.circular(12.0),
+              icon: Icons.settings_input_antenna,
+              color: _theme.cardColor,
+              clipper: null,
+              shape: BoxShape.rectangle,
+            ),
+          );
         },
       ),
     );

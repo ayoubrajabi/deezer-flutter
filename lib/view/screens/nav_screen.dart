@@ -7,6 +7,7 @@ import '../widgets/widgets.dart';
 
 class NavScreen extends StatelessWidget {
   const NavScreen({Key? key, @required this.beamerKey}) : super(key: key);
+
   static const String path = '/';
 
   final GlobalKey<BeamerState>? beamerKey;

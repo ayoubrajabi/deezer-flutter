@@ -22,7 +22,6 @@ class ForYouMoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
           ViewMoreHeader(
@@ -44,11 +43,12 @@ class ForYouMoreScreen extends StatelessWidget {
           ),
           BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
             builder: (context, miniPlayerState) => Visibility(
-                visible: miniPlayerState.isShow!,
-                child: const SizedBox(
-                  height: 80.0,
-                )),
-          )
+              visible: miniPlayerState.isShow!,
+              child: const SizedBox(
+                height: 80.0,
+              ),
+            ),
+          ),
         ],
       ),
     );

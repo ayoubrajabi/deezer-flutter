@@ -1,9 +1,9 @@
+import 'package:animated_widgets/animated_widgets.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniplayer/miniplayer.dart';
-import 'package:animated_widgets/animated_widgets.dart';
-import 'package:assets_audio_player/assets_audio_player.dart';
 
 class MiniPlayerWidget extends StatefulWidget {
   const MiniPlayerWidget({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
+import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:beamer/beamer.dart';
 
 import '../widgets.dart';
 
@@ -41,25 +41,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
         },
         buildWhen: (preState, state) => preState != state,
         builder: (context, artistState) {
-          if (artistState is ArtistIsLoading) {
-            return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => Column(
-                      children: [
-                        LoadingWidget(
-                          height: 140.0,
-                          width: 140.0,
-                          icon: Icons.person,
-                          clipper: LoadingPainter(),
-                        ),
-                        const SizedBox(
-                          height: 2.0,
-                        ),
-                      ],
-                    ));
-          } else if (artistState is ArtistIsLoaded) {
+          if (artistState is ArtistIsLoaded) {
             return ListView.builder(
               itemCount: artistState.getArtist.total,
               scrollDirection: Axis.horizontal,
@@ -80,7 +62,24 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
               ),
             );
           }
-          return const SizedBox();
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 10,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) => Column(
+              children: [
+                LoadingWidget(
+                  height: 140.0,
+                  width: 140.0,
+                  icon: Icons.person,
+                  clipper: LoadingPainter(),
+                ),
+                const SizedBox(
+                  height: 2.0,
+                ),
+              ],
+            ),
+          );
         },
       ),
     );

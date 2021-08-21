@@ -26,7 +26,7 @@ class TopArtistItem extends StatelessWidget {
             ClipPath(
               clipper: TopArtistClipper(),
               child: Container(
-                width: 130.0,
+                width: 140.0,
                 color: _theme.cardColor,
                 child: ClipPath(
                   clipper: TopArtistClipper(),

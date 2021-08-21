@@ -60,14 +60,17 @@ class SearchScreen extends StatelessWidget {
                         height: 180,
                         width: double.infinity,
                         child: ListView.builder(
-                          itemCount: ArtsitInfo.imageUrl(searchState).length,
+                          itemCount:
+                              SearchArtsitInfo.imageUrl(searchState).length,
                           scrollDirection: Axis.horizontal,
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) => Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: TopArtistItem(
-                              artistName: ArtsitInfo.name(searchState)[index],
-                              imgUrl: ArtsitInfo.imageUrl(searchState)[index],
+                              artistName:
+                                  SearchArtsitInfo.name(searchState)[index],
+                              imgUrl:
+                                  SearchArtsitInfo.imageUrl(searchState)[index],
                               onTap: () {
                                 context.currentBeamLocation.update(
                                   (state) => state.copyWith(
