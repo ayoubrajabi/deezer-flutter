@@ -1,6 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/constants/constants.dart';
 import 'package:deezer_flutter/logic/logics.dart';
+import 'package:deezer_flutter/view/config/home_location.dart';
 import 'package:deezer_flutter/view/screens/home_screen.dart';
 import 'package:deezer_flutter/view/screens/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,16 +25,21 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   };
 
   late BeamerDelegate _beamerDelegate;
+  int _currentIndex = 0;
+
+  void _setStateListener() => setState(() {});
 
   @override
   void initState() {
     super.initState();
     _beamerDelegate = widget.beamerKey!.currentState!.routerDelegate;
+    _beamerDelegate.addListener(_setStateListener);
   }
 
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+    _currentIndex = _beamerDelegate.currentBeamLocation is HomeLocation ? 0 : 1;
 
     return Container(
       decoration: BoxDecoration(
@@ -48,6 +54,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         ],
       ),
       child: BottomNavigationBar(
+        currentIndex: _currentIndex,
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.fixed,
@@ -71,7 +78,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             .values
             .toList(),
         onTap: (index) {
-          // context.read<ScreenChangeCubit>().screenChanegeIndex(index);
           _beamerDelegate.beamToNamed(
             index == 0 ? HomeScreen.path : SearchScreen.path,
           );
@@ -82,5 +88,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _beamerDelegate.removeListener(_setStateListener);
+    super.dispose();
   }
 }

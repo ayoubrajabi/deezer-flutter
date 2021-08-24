@@ -34,29 +34,30 @@ class _HotMusicsWidgetState extends State<HotMusicsWidget> {
         builder: (context, state) {
           if (state is MusicIsLoaded) {
             return ListView.builder(
-                itemCount: widget.itemCount,
-                padding: const EdgeInsets.all(10.0),
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final _musicData = state.getMusic.data![index];
+              itemCount: widget.itemCount,
+              padding: const EdgeInsets.all(10.0),
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                final _musicData = state.getMusic.data![index];
 
-                  return HotMusicItems(
-                    imgUrl: _musicData.album!.coverMedium,
-                    artistName: _musicData.artist!.name,
-                    musicTitle: _musicData.title,
-                    url: _musicData.link,
-                    onTap: () => context.read<MiniPlayerCubit>().musicInfo(
-                          MiniPlayerState(
-                            imageUrl: _musicData.album!.coverMedium,
-                            name: _musicData.artist!.name,
-                            title: _musicData.title,
-                            preview: _musicData.preview,
-                            link: _musicData.link,
-                            isShow: true,
-                          ),
+                return HotMusicItems(
+                  imgUrl: _musicData.album!.coverMedium,
+                  artistName: _musicData.artist!.name,
+                  musicTitle: _musicData.title,
+                  url: _musicData.link,
+                  onTap: () => context.read<MiniPlayerCubit>().musicInfo(
+                        MiniPlayerState(
+                          imageUrl: _musicData.album!.coverMedium,
+                          name: _musicData.artist!.name,
+                          title: _musicData.title,
+                          preview: _musicData.preview,
+                          link: _musicData.link,
+                          isShow: true,
                         ),
-                  );
-                });
+                      ),
+                );
+              },
+            );
           }
           return ListView.builder(
             itemCount: 10,

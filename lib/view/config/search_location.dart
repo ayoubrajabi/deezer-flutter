@@ -13,7 +13,7 @@ class SearchLocation extends BeamLocation<BeamState> {
           type: BeamPageType.sharedAxisTransion,
           child: const SearchScreen(),
         ),
-        if (state.pathParameters.containsValue('artistSearch'))
+        if (state.uri.pathSegments.contains('artistSearch'))
           BeamPage(
             key: const ValueKey('artistSearch'),
             type: BeamPageType.sharedAxisTransion,

@@ -53,6 +53,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                     pathParameters: {'key': 'artistHome'},
                   ),
                 );
+
                 context.read<ScreenChangeCubit>().screenChanegeIndex(3);
                 context.read<ItemsIndexCubit>().itemsIndex(index);
               },

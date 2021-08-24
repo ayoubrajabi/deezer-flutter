@@ -26,10 +26,11 @@ class HomeLocation extends BeamLocation<BeamState> {
                 if (_artistState is ArtistIsLoaded) {
                   final _artistData =
                       ArtistInfo.artistDtat(_artistState, _index);
+                  final int _artistId = ArtistInfo.id(_artistState, _index);
 
-                  context.read<AlbumBloc>().add(FeatchAlbum(
-                      'artist/${ArtistInfo.id(_artistState, _index)}/albums',
-                      ''));
+                  context
+                      .read<AlbumBloc>()
+                      .add(FeatchAlbum('artist/$_artistId/albums', ''));
 
                   return ArtistInfoScreen(
                     index: _index,
@@ -50,7 +51,7 @@ class HomeLocation extends BeamLocation<BeamState> {
               },
             ),
           )
-        else if (state.pathParameters.containsValue('ForYou'))
+        else if (state.uri.pathSegments.contains('ForYou'))
           BeamPage(
               key: const ValueKey('ForYou'),
               type: BeamPageType.sharedAxisTransion,

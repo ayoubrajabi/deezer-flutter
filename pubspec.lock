@@ -42,7 +42,7 @@ packages:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.0"
+    version: "7.1.0"
   blur:
     dependency: "direct main"
     description:
@@ -152,7 +152,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.1"
+    version: "7.1.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -197,7 +197,7 @@ packages:
       name: lint
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.3"
+    version: "1.6.0"
   matcher:
     dependency: transitive
     description:

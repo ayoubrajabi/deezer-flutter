@@ -1,4 +1,5 @@
 import 'package:beamer/beamer.dart';
+import 'package:deezer_flutter/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,9 +23,7 @@ class NavScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: Scaffold(
-          appBar: HomeScreenAppBar(
-            beamerKey: beamerKey,
-          ),
+          appBar: const HomeScreenAppBar(),
           body: Stack(
             children: [
               Offstage(
@@ -32,6 +31,7 @@ class NavScreen extends StatelessWidget {
                 child: Beamer(
                   key: beamerKey,
                   routerDelegate: BeamerDelegate(
+                    initialPath: HomeScreen.path,
                     locationBuilder: BeamerLocationBuilder(
                       beamLocations: [
                         HomeLocation(),

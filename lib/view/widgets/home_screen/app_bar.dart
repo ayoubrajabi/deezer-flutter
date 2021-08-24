@@ -1,34 +1,12 @@
 import 'package:beamer/beamer.dart';
 import 'package:deezer_flutter/constants/constants.dart';
 import 'package:deezer_flutter/logic/logics.dart';
-import 'package:deezer_flutter/view/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreenAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const HomeScreenAppBar({
-    Key? key,
-    @required this.beamerKey,
-  }) : super(key: key);
-
-  final GlobalKey<BeamerState>? beamerKey;
-
-  @override
-  _HomeScreenAppBarState createState() => _HomeScreenAppBarState();
-
-  @override
-  Size get preferredSize => const Size(double.infinity, 60.0);
-}
-
-class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
-  late BeamerDelegate _beamerDelegate;
-
-  @override
-  void initState() {
-    super.initState();
-    _beamerDelegate = widget.beamerKey!.currentState!.routerDelegate;
-  }
+class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeScreenAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +26,12 @@ class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
                 onPressed: () {
                   if (_tooltip == 'Home') {
                     context.read<ScreenChangeCubit>().screenChanegeIndex(0);
-                    return _beamerDelegate.beamToNamed(HomeScreen.path);
+                  }
+                  if (_tooltip == 'Search') {
+                    context.read<ScreenChangeCubit>().screenChanegeIndex(1);
                   }
 
-                  context.read<ScreenChangeCubit>().screenChanegeIndex(1);
-                  return _beamerDelegate.beamToNamed(SearchScreen.path);
+                  context.beamBack();
                 },
                 icon: SvgPicture.asset(
                   IconsAsset.arrow,
@@ -93,4 +72,7 @@ class _HomeScreenAppBarState extends State<HomeScreenAppBar> {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size(double.infinity, 60.0);
 }

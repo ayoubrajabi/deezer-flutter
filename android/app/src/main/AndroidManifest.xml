@@ -2,7 +2,6 @@
     package="com.example.deezer_flutter">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:usesCleartextTraffic="true"
         android:label="deezer_flutter"
         android:icon="@mipmap/ic_launcher">
         <activity

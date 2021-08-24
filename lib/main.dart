@@ -1,4 +1,5 @@
 import 'package:beamer/beamer.dart';
+import 'package:deezer_flutter/view/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,9 +46,6 @@ class DeezerApp extends StatelessWidget {
         theme: appTheme!.theme(),
         routerDelegate: routerDelegate,
         routeInformationParser: BeamerParser(),
-        backButtonDispatcher: BeamerBackButtonDispatcher(
-          delegate: routerDelegate,
-        ),
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
   static const String path = 'Search';
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -154,10 +155,11 @@ class SearchScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
               builder: (context, miniPlayerState) => Visibility(
-                  visible: miniPlayerState.isShow!,
-                  child: const SizedBox(
-                    height: 80.0,
-                  )),
+                visible: miniPlayerState.isShow!,
+                child: const SizedBox(
+                  height: 80.0,
+                ),
+              ),
             ),
           ),
         ],
