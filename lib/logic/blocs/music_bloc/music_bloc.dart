@@ -29,3 +29,25 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
     }
   }
 }
+
+class TreandMusicBloc extends Bloc<MusicEvent, MusicState> {
+  MusicRepo? musicRepo;
+  TreandMusicBloc({this.musicRepo}) : super(MusicIsLoading());
+
+  @override
+  Stream<MusicState> mapEventToState(
+    MusicEvent event,
+  ) async* {
+    if (event is FeatchMusic) {
+      try {
+        yield MusicIsLoading();
+
+        MusicModel radio =
+            await musicRepo!.get(endpoint: event._query, value: event._value);
+        yield MusicIsLoaded(radio);
+      } catch (_) {
+        yield MusicError();
+      }
+    }
+  }
+}

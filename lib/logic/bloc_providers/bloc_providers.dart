@@ -27,6 +27,11 @@ class BlocProviderList {
         musicRepo: MusicRepo(),
       ),
     ),
+    BlocProvider<TreandMusicBloc>(
+      create: (_) => TreandMusicBloc(
+        musicRepo: MusicRepo(),
+      ),
+    ),
     BlocProvider<ArtistsBloc>(
       create: (_) => ArtistsBloc(
         musicRepo: MusicRepo(),

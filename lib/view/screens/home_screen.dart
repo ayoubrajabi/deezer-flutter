@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               key: PageStorageKey('HotMusic'),
               height: 790.0,
-              child: HotMusicsWidget(
+              child: TreandingMusicsWidget(
                 query: 'editorial/0/charts',
                 value: 'tracks',
                 itemCount: 10,
