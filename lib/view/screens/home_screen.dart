@@ -47,14 +47,9 @@ class HomeScreen extends StatelessWidget {
             const HomeScreenItemsTitle(
               title: 'Trending Musics',
             ),
-            const SizedBox(
-              key: PageStorageKey('HotMusic'),
-              height: 790.0,
-              child: TreandingMusicsWidget(
-                query: 'editorial/0/charts',
-                value: 'tracks',
-                itemCount: 10,
-              ),
+            const TreandingMusicsWidget(
+              query: 'editorial/0/charts',
+              value: 'tracks',
             ),
             BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
               builder: (context, miniPlayerState) => Visibility(

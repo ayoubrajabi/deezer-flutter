@@ -9,12 +9,10 @@ class TreandingMusicsWidget extends StatefulWidget {
     Key? key,
     @required this.query,
     @required this.value,
-    @required this.itemCount,
   }) : super(key: key);
 
   final String? query;
   final String? value;
-  final int? itemCount;
 
   @override
   _TreandingMusicsWidgetState createState() => _TreandingMusicsWidgetState();
@@ -34,13 +32,14 @@ class _TreandingMusicsWidgetState extends State<TreandingMusicsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: BlocBuilder<TreandMusicBloc, MusicState>(
-        buildWhen: (preState, state) => preState != state,
-        builder: (context, state) {
-          if (state is MusicIsLoaded) {
-            return ListView.builder(
-              itemCount: widget.itemCount,
+    return BlocBuilder<TreandMusicBloc, MusicState>(
+      buildWhen: (preState, state) => preState != state,
+      builder: (context, state) {
+        if (state is MusicIsLoaded) {
+          return SizedBox(
+            height: state.getMusic.data!.length * 75.0,
+            child: ListView.builder(
+              itemCount: state.getMusic.data!.length,
               padding: const EdgeInsets.all(10.0),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
@@ -63,9 +62,12 @@ class _TreandingMusicsWidgetState extends State<TreandingMusicsWidget> {
                       ),
                 );
               },
-            );
-          }
-          return ListView.builder(
+            ),
+          );
+        }
+        return SizedBox(
+          height: 790.0,
+          child: ListView.builder(
             itemCount: 10,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => LoadingWidget(
@@ -76,9 +78,9 @@ class _TreandingMusicsWidgetState extends State<TreandingMusicsWidget> {
               borderRadius: BorderRadius.circular(12.0),
               shape: BoxShape.rectangle,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
