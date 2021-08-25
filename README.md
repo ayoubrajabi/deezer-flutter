@@ -70,4 +70,4 @@ for more information about build the app for adndroid :
 
   
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=ayoubrajabi.ayoubrajabi)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=ayoubrajabi.ayoubrajabi/deezer-flutter)
