@@ -40,7 +40,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 150),
               width: _index == 2 || _index == 3
                   ? MediaQuery.of(context).size.width - 130.0
                   : 130.0,

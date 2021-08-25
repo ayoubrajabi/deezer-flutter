@@ -26,16 +26,14 @@ class TopArtistItem extends StatelessWidget {
           children: [
             ClipPath(
               clipper: TopArtistClipper(),
+              clipBehavior: Clip.antiAlias,
               child: Container(
                 width: 120.0,
                 color: _theme.cardColor,
-                child: ClipPath(
-                  clipper: TopArtistClipper(),
-                  child: FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: imgUrl!,
-                    fit: BoxFit.cover,
-                  ),
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: imgUrl!,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

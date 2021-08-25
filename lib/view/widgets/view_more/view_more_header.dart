@@ -1,6 +1,6 @@
+import 'package:blur/blur.dart';
 import 'package:deezer_flutter/logic/logics.dart';
 import 'package:flutter/material.dart';
-import 'package:blur/blur.dart';
 
 class ViewMoreHeader extends StatelessWidget {
   const ViewMoreHeader({
@@ -19,7 +19,7 @@ class ViewMoreHeader extends StatelessWidget {
     return Stack(
       children: [
         Image.network(
-          _radioData.pictureBig!,
+          _radioData.pictureMedium!,
           fit: BoxFit.cover,
           height: 300,
           width: double.infinity,
@@ -54,19 +54,14 @@ class ViewMoreHeader extends StatelessWidget {
                 width: 150.0,
                 margin: const EdgeInsets.only(top: 30.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7.0),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        _radioData.pictureBig!,
-                      ),
-                      fit: BoxFit.cover,
+                  borderRadius: BorderRadius.circular(7.0),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      _radioData.pictureMedium!,
                     ),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 5.0,
-                      )
-                    ]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Text(
                 _radioData.title!,

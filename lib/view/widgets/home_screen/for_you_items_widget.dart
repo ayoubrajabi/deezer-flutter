@@ -30,6 +30,7 @@ class ForYouItems extends StatelessWidget {
                 topLeft: Radius.circular(12.0),
                 topRight: Radius.circular(12.0),
               ),
+              clipBehavior: Clip.antiAlias,
               child: Container(
                 height: 270.0,
                 width: double.infinity,
@@ -46,13 +47,14 @@ class ForYouItems extends StatelessWidget {
             ),
             Stack(
               children: [
-                Image.network(
-                  imgUrlSmall!,
+                FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: imgUrlXl!,
+                  fit: BoxFit.cover,
                   height: 105.0,
                   width: double.infinity,
-                  fit: BoxFit.fill,
                 ).blurred(
-                  blur: 40.0,
+                  blur: 30.0,
                   blurColor: Colors.transparent,
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(12.0),
@@ -61,25 +63,24 @@ class ForYouItems extends StatelessWidget {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List<Padding>.generate(
-                    3,
-                    (itemsIndex) {
-                      return Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Text(
-                          itemInfo![itemsIndex],
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: itemsIndex == 0
-                                ? Colors.red.shade800
-                                : Colors.white,
-                            fontWeight: FontWeight.bold,
+                  children: itemInfo!
+                      .map(
+                        (item) => Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Text(
+                            item,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: itemInfo![0] == item
+                                  ? Colors.red.shade800
+                                  : Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      );
-                    },
-                  ),
+                      )
+                      .toList(),
                 ),
               ],
             ),

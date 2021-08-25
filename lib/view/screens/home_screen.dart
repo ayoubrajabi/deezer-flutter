@@ -10,57 +10,52 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              _theme.scaffoldBackgroundColor,
-              Colors.black45,
-            ],
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const HomeScreenItemsTitle(
-              title: 'Top Artists',
-            ),
-            const SizedBox(
-              key: PageStorageKey('TopArtists'),
-              height: 165.0,
-              child: TopArtistsWidget(),
-            ),
-            const HomeScreenItemsTitle(
-              title: 'For You',
-            ),
-            const SizedBox(
-              key: PageStorageKey('ForYou'),
-              height: 390.0,
-              child: ForYouWidget(),
-            ),
-            const HomeScreenItemsTitle(
-              title: 'Trending Musics',
-            ),
-            const TreandingMusicsWidget(
-              query: 'editorial/0/charts',
-              value: 'tracks',
-            ),
-            BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
-              builder: (context, miniPlayerState) => Visibility(
-                visible: miniPlayerState.isShow!,
-                child: const SizedBox(
-                  height: 80.0,
-                ),
-              ),
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Theme.of(context).scaffoldBackgroundColor,
+            Colors.black45,
           ],
         ),
+      ),
+      child: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          const HomeScreenItemsTitle(
+            title: 'Top Artists',
+          ),
+          const SizedBox(
+            key: PageStorageKey('TopArtists'),
+            height: 165.0,
+            child: TopArtistsWidget(),
+          ),
+          const HomeScreenItemsTitle(
+            title: 'For You',
+          ),
+          const SizedBox(
+            key: PageStorageKey('ForYou'),
+            height: 390.0,
+            child: ForYouWidget(),
+          ),
+          const HomeScreenItemsTitle(
+            title: 'Trending Musics',
+          ),
+          const TreandingMusicsWidget(
+            query: 'editorial/0/charts',
+            value: 'tracks',
+          ),
+          BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+            builder: (context, miniPlayerState) => Visibility(
+              visible: miniPlayerState.isShow!,
+              child: const SizedBox(
+                height: 80.0,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
