@@ -27,21 +27,22 @@ class ViewMoreHeader extends StatelessWidget {
           blur: 30.0,
           blurColor: Colors.transparent,
         ),
-        Positioned(
-          bottom: 0.0,
-          left: 0.0,
-          right: 0.0,
+        Positioned.fill(
           child: Container(
-            height: 5.0,
             width: double.infinity,
-            decoration: const BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xFF2C1B2A),
-                  blurRadius: 60.0,
-                  spreadRadius: 100.0,
-                ),
-              ],
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [
+                  const Color(0xFF1C111B),
+                  const Color(0xFF1C111B),
+                  const Color(0xFF1C111B).withAlpha(220),
+                  const Color(0xFF1C111B).withAlpha(150),
+                  const Color(0xFF1C111B).withAlpha(100),
+                  Colors.transparent,
+                ],
+              ),
             ),
           ),
         ),

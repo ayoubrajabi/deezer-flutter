@@ -21,36 +21,89 @@ class ForYouMoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          ViewMoreHeader(
-            radioIndex: index,
-            radioState: radioState,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: ViewMoreButtons(),
-          ),
-          SizedBox(
-            height: hotMusicHeight,
-            width: double.infinity,
-            child: HotMusicsWidget(
-              query: query,
-              value: '',
-              itemCount: hotMusicItemCount,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Theme.of(context).scaffoldBackgroundColor,
+            Colors.black45,
+          ],
+        ),
+      ),
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          SliverAppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 0.0,
+            bottom: PreferredSize(
+              preferredSize: Size(double.infinity, 300),
+              child: ViewMoreHeader(
+                radioIndex: index,
+                radioState: radioState,
+              ),
             ),
           ),
-          BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
-            builder: (context, miniPlayerState) => Visibility(
-              visible: miniPlayerState.isShow!,
-              child: const SizedBox(
-                height: 80.0,
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: ViewMoreButtons(),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: hotMusicHeight,
+              width: double.infinity,
+              child: HotMusicsWidget(
+                query: query,
+                value: '',
+                itemCount: hotMusicItemCount,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+              builder: (context, miniPlayerState) => Visibility(
+                visible: miniPlayerState.isShow!,
+                child: const SizedBox(
+                  height: 80.0,
+                ),
               ),
             ),
           ),
         ],
+        // child: Column(
+        //   children: [
+        //     ViewMoreHeader(
+        //       radioIndex: index,
+        //       radioState: radioState,
+        //     ),
+        //     Padding(
+        //       padding: const EdgeInsets.symmetric(vertical: 10.0),
+        //       child: ViewMoreButtons(),
+        //     ),
+        //     SizedBox(
+        //       height: hotMusicHeight,
+        //       width: double.infinity,
+        //       child: HotMusicsWidget(
+        //         query: query,
+        //         value: '',
+        //         itemCount: hotMusicItemCount,
+        //       ),
+        //     ),
+        //     BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
+        //       builder: (context, miniPlayerState) => Visibility(
+        //         visible: miniPlayerState.isShow!,
+        //         child: const SizedBox(
+        //           height: 80.0,
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

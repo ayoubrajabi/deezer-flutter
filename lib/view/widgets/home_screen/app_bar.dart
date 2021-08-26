@@ -14,6 +14,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: Colors.transparent,
+      leading: null,
       title: Builder(builder: (context) {
         final _index = context.watch<ScreenChangeCubit>().state;
         final _tooltip = context.watch<NavbarTooltipCubit>().state;

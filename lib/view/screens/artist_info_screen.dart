@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ArtistInfoScreen extends StatelessWidget {
-  static const String id = 'artist';
   const ArtistInfoScreen({
     Key? key,
     required this.index,
@@ -24,15 +23,13 @@ class ArtistInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            _theme.scaffoldBackgroundColor,
+            Theme.of(context).scaffoldBackgroundColor,
             Colors.black45,
           ],
         ),
@@ -42,8 +39,9 @@ class ArtistInfoScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,
+            toolbarHeight: 0.0,
             bottom: PreferredSize(
-              preferredSize: const Size(double.infinity, 244.0),
+              preferredSize: const Size(double.infinity, 300.0),
               child: ArtistHeaderWidget(
                 index: index,
                 artistName: artistName,
