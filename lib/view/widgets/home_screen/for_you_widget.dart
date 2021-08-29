@@ -24,20 +24,35 @@ class _ForYouWidgetState extends State<ForYouWidget> {
     }
   }
 
+  Widget forYouWidget(RadioIsLoaded radioState, int index) {
+    final _radioStateData = radioState.getRadio.data![index];
+
+    final _itemsInfo = <String>[
+      _radioStateData.title!,
+      'tracks: ${_radioStateData.nbTracks}',
+      'tracks: ${_radioStateData.user!.name!}',
+    ];
+
+    return ForYouItems(
+      onTap: () {
+        context.currentBeamLocation.update(
+          (state) => state.copyWith(
+            pathBlueprintSegments: ['ForYou'],
+            pathParameters: {'key': 'ForYou'},
+          ),
+        );
+        context.read<ItemsIndexCubit>().itemsIndex(index);
+      },
+      imgUrlXl: _radioStateData.pictureXl,
+      imgUrlSmall: _radioStateData.picture,
+      itemInfo: _itemsInfo,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    return BlocConsumer<RadioBloc, RadioState>(
-      listener: (context, radioState) {
-        if (radioState is RadioError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: _theme.cardColor,
-              content: const Text('Connection field!'),
-            ),
-          );
-        }
-      },
+    return BlocBuilder<RadioBloc, RadioState>(
       buildWhen: (preState, state) => preState != state,
       builder: (context, radioState) {
         if (radioState is RadioIsLoaded) {
@@ -45,33 +60,10 @@ class _ForYouWidgetState extends State<ForYouWidget> {
             itemCount: 10,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
-            itemExtent: 260.0,
-            itemBuilder: (context, index) {
-              final _radioStateData = radioState.getRadio.data![index];
-
-              final _itemsInfo = <String>[
-                _radioStateData.title!,
-                'tracks: ${_radioStateData.nbTracks}',
-                'tracks: ${_radioStateData.user!.name!}',
-              ];
-
-              return ForYouItems(
-                onTap: () {
-                  context.currentBeamLocation.update(
-                    (state) => state.copyWith(
-                      pathBlueprintSegments: ['ForYou'],
-                      pathParameters: {'key': 'ForYou'},
-                    ),
-                  );
-                  // context.beamToNamed('/ForYou');
-                  context.read<ScreenChangeCubit>().screenChanegeIndex(2);
-                  context.read<ItemsIndexCubit>().itemsIndex(index);
-                },
-                imgUrlXl: _radioStateData.pictureXl,
-                imgUrlSmall: _radioStateData.pictureXl,
-                itemInfo: _itemsInfo,
-              );
-            },
+            addRepaintBoundaries: true,
+            itemExtent: 240.0,
+            cacheExtent: 2400.0,
+            itemBuilder: (context, index) => forYouWidget(radioState, index),
           );
         }
         return ListView.builder(
@@ -79,9 +71,9 @@ class _ForYouWidgetState extends State<ForYouWidget> {
           itemCount: 10,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) => LoadingWidget(
-            height: 290.0,
-            width: 260.0,
-            borderRadius: BorderRadius.circular(12.0),
+            height: 260.0,
+            width: 225.0,
+            borderRadius: BorderRadius.circular(7.0),
             icon: Icons.settings_input_antenna,
             color: _theme.cardColor,
             shape: BoxShape.rectangle,

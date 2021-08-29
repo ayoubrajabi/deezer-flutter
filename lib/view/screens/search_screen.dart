@@ -84,9 +84,7 @@ class SearchScreen extends StatelessWidget {
                                     pathParameters: {'key': 'artistSearch'},
                                   ),
                                 );
-                                context
-                                    .read<ScreenChangeCubit>()
-                                    .screenChanegeIndex(3);
+
                                 context
                                     .read<ItemsIndexCubit>()
                                     .itemsIndex(index);

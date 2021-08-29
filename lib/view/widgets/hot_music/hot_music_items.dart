@@ -5,7 +5,7 @@ import 'package:transparent_image/transparent_image.dart';
 import '../widgets.dart';
 
 class HotMusicItems extends StatelessWidget {
-  const HotMusicItems({
+  HotMusicItems({
     Key? key,
     @required this.imgUrl,
     @required this.artistName,
@@ -13,6 +13,7 @@ class HotMusicItems extends StatelessWidget {
     @required this.url,
     @required this.onTap,
   }) : super(key: key);
+
   final void Function()? onTap;
   final String? imgUrl;
   final String? musicTitle;
@@ -26,15 +27,14 @@ class HotMusicItems extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: SizedBox(
-          height: 50.0,
-          width: double.infinity,
+          height: 45.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     child: FadeInImage.memoryNetwork(
                       placeholder: kTransparentImage,
                       image: imgUrl!,
@@ -58,8 +58,9 @@ class HotMusicItems extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: textIndex == 0 ? Colors.white : Colors.grey,
+                            fontSize: 12.0,
                             fontWeight: textIndex == 0
-                                ? FontWeight.bold
+                                ? FontWeight.w600
                                 : FontWeight.w400,
                           ),
                         ),

@@ -20,20 +20,22 @@ class TopArtistItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ClipPath(
-              clipper: TopArtistClipper(),
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                width: 120.0,
-                color: _theme.cardColor,
-                child: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: imgUrl!,
-                  fit: BoxFit.cover,
+            RepaintBoundary(
+              child: ClipPath(
+                clipper: TopArtistClipper(),
+                clipBehavior: Clip.antiAlias,
+                child: Container(
+                  width: 100.0,
+                  color: _theme.cardColor,
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: imgUrl!,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -43,8 +45,8 @@ class TopArtistItem extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 11.0,
-                fontWeight: FontWeight.bold,
+                fontSize: 10.0,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],

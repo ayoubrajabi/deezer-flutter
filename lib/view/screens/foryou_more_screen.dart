@@ -75,35 +75,6 @@ class ForYouMoreScreen extends StatelessWidget {
             ),
           ),
         ],
-        // child: Column(
-        //   children: [
-        //     ViewMoreHeader(
-        //       radioIndex: index,
-        //       radioState: radioState,
-        //     ),
-        //     Padding(
-        //       padding: const EdgeInsets.symmetric(vertical: 10.0),
-        //       child: ViewMoreButtons(),
-        //     ),
-        //     SizedBox(
-        //       height: hotMusicHeight,
-        //       width: double.infinity,
-        //       child: HotMusicsWidget(
-        //         query: query,
-        //         value: '',
-        //         itemCount: hotMusicItemCount,
-        //       ),
-        //     ),
-        //     BlocBuilder<MiniPlayerCubit, MiniPlayerState>(
-        //       builder: (context, miniPlayerState) => Visibility(
-        //         visible: miniPlayerState.isShow!,
-        //         child: const SizedBox(
-        //           height: 80.0,
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }

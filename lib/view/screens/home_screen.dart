@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       child: ListView(
+        cacheExtent: 1500.0,
         physics: const BouncingScrollPhysics(),
         children: [
           const HomeScreenItemsTitle(
@@ -29,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(
             key: PageStorageKey('TopArtists'),
-            height: 165.0,
+            height: 145.0,
             child: TopArtistsWidget(),
           ),
           const HomeScreenItemsTitle(
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(
             key: PageStorageKey('ForYou'),
-            height: 390.0,
+            height: 355.0,
             child: ForYouWidget(),
           ),
           const HomeScreenItemsTitle(

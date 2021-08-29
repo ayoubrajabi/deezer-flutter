@@ -84,7 +84,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           context
               .read<NavbarTooltipCubit>()
               .navBarTooltipChange(_navBarItems.keys.elementAt(index));
-          context.read<ScreenChangeCubit>().screenChanegeIndex(index);
         },
       ),
     );

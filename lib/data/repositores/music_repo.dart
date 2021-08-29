@@ -1,7 +1,7 @@
 import 'package:deezer_flutter/data/models/models.dart';
+import 'package:deezer_flutter/data/repositores/api_services.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:deezer_flutter/data/repositores/api_services.dart';
 
 class MusicRepo {
   final Dio _dio = Dio();

@@ -23,7 +23,9 @@ class NavScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: Scaffold(
-          appBar: const HomeScreenAppBar(),
+          appBar: HomeScreenAppBar(
+            beamerKey: beamerKey,
+          ),
           body: Stack(
             children: [
               Offstage(

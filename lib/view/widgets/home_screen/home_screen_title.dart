@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HomeScreenItemsTitle extends StatelessWidget {
-  const HomeScreenItemsTitle({Key? key, @required this.title})
-      : super(key: key);
+  const HomeScreenItemsTitle({
+    Key? key,
+    @required this.title,
+  }) : super(key: key);
+
   final String? title;
 
   @override
@@ -13,7 +16,7 @@ class HomeScreenItemsTitle extends StatelessWidget {
         title!,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 20.0,
+          fontSize: 18.0,
         ),
       ),
     );

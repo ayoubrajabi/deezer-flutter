@@ -45,6 +45,7 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
             itemCount: artistState.getArtist.total,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
+            cacheExtent: 1000.0,
             itemBuilder: (context, index) => TopArtistItem(
               onTap: () {
                 context.currentBeamLocation.update(
@@ -54,7 +55,6 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
                   ),
                 );
 
-                context.read<ScreenChangeCubit>().screenChanegeIndex(3);
                 context.read<ItemsIndexCubit>().itemsIndex(index);
               },
               imgUrl: artistState.getArtist.data![index].pictureMedium,
@@ -69,13 +69,13 @@ class _TopArtistsWidgetState extends State<TopArtistsWidget> {
           itemBuilder: (context, index) => Column(
             children: [
               LoadingWidget(
-                height: 120.0,
-                width: 120.0,
+                height: 100.0,
+                width: 100.0,
                 icon: Icons.person,
                 clipper: LoadingPainter(),
               ),
               const SizedBox(
-                height: 2.0,
+                height: 5.0,
               ),
             ],
           ),

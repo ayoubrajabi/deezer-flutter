@@ -18,71 +18,73 @@ class ForYouItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12.0),
-                topRight: Radius.circular(12.0),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                height: 270.0,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: _theme.cardColor,
-                  borderRadius: BorderRadius.circular(12.0),
+            Container(
+              height: 260.0,
+              width: 235.0,
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(7.0),
+                  topRight: Radius.circular(7.0),
                 ),
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(7.0),
+                  topRight: Radius.circular(7.0),
+                ),
+                clipBehavior: Clip.antiAlias,
                 child: FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage,
                   image: imgUrlXl!,
                   fit: BoxFit.cover,
+                  height: 260.0,
+                  width: 235.0,
                 ),
               ),
             ),
-            Stack(
-              children: [
-                FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: imgUrlXl!,
-                  fit: BoxFit.cover,
-                  height: 105.0,
-                  width: double.infinity,
-                ).blurred(
-                  blur: 30.0,
-                  blurColor: Colors.transparent,
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(12.0),
-                    bottomRight: Radius.circular(12.0),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: itemInfo!
-                      .map(
-                        (item) => Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Text(
-                            item,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: itemInfo![0] == item
-                                  ? Colors.red.shade800
-                                  : Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+            FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: imgUrlXl!,
+              fit: BoxFit.cover,
+              width: 235.0,
+              height: 78.0,
+            ).blurred(
+              blur: 30.0,
+              overlay: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: itemInfo!
+                    .map(
+                      (item) => Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text(
+                          item,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: itemInfo![0] == item
+                                ? Colors.red.shade800
+                                : Colors.white,
+                            fontSize: 11.0,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      )
-                      .toList(),
-                ),
-              ],
+                      ),
+                    )
+                    .toList(),
+              ),
+              blurColor: Colors.transparent,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(7.0),
+                bottomRight: Radius.circular(7.0),
+              ),
             ),
           ],
         ),

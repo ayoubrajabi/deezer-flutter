@@ -25,7 +25,7 @@ class LoadingWidget extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: color,
         borderRadius: borderRadius,

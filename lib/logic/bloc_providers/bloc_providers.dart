@@ -5,9 +5,6 @@ import '../logics.dart';
 
 class BlocProviderList {
   final List<BlocProvider> _blocProviders = [
-    BlocProvider<ScreenChangeCubit>(
-      create: (_) => ScreenChangeCubit(),
-    ),
     BlocProvider<ItemsIndexCubit>(
       create: (_) => ItemsIndexCubit(),
     ),
